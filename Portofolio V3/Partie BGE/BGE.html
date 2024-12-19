@@ -1,0 +1,64 @@
+<html>
+    <!doctype html>   
+    <htlml lang ="fr">
+        <head>
+            <meta charset ="utf-8">
+            <link rel="stylesheet" href="BGE.css">
+            <script src="BGE.js"></script>
+            <title>Beyond Good & evil</title>
+        </head>
+    <body>
+         <!--Header avec les informations importantes-->
+         
+         <div class="header">
+            <img src="Daco_343730.png" class="Logo"/>
+            <span class="gametitle">Beyond Good & Evil</span>
+            <span class="inline-info">
+                <ul>
+                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                    <li><a href="">Menu principal</a></li>
+                </ul>
+            </span>
+        </div>
+
+        <!-- Conteneur des cartes avec flèches de navigation -->
+
+        <div class="card-container">
+            <button class="arrow left-arrow" onclick="prevCard()">&#9664;</button>
+            <div class="card-wrapper">
+                <div class="card" id="card1">
+                    <a href="https://bgewik.wordpress.com" class="card-link"></a>
+                    <div class="card-text">
+                        <h2>Site Wordpress</h2>
+                        <p>Un projet Wordpress fait en BTS SIO reproduisant un wiki sur le jeu BGE d'ubisoft</p>
+                    </div>
+                </div>
+
+                <div class="card" id="card2">
+                    <a href="BGE_doc.html" class="card-link"></a>
+                    <div class="card-text">
+                        <h2>Documentation Wordpress</h2>
+                        <p>Ceci est la documentation et le proceder utilisee pour la creation du site</p>
+                    </div>
+                </div>
+                <div class="card" id="card3">
+                    <a href="https://www.bgemyth.net/" class="card-link"></a>
+                    <div class="card-text">
+                        <h2>BGE MYTH</h2>
+                        <p>Ceci est bgemyth un site web sur le jeu beyond good & evil qui comporte toutes les infos sur le jeu. Ce site ne m'appartient pas</p>
+                    </div>
+                </div>
+                <div class="card" id="card4">
+                    <a href="https://www.youtube.com/watch?v=CaU4tMuvvdc&ab_channel=Ubisoft" class="card-link"></a>
+                    <div class="card-text">
+                        <h2>BGE 20th</h2>
+                        <p>Trailer Officiel de BGE 20eme anniversaire edition</p>
+                    </div>
+                </div>
+            </div>
+        <button class="arrow right-arrow" onclick="nextCard()">&#9654;</button>
+    </div>
+
+    </body>
+</html>

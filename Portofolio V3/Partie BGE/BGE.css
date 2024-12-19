@@ -1,0 +1,208 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
+html,body
+{
+    background-image: url(1439237.jpg);
+    background-size: cover;
+    background-position: bottom;
+    margin: 0;    /* Enleve les marges */
+    padding: 0;   /* Enleve les espacements internes */
+    overflow: hidden; /* Empêche le débordement de la page */
+}
+
+img.Logo 
+{
+    width: 65px;
+    height: 40px;
+    padding: 0 20px;
+}
+
+.header
+{
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* le padding du header */
+    background-color: rgb(82, 73, 92);
+    height: 53px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.inline-info
+{
+    font-family: 'Public Pixel', sans-serif;
+    display: flex;
+    align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px; /* padding du header ( inline ) */
+    box-sizing: border-box;
+}
+
+.inline-info ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inline-info ul li {
+    display: inline-block;
+    margin-right: 20px; /* header margin droite */
+}
+
+.inline-info ul li:last-child {
+    margin-right: 0; /* Pour enlever la marge droite du dernier élément */
+}
+
+.inline-info ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    padding: 5.75px;
+    background: 
+        linear-gradient(to right, rgb(7, 190, 105), rgb(15, 105, 116)),
+        linear-gradient(to right, rgb(3, 124, 172), rgb(6, 206, 123), rgb(17, 109, 3));
+    background-size: 100% 0.1em, 0 0.1em;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+
+.inline-info ul li a:hover,
+.inline-info ul li a:focus {
+    background-size: 0 0.1em, 100% 0.1em;
+}
+
+.gametitle
+{
+    text-align: left;
+    margin: 2vh;
+    font-family: 'Public Pixel', 'sans-serif';
+    color: white;
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 50px; /* Taille container */
+}
+
+.arrow 
+{
+    background: none;
+    border: none;
+    font-size: 4rem;
+    cursor: pointer;
+    user-select: none;
+    color: rgb(82, 73, 92); /* Couleur des flèches changables */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.left-arrow {
+    left: 250px; /* Position flèches gauche */
+}
+
+.right-arrow {
+    right: 250px; /* Position flèches droite */
+}
+
+.card-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 800px; /* Largeur de la carte */
+    perspective: 1000px;
+}
+
+.card {
+    min-width: 100%;
+    height: 550px; /* Hauteur de la carte */
+    margin: 10px;
+    background-color: rgb(82, 73, 92);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    filter: brightness(0.5);
+}
+
+/* Réinitialisation du soulignement bleu pour les liens */
+
+a {
+    text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Utilise la couleur par défaut du texte */
+    padding: 0; /* Supprime le padding autour du lien */
+    margin: 0; /* Supprime les marges autour du lien */
+}
+
+
+.card:hover
+{
+    filter: brightness(0.8);
+}
+
+.card-text {
+    font-family: 'Public Pixel', 'sans-serif';
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    right: 0;
+    padding: 20px;
+    background-color: rgb(112, 101, 125);
+    transform: translateY(100%);
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0;
+    pointer-events: none; /* Empêche le texte d'être cliqué */
+}
+
+.card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+
+.card:hover .card-text {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+ /* Background des cartes */
+
+.card-wrapper .card:nth-child(1) {
+    background-image: url('Wordpress.png');
+    background-size: contain;
+    left: -10px;
+}
+.card-wrapper .card:nth-child(2) {
+    background-image: url('docu.png');
+    background-size: contain;
+    left: -10px;
+}
+
+.card-wrapper .card:nth-child(3) {
+    background-image: url('bgemyth.png');
+    background-size: 98%;
+    left: -10px;
+}
+
+.card-wrapper .card:nth-child(4) {
+    background-image: url('bge20th.jpg');
+    background-size: 98%;
+    left: -10px;
+}
