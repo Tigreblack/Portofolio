@@ -1,0 +1,522 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
+body
+{
+  background-image: url(https://img.freepik.com/premium-vector/pixel-art-starry-sky-during-sunset-moon-with-clouds-stars-vector-illustrations-eps10-bylayer_148553-721.jpg);
+  background-size: cover;
+  border-radius: 30%;
+  width: auto;
+  height: 20vh;
+  color: #fff;
+  text-align: right;
+  font-size: 25px;
+  font-family: 'Exo', sans-serif;
+}
+
+html
+{
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
+}
+nav
+{
+  font-family: 'Public Pixel', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+nav ul li
+{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px ;
+}
+
+nav ul li a
+{
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  position:  relative;
+  padding: 3.75px;
+  background: 
+  linear-gradient(to right, rgba(100, 200, 200, 1), rgba(100, 200, 200, 1)),
+  linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 180, 1), rgba(0, 100, 200, 1));
+  background-size: 100% 0.1em, 0 0.1em;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.header   
+{
+    width: 100%;
+    position: absolute;
+    
+}
+
+nav ul li a:hover,
+nav ul li a:focus
+{
+  background-size: 0 0.1em, 100% 0.1em;
+}
+
+.title1 h5 {
+  font-weight: 200;
+  text-align: center;
+  font-family: 'Public Pixel', sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  padding: 0;
+  line-height: 0.8em;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.title1 h5 span
+{
+  color: #fff;
+  animation-delay: 2s;
+  font-weight: 600;
+}
+
+.txt-rotate > .wrap {
+  border-right: 0.08em solid #666;
+}
+
+.title1 h1 
+{
+  text-align: center;
+  color: #fff;
+  font-family: 'Public Pixel', sans-serif;
+  text-align: center;
+  font-size: 35px;
+}
+
+hr
+{
+  height: 3px;
+  background-color: #fff;
+  border-top: #4e54c8;
+}
+
+.carriere
+{
+  width: 99%;
+  margin: 0 auto;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 100px 0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  text-align: center;
+  background-image: url("https://e1.pxfuel.com/desktop-wallpaper/670/14/desktop-wallpaper-aesthetic-pixel-art-aesthetic-pixel-landscape.jpg");
+  background-size: cover;
+  border: #141414;
+  border-radius: 15px;
+}
+
+
+
+.carriere h1
+{
+  display: flex;
+  text-align: left;
+  font-family: 'Exo', sans-serif;
+  color: #fff;
+  font-size: 50px;
+  top: 10vh;
+  right: 10vh;
+}
+
+.space_1
+{
+  padding: 5vh;
+  background-size: 75%;
+  width: 100%;
+}
+
+.STMG h1
+{
+  text-align: left;
+  margin-left: 5vh;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 50px;
+}
+
+.STMG h2
+{
+  text-align: left;
+  margin-left: 5vh;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 25px;
+}
+
+.STMG nav ul li
+{
+  font-size: 30px;
+  padding: 2vh;
+  list-style: circle;
+  display: list-item;
+  text-align: left;
+  font-family: 'Exo','sans-serif';
+  justify-content: center;
+}
+
+.STMG
+{
+  padding: 5vh;
+  width: auto;
+  box-sizing: content-box;
+  text-align: left;
+  justify-content: space-around;
+  background-image: url("https://wallpapercave.com/wp/wp7684851.png");
+  background-size: 100%;
+  border-radius: 1%;
+  font-family: 'Exo', sans-serif;
+  color: #fff;
+  font-size: 40px;
+}
+
+.carriere .box
+{
+  position: relative;
+  width: 550px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 30px;
+  transition: 0.5s;
+}
+
+.carriere .box::before
+{
+  content:' ';
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 60%;
+  height: 90%;
+  text-decoration: none;
+  background: #bb3a9f;
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 0.5s;
+}
+
+.carriere .box::after
+{
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 50;
+  width: 50%;
+  height: 90%;
+  background: #e955d5;
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 0.5s;
+  filter: blur(30px);
+}
+
+.carriere .box:hover:before,
+.carriere .box:hover:after
+{
+  transform: skewX(0deg);
+  left: 20px;
+  width: calc(100% - 90px);
+  
+}
+
+.carriere .box:nth-child(1):before,
+.carriere .box:nth-child(1):after
+{
+  background: linear-gradient(315deg, #ffbc00, #ff0058)
+}
+
+.carriere .box:nth-child(2):before,
+.carriere .box:nth-child(2):after
+{
+  background: linear-gradient(315deg, #03a9f4, #ff0058)
+}
+
+.carriere .box:nth-child(3):before,
+.carriere .box:nth-child(3):after
+{
+  background: linear-gradient(315deg, #4dff03, #00d0ff)
+}
+
+.carriere .box span
+{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.carriere .box span::before
+{
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.1s;  
+  animation: animate 2s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08)
+}
+
+.carriere .box:hover span::before
+{
+  top: -50px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+}
+
+.carriere .box span::after
+{
+  content:'';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 2s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  animation-delay: -1s;
+}
+
+.carriere .box:hover span:after
+{
+  bottom: -50px;
+  right: 50px;
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+}
+
+@keyframes animate
+{
+  0%, 100%
+  {
+    transform: translateY(10px);
+  }
+  
+  50%
+  {
+    transform: translate(-10px);
+  }
+}
+
+.carriere .box .content_1
+{
+  position: relative;
+  left: 0;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1;
+  transform: 0.5s;
+  color: #fff;
+}
+
+.carriere .box:hover .content_1
+{
+  left: -25px;
+  padding: 60px 40px;
+}
+
+.carriere .box .content_1 h2
+{
+  font-size: 2em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.carriere .box .content_1 p
+{
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  line-height: 1.4em;
+}
+
+.carriere .box .content_1 a
+{
+  display: inline-block;
+  font-size: 1.1em;
+  color: #111;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.carriere .box .content_1 a:hover
+{
+  background: #ffcf4d;
+  border: 1px solid rgba(255, 0, 88, 0.4);
+  box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
+}
+
+
+.title{
+    font-family: 'Exo', sans-serif;
+    color: #fff;
+    font-size: 25px;
+    width: 100%;
+    top:10vh;
+    left:2vh;
+}
+
+.container 
+{
+    padding: 10px 3%;
+
+}
+
+.content
+{
+    border-radius: 1%;
+    border-style: outset;
+    border-color: #ecf7ec;
+    background-image: url("https://wallpapers.com/images/high/cyberpunk-pixel-art-0wsff2qqmw168u7t.webp");
+    background-size: contain;
+    background: -webkit-linear-gradient(to left, #e6bfee, #f1c8ef);  
+    font-weight: 300;
+    font-size: 1.10rem;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    display:flex;
+    text-align: center;
+    align-content: center;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+
+    --color-primary: #f6aca2;
+    --color-secondary: #f49b90;
+    --color-tertiary: #f28b7d;
+    --color-quaternary: #f07a6a;
+    --color-quinary: #ee6352;
+  /*
+  --color-primary: #5192ED;
+  --color-secondary: #69A1F0;
+  --color-tertiary: #7EAEF2;
+  --color-quaternary: #90BAF5;
+  --color-quinary: #A2C4F5;
+  */
+}
+
+
+.text_shadows {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary),
+      9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+    font-family: bungee, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: calc(1rem + 3vw);
+    text-align: center;
+    margin: 0;
+    color: var(--color-primary);
+    animation: shadows 1.5s ease-in infinite, move 1.5s ease-in infinite;
+    letter-spacing: 0.4rem;
+  }
+  
+  @keyframes shadows {
+    0% {
+      text-shadow: none;
+    }
+    10% {
+      text-shadow: 3px 3px 0 var(--color-secondary);
+    }
+    20% {
+      text-shadow: 3px 3px 0 var(--color-secondary),
+        6px 6px 0 var(--color-tertiary);
+    }
+    30% {
+      text-shadow: 3px 3px 0 var(--color-secondary),
+        6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+    }
+    40% {
+      text-shadow: 3px 3px 0 var(--color-secondary),
+        6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+        12px 12px 0 var(--color-quinary);
+    }
+    50% {
+      text-shadow: 3px 3px 0 var(--color-secondary),
+        6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+        12px 12px 0 var(--color-quinary);
+    }
+    60% {
+      text-shadow: 3px 3px 0 var(--color-secondary),
+        6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+        12px 12px 0 var(--color-quinary);
+    }
+    70% {
+      text-shadow: 3px 3px 0 var(--color-secondary),
+        6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+    }
+    80% {
+      text-shadow: 3px 3px 0 var(--color-secondary),
+        6px 6px 0 var(--color-tertiary);
+    }
+    90% {
+      text-shadow: 3px 3px 0 var(--color-secondary);
+    }
+    100% {
+      text-shadow: none;
+    }
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translate(0px, 0px);
+    }
+    40% {
+      transform: translate(-12px, -12px);
+    }
+    50% {
+      transform: translate(-12px, -12px);
+    }
+    60% {
+      transform: translate(-12px, -12px);
+    }
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
