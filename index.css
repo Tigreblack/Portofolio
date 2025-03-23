@@ -1,0 +1,233 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
+
+/* Comptability W3C Responsive Web design Media */
+
+*
+{
+    box-sizing: border-box;
+}
+
+/* Laptop / desktop */
+
+@media screen and (min-width: 992px) {
+    .inline-info ul li a{
+        font-size: 15px;
+    }
+    .pseudoname {
+        font-size: 15px;
+    }
+    .tile {
+        font-size: 1.5em;
+    }
+    
+}
+
+@media screen and (max-width: 992px) {
+    .inline-info ul li a{
+        font-size: 10px;
+    }
+    
+    .pseudoname {
+        font-size: 10px;
+    }
+    .tile{
+        font-size: 0.9em;
+    }
+}
+
+/* End */
+
+html,body
+{
+    background-image: url(https://th.bing.com/th/id/R.85283ba3222d92108ec6f191b5c9010c?rik=s%2bL40WBs5miIXw&pid=ImgRaw&r=0);
+    background-size: contain;
+    margin: 0;    /* Enlevez les marges */
+    padding: 0;   /* Enlevez les espacements internes */
+    overflow: hidden; /* Empêche le débordement de la page */
+}
+
+.inline-info
+{
+    font-family: 'Public Pixel', sans-serif;
+    display: flex;
+    align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
+    justify-content: flex-end; /* Ajustez selon vos besoins */
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px; /* Ajustez selon vos besoins */
+    box-sizing: border-box;
+}
+
+.inline-info ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inline-info ul li {
+    display: inline-block;
+    margin-right: 20px; /* Ajustez selon vos besoins */
+}
+
+.inline-info ul li:last-child {
+    margin-right: 0; /* Pour enlever la marge droite du dernier élément */
+}
+
+.inline-info ul li a {
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    padding: 5.75px;
+    background: 
+        linear-gradient(to right, rgba(100, 200, 200, 1), rgba(100, 200, 200, 1)),
+        linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 180, 1), rgba(0, 100, 200, 1));
+    background-size: 100% 0.1em, 0 0.1em;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+
+.inline-info ul li a:hover,
+.inline-info ul li a:focus {
+    background-size: 0 0.1em, 100% 0.1em;
+}
+
+.header
+{
+    opacity: 0.9;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 20px; /* Ajustez selon vos besoins */
+    background-color: rgba(106, 7, 193, 0.929);
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.pseudoname
+{
+    text-align: left;
+    margin: 2vh;
+    font-family: 'Public Pixel', 'sans-serif';
+    color: white;
+}
+
+.menu-container {
+    display: flex;
+    gap: 15px;
+    max-width: 100%; /* Assure que le conteneur ne dépasse pas la largeur de la page */
+    margin-top: 10px; /* Ajoute un espace entre le header et les tuiles */
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tile {
+    text-align: center;
+    flex: 0.5; /* Les tuiles prendront une part égale de l'espace disponible */
+    flex-basis: calc((100% / 3) - 1rem);; /* Ajustez la taille pour trois tuiles avec un écart de 20px */
+    height: 43vw; /* La hauteur est relative à la largeur de la fenêtre */
+    text-decoration: none; /* Supprime les barres sous les liens */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*font-size: 1.5em;*/
+    font-family: 'Public Pixel','sans-serif';
+    color: white;
+    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.tile1 {
+    background-image: url('https://th.bing.com/th/id/R.15f3f8c5dacdd097a5d466715051eec1?rik=48qKHLTBuhfvrw&pid=ImgRaw&r=0');
+    opacity: 0.9;
+}
+
+.tile2 {
+    background-image: url('https://th.bing.com/th/id/R.d4c71ad9191f04af8b11487c9d62f966?rik=uR7becRhsooY1g&pid=ImgRaw&r=0');
+    opacity: 0.9;
+}
+
+.tile3 {
+    background-image: url('https://images.hdqwalls.com/wallpapers/titanfall-2-2017-concept-art-wide.jpg');
+    background-size: 450%;
+    opacity: 0.9;
+}
+
+.tile4 {
+    background-image: url('https://wallpapercave.com/wp/wp6272599.jpg');
+    opacity: 0.9;
+    border-width:  0px;
+}
+
+
+.tile::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s;
+}
+
+.tile:hover::after {
+    background: rgba(0, 0, 0, 0);
+}
+
+.tile:hover {
+    transform: scale(1.05);
+    opacity: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-container:hover .tile:not(:hover) {
+    filter: brightness(0.5);
+}
+
+/*3 js */
+
+.container0{
+    position: relative;
+}
+/* Site vitrine au premier plan au début */
+#site-vitrine {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Espace 3D sous le site vitrine */
+#espace-3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+/* Conteneur des nuages */
+#cloudEffect {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* Style des nuages */
+.cloud {
+    position: absolute;
+    width: 200px;
+    opacity: 0;
+}
+
+.cloud img {
+    display: none;
+}

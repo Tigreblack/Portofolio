@@ -1,0 +1,189 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
+
+/* Comptability W3C Responsive Web design Media */
+
+*
+{
+    box-sizing: border-box;
+}
+
+/* Laptop / desktop */
+
+@media screen and (min-width: 992px) {
+    .inline-info ul li a{
+        font-size: 15px;
+    }
+    .pseudoname {
+        font-size: 15px;
+    }
+    .tile {
+        font-size: 1.5em;
+    }
+    
+}
+
+@media screen and (max-width: 992px) {
+    .inline-info ul li a{
+        font-size: 10px;
+    }
+    
+    .pseudoname {
+        font-size: 10px;
+    }
+    .tile{
+        font-size: 0.9em;
+    }
+}
+
+/* End */
+
+html,body
+{
+    background-image: url(https://cdn-s-www.ledauphine.com/images/45576B00-161D-4EB3-B4CC-6DEF648E9E6F/NW_raw/le-festival-jazz-a-vienne-2021-ne-ressemblera-a-aucune-des-editions-precedentes-mais-tout-sera-fait-pour-que-le-public-profite-des-concerts-malgre-le-contexte-sanitaire-photo-archives-le-dl-mona-blanchet-1656350716.jpg);
+    background-size: contain;
+    margin: 0;    /* Enlevez les marges */
+    padding: 0;   /* Enlevez les espacements internes */
+    overflow: hidden; /* Empêche le débordement de la page */
+}
+
+.inline-info
+{
+    font-family: 'Public Pixel', sans-serif;
+    display: flex;
+    align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
+    justify-content: flex-end; /* Ajustez selon vos besoins */
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px; /* Ajustez selon vos besoins */
+    box-sizing: border-box;
+}
+
+.inline-info ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inline-info ul li {
+    display: inline-block;
+    margin-right: 20px; /* Ajustez selon vos besoins */
+}
+
+.inline-info ul li:last-child {
+    margin-right: 0; /* Pour enlever la marge droite du dernier élément */
+}
+
+.inline-info ul li a {
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    padding: 5.75px;
+    background: 
+        linear-gradient(to right, rgba(100, 200, 200, 1), rgba(100, 200, 200, 1)),
+        linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 180, 1), rgba(0, 100, 200, 1));
+    background-size: 100% 0.1em, 0 0.1em;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+
+.inline-info ul li a:hover,
+.inline-info ul li a:focus {
+    background-size: 0 0.1em, 100% 0.1em;
+}
+
+.header
+{
+    opacity: 0.9;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 20px; /* Ajustez selon vos besoins */
+    background-color: rgba(106, 7, 193, 0.929);
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.pseudoname
+{
+    text-align: left;
+    margin: 2vh;
+    font-family: 'Public Pixel', 'sans-serif';
+    color: white;
+}
+
+.menu-container {
+    display: flex;
+    gap: 15px;
+    overflow: hidden; /* Empêche le débordement du conteneur */
+    max-width: 100%; /* Assure que le conteneur ne dépasse pas la largeur de la page */
+    margin-top: 10px; /* Ajoute un espace entre le header et les tuiles */
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tile {
+    text-align: center;
+    flex: 0.5; /* Les tuiles prendront une part égale de l'espace disponible */
+    max-width: calc(33.33% - 11px); /* Ajustez la taille pour trois tuiles avec un écart de 20px */
+    height: 50vw; /* La hauteur est relative à la largeur de la fenêtre */
+    text-decoration: none; /* Supprime les barres sous les liens */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*font-size: 1.5em;*/
+    font-family: 'Public Pixel','sans-serif';
+    color: white;
+    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.tile1 {
+    background-image: url('https://cdn-s-www.ledauphine.com/images/1A9B60BA-B85F-4AFC-8B6F-61BE5D43931D/NW_raw/le-lycee-ella-fitzgerald-a-saint-romain-en-gal-photo-le-dl-clement-grillet-1604341129.jpg');
+    opacity: 0.9;
+}
+
+.tile2 {
+    background-image: url('https://www.pilat-tourisme.fr/sites/pilat-tourisme/files/styles/ratio_16_9_xl/public/content/images/passerelle_viennec_cralvarez.jpg?itok=S0SK-nbQ');
+    opacity: 0.9;
+}
+
+.tile3 {
+    background-image: url('https://www.jazzavienne.com/sites/default/files/styles/cover_large_desktop/public/uploads/images/2023-02/%C2%A9Eliot%20Hubert%20%284%29.jpg?h=2992ba0a&itok=JGLJK8kA');
+    background-size: 450%;
+    opacity: 0.9;
+}
+
+
+.tile::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s;
+}
+
+.tile:hover::after {
+    background: rgba(0, 0, 0, 0);
+}
+
+.tile:hover {
+    transform: scale(1.03);
+    opacity: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-container:hover .tile:not(:hover) {
+    filter: brightness(0.5);
+}

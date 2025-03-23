@@ -1,0 +1,352 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Style des box pour le site*/
+}
+
+.html
+{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-image: url(https://wallpapers.com/images/hd/pixel-background-qutlpw5y7lg016gx.jpg);
+    background-size: contain;
+}
+
+/* Header */
+
+.pe_header_container_0
+{
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container_0 nav ul li
+{
+    display: inline;
+}
+
+.container_0 nav ul
+{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.container_0 nav ul li a
+{
+    text-decoration: none;
+    font-size: 1em;
+    margin: 0px;
+    font-family: 'Public Pixel', sans-serif;
+    color: white;
+}
+
+.container_0 nav ul li i
+{
+    margin: 10px;
+    color: #3934d1;
+}
+
+.container_0 h1 
+{
+    font-size: 1.8em;
+    letter-spacing: 1px;
+    text-decoration: none;
+    margin: 0 25px;
+    font-family: 'Public Pixel', sans-serif;
+    color: white;
+}
+
+.container_0 nav 
+{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+    background-color: #A4A3D9;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.container_0 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2D2C58;
+    border-radius: 35px;
+    padding: 8px;
+    margin : 25px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Bienvenue */
+
+.pe_header_h1
+{
+    padding: 10px;
+    text-align: center;
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 3em;
+    color: white;
+}
+
+.container_1_switching_txt
+{
+    padding: 10px;
+    text-align: center;
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 1em;
+    color: white;
+}
+
+hr
+{
+    border: 3px solid white;
+    margin: 15px;
+}
+
+.container_1 p
+{
+    background-color: #2D2C58;
+    border-radius: 35px;
+    margin: 20px;
+    padding: 30px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-size: 1.3em;
+    color: white;
+}
+
+/* Parcours Timeline */
+
+.container_parcours
+{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container_timeline {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2D2C58;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.container_timeline:nth-child(odd) {
+    background: #222;
+}
+
+.container_timeline:nth-child(even) {
+    background: #444;
+}
+
+.col {
+    width: 50%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+
+.row {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    font-size: 1.2em;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.year {  
+    display: flex;
+    justify-content: right;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Public Pixel', sans-serif;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.row1 img {
+    width: 95px;
+    height: 100px;
+    padding: 10px;
+}
+.onecontent{
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 1.8rem;
+}
+
+.row1 
+{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #A4A3D9;
+    border-radius: 90px;
+}
+
+.content button{
+    background-color: #A4A3D9;
+    border: none;
+    color: white;
+    border-radius: 35px;
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 0.7em;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    width: 220px;
+    margin: 10px 0;
+}
+
+.content button:hover
+{
+    transform:scale(1.1);
+} 
+/* Permet d'inverser les colonnes sur certaines sections */
+.reverse {
+    flex-direction: row-reverse;
+    height: 100%;
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    .col {
+        width: 100%;
+    }
+}
+
+/* Compétences */
+
+.container_skills
+{
+    width: 100%;
+    padding: 50px;
+    flex-wrap: wrap;
+}
+
+.row_card_skills
+{
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #2D2C58;
+    border-radius: 40px;
+}
+
+.row_card_skills h1 
+{
+    color: white;
+    font-size: 2rem;
+    font-family: 'Public Pixel', sans-serif;
+}
+
+.box {
+    display: inline-block;
+    background:   #A4A3D9;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 185px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+.box:hover {
+    transform: scale(1.1);
+}
+.box img {
+    width: 70px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.box p {
+    font-size: 15px;
+    font-family: 'Public Pixel', sans-serif;
+}
+
+/* Veille Techn */
+
+.veille_container
+{
+    background-color: #222;
+    border-radius: 35px;
+    margin: 35px;
+}
+
+.content_veille 
+{
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.content_veille p
+{
+    text-align: center;
+    padding: 30px;
+    color: white;
+    font-size: 1.5em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content_veille h1 
+{
+    padding: 20px;
+    font-size: 2em;
+    font-family: 'Public Pixel', sans-serif;
+}
+
+.content_veille .box {
+    display: inline-block;
+    background:   #A4A3D9;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.content_veille .box img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+/*Actus*/
+
+.container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
+        .card { background: #9999a3; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .card h2 { margin-bottom: 10px; color: white; font-family: 'Poppins', sans-serif; }
+        .card p { color: #ffffff; font-size: 18px; }

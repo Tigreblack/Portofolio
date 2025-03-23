@@ -1,0 +1,162 @@
+/* loading.css 
+
+V4 - ProdTest
+DODE Lucas 2025 - all right deserved
+
+*/
+
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
+body, html {
+    background-image: url(https://www.pixel4k.com/wp-content/uploads/2018/11/wing-aircraft-flight-sky-sunset-4k_1541116981.jpg);
+    background-size: cover;
+    border-radius: 30%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+#loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p
+{
+    color: #fff;
+}
+
+h1 
+{
+  text-align: center;
+  color: #fff;
+  font-family: 'Public Pixel', sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+.loader1 {
+    top: 250;
+    text-align: center;
+    font-family: 'Public Pixel', sans-serif;
+    position: relative;
+}
+
+
+/* Partie 2 */
+.headline{
+    justify-content: center;
+    align-items: center;
+    top: 100;
+    text-align: center;
+    font-family: 'Public Pixel', sans-serif;
+    position: relative;
+}
+
+.plane {
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: 250;
+    width: 100px;
+    height: 100px;
+    animation: flying 1s infinite linear alternate;
+
+}   @keyframes flying {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-5px)}
+    100% { transform: translateY(0); }
+}
+
+/* x3 dots loading */
+.loader {
+    width: 15px;
+    aspect-ratio: 1;
+
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    animation: l5 1s infinite linear alternate;
+  }
+  @keyframes l5 {
+    0%   {box-shadow: 20px 0 #fff, -20px 0 #ffffff20; background: #fff;}
+    33%  {box-shadow: 20px 0 #fff, -20px 0 #ffffff20; background: #ffffff20;}
+    66%  {box-shadow: 20px 0 #ffffff20, -20px 0 #fff; background: #ffffff20;}
+    100% {box-shadow: 20px 0 #ffffff20, -20px 0 #fff; background: #fff;}
+}
+
+
+/* Barre de progression */
+
+.progress-bar {
+    width: 1200px; /* Largeur de la barre de progression */
+    max-width: 100%;
+    background-color: #0c292d;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+    height: 15px;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background-color: #00fdd7;
+    border-radius: 5px;
+    position: relative;
+}
+
+/* Double Pin point et txt */
+
+.pin_0 {
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    left: 1;
+    top : -50;
+    width: 50px;
+    height: 50px;
+}
+
+.pin_0_txt {
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    left: -20;
+    top : 30;
+    width: 50px;
+    height: 50px;
+}
+
+.pin_1 {
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    right: 1;
+    top : -50;
+    width: 50px;
+    height: 50px;
+}
+
+.pin_1_txt {
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    right: 60;
+    top : 30;
+    width: 50px;
+    height: 50px;
+}
