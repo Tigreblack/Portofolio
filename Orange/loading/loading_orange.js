@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function (){
     let interval = setInterval(function(){
         if (width >= 100) {
             clearInterval(interval);
-            window.location.href = '../Orange_Caraibes.html'; // set site location here
+            window.location.href = '../orange_caraibes.html'; // set site location here
 
         } else {
             width++;
