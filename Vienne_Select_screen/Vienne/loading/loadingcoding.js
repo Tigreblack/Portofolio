@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let interval = setInterval(function () {
         if (width >= 100) {
             clearInterval(interval);
-            window.location.href = '../../../coding_v2/prod_coding_v2.html';
+            window.location.href = '../../../coding_v2/index.html';
         } else {
             width++;
             progressBar.style.width = width + '%';
