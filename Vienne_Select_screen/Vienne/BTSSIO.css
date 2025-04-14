@@ -1,0 +1,245 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+
+html,body
+{
+    background-image: url(tokyo.jpg);
+    background-size: cover;
+    background-position: bottom;
+    margin: 0;    /* Enleve les marges */
+    padding: 0;   /* Enleve les espacements internes */
+    overflow: auto; /* Empêche le débordement de la page */
+}
+            
+.header {
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* le padding du header */
+    background-color: rgb(55, 43, 88);
+    height: 53px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+  
+ /*Inline-info*/
+.inline-info 
+{
+    font-family: 'Public Pixel', sans-serif;
+    display: flex;
+    align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px; /* padding du header ( inline ) */
+    box-sizing: border-box;
+}
+            
+.inline-info ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+            
+.inline-info ul li {
+    display: inline-block;
+    margin-right: 20px; /* header margin droite */
+}
+
+.inline-info ul li:last-child {
+    margin-right: 0; /* Pour enlever la marge droite du dernier élément */
+}
+            
+.inline-info ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    padding: 5.75px;
+    background: 
+        linear-gradient(to right, rgb(7, 190, 105), rgb(15, 105, 116)),
+        linear-gradient(to right, rgb(3, 124, 172), rgb(6, 206, 123), rgb(17, 109, 3));
+    background-size: 100% 0.1em, 0 0.1em;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+            
+.inline-info ul li a:hover,
+.inline-info ul li a:focus {
+    background-size: 0 0.1em, 100% 0.1em;
+}
+
+.Tile2
+{
+    text-align: left;
+    margin: 2vh;
+    font-family: 'Public Pixel', 'sans-serif';
+    color: white;
+}
+            
+/*Bloc*/
+.text-page2 h2 
+{
+    font-size: 2em;;
+    font-family: 'VT323', monospace;
+}
+            
+.text-page2 h1 
+{
+    font-family: 'Public Pixel', 'sans-serif';
+    font-size: large;
+}
+
+.text-page2
+{
+    padding: 50px;
+    overflow: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;   
+}
+            
+.container-page2
+{
+    opacity: 0.95;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px; /* Taille container */
+    width: 550px; /* Largeur de la carte */
+    height: auto; /* Hauteur de la carte */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wrapperdoc
+{
+    background-color: rgb(55, 43, 88);
+    overflow: auto;
+    padding: 20px;
+    display: flex;
+    width: 1500px;
+    margin: 20px;
+}
+            
+.website2
+{
+    display: flex;
+    color: #fff;
+}
+
+.info
+{
+    display: flex;
+    overflow: auto;
+    justify-content: right;
+    padding: 20px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: medium;
+}
+
+.box {
+    display: inline-block;
+    background:   #262636;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+.box:hover {
+    transform: scale(1.1);
+}
+.box img {
+    width: 70px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.box p {
+    font-size: 15px;
+    font-family: 'Public Pixel', sans-serif;
+}
+
+button{
+    background-color: #A4A3D9;
+    border: none;
+    color: white;
+    border-radius: 35px;
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 0.7em;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    width: 220px;
+    margin: 10px 0;
+}
+
+button:hover
+{
+    transform:scale(1.1);
+} 
+
+/**/
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+.card {
+    background-color: rgb(26, 26, 46); /* Fond sombre avec nuance bleue */
+    padding: 20px;
+    border: 2px solid rgb(155, 77, 255); /* Bordure néon violet */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(55, 43, 88), 0 0 20px rgb(155, 77, 255); /* Ombres et lueur néon */
+    color: rgb(240, 240, 240); /* Texte clair */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Transition fluide */
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: rgb(200, 169, 240); /* Titre violet néon */
+    text-shadow: 0 0 5px rgb(89, 77, 255), 0 0 10px rgb(89, 77, 255); /* Effet texte néon */
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: rgb(240, 240, 240); /* Texte principal clair */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Légère animation de zoom au survol */
+    box-shadow: 0 0 20px rgb(155, 77, 255), 0 0 30px rgb(55, 43, 88); /* Effet de lueur plus intense */
+    background-color: rgb(35, 35, 55); /* Fond légèrement plus foncé lors du survol */
+}
+
+/* Si tu as un bouton dans la carte */
+.card button {
+    background-color: rgb(155, 77, 255); /* Bouton violet néon */
+    color: rgb(26, 26, 46); /* Texte sombre pour contraster */
+    border: 2px solid rgb(240, 240, 240); /* Bordure claire */
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(155, 77, 255); /* Ombre néon au bouton */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Transition fluide */
+}
+
+.card button:hover {
+    background-color: rgb(240, 240, 240); /* Bouton devient gris clair au survol */
+    color: rgb(26, 26, 46); /* Texte du bouton sombre */
+    box-shadow: 0 0 20px rgb(155, 77, 255); /* Lueur plus forte au survol */
+    transform: translateY(-2px); /* Effet de "clic" en remontant légèrement */
+}

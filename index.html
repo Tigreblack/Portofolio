@@ -1,0 +1,387 @@
+<!DOCTYPE html>   
+<html>
+    <html lang ="fr">
+        <head>
+            <meta charset ="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="index.css">
+            <script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>
+            <script type="importmap">
+                {
+                  "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/"
+                  }
+                }
+              </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+
+            <!-- Three.js -->
+            <script type="module">
+
+                import * as THREE from "three";
+                import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+                // Initialisation de la scène
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(renderer.domElement);
+
+                //Shaders
+                renderer.shadowMap.enabled = true;
+                renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Ombres douces
+
+                // Charger le fond dynamique de la page (visible au début)
+                const body = document.querySelector("body");
+                const currentBackgroundImage = getComputedStyle(body).backgroundImage;
+                const imageUrl = currentBackgroundImage.slice(4, -1).replace(/"/g, "");
+
+                // Variables de gestion du fond
+                let galaxyBackground;
+                let galaxyMaterial;
+
+                // Texture du fond
+                const textureLoader = new THREE.TextureLoader();
+                textureLoader.load(
+                    imageUrl,
+                    (texture) => {
+                        scene.background = texture;
+                        console.log("Texture chargée avec succès");
+                    },
+                    undefined,
+                    (error) => {
+                        console.error("Erreur lors du chargement de la texture:", error);
+                    }
+                );
+
+                // Fonction pour charger le modèle 3D
+                let model3D;
+
+                function loadModel3D() {
+                    const loader = new GLTFLoader();
+                    loader.load("https://tigreblack.github.io/threejs_room/scene.gltf", function (gltf) {
+                        model3D = gltf.scene;
+                        scene.add(model3D);
+
+                        // 🌟 Vérifier et modifier les matériaux
+                        model3D.traverse((child) => {
+                            if (child.isMesh) {
+                                // Activer les ombres
+                                child.castShadow = true;
+                                child.receiveShadow = true;
+
+                                // Vérifier si le matériau est compatible avec la lumière
+                                if (child.material && !(child.material instanceof THREE.MeshStandardMaterial)) {
+                                    child.material = new THREE.MeshStandardMaterial({
+                                        color: child.material.color || 0xffffff,
+                                        roughness: 0.5,  // Ajuste la rugosité pour un effet plus naturel
+                                        metalness: 0.2,  // Ajoute un léger effet brillant
+                                    });
+                                }
+                            } else {
+                                console.log("modèle qui supporte pas la lumière")
+                            }
+                        });
+
+                        // Centrer le modèle
+                        const box = new THREE.Box3().setFromObject(model3D);
+                        const center = box.getCenter(new THREE.Vector3());
+                        model3D.position.sub(center);
+
+                        // Ajuster la caméra
+                        camera.position.set(6, 7, -8); // Place la caméra à distance du modèle
+                        camera.lookAt(0, 3, 0);  // Regarde le centre de la scène
+
+                        console.log("Modèle chargé avec succès !");
+                        
+                        // Une fois le modèle chargé, démarrer la transition de la galaxie
+                        startGalaxyTransition();
+                    });
+
+                    // Lumière directionnelle (simulant une source comme une étoile)
+                    const directionalLight = new THREE.DirectionalLight(0xfff8e3, 1.3);  // Couleur et intensité
+                    directionalLight.position.set(6, 7, -8);  // Position de la lumière
+                    directionalLight.castShadow = true;  // Permet de caster des ombres
+
+                    scene.add(directionalLight);
+
+                    const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 0.5); // Lumière chaude + fond sombre
+                    scene.add(hemiLight);
+
+                    //Lumière ponctuelle (simule une lampe de chevet ou une LED)
+                    const pointLight = new THREE.PointLight(0xffaa33, 1, 10); // Couleur chaude + intensité forte + portée courte
+                    pointLight.position.set(2, 3, 1); // Position près d'un coin de la chambre
+                    pointLight.castShadow = true;
+                    scene.add(pointLight);
+
+                    // Ajout d'une lumière d'appoint pour l'ambiance
+                    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);  // Lumière douce
+                    scene.add(ambientLight);
+
+                    const lightHelper = new THREE.PointLightHelper(pointLight)
+                    scene.add(lightHelper)
+                }
+
+                // Création d'une Skybox Galaxie réaliste (cachée au départ)
+                function startGalaxyTransition() {
+                    // Créer la galaxie uniquement après que le modèle ait été chargé
+                    const galaxyTexture = textureLoader.load("https://tigreblack.github.io/threejs_room/galaxy.jpg");
+                    const galaxyGeometry = new THREE.SphereGeometry(50, 24, 24);
+                    const galaxyMaterial = new THREE.MeshBasicMaterial({
+                        map: galaxyTexture,
+                        side: THREE.BackSide,
+                        transparent: true,
+                        opacity: 0 // Initialement cachée
+                    });
+
+                    galaxyMaterial.map = galaxyTexture;
+                    galaxyMaterial.needsUpdate = true; // Forcer la mise à jour
+
+                    galaxyBackground = new THREE.Mesh(galaxyGeometry, galaxyMaterial);
+                    scene.add(galaxyBackground);
+
+                    // Transition de la galaxie : l'afficher progressivement
+                    gsap.to(galaxyMaterial, {
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: "power2.inOut"
+                    });
+                }
+
+                function addStar(){
+                    const stargeometry = new THREE.SphereGeometry(0.25, 24 ,24);
+                    const starmaterial = new THREE.MeshBasicMaterial( {color: 0xffffff})
+                    const star = new THREE.Mesh(stargeometry,starmaterial);
+
+                    const[x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+
+                    star.position.set(x,y,z);
+                    scene.add(star)
+                }
+
+                Array(200).fill().forEach(addStar)
+
+                // Écouteur d'événement de scroll
+                let scrollPosition = 0; // Position de la caméra en fonction du scroll
+                window.addEventListener('scroll', (event) => {
+                    const scrollPercentage = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+
+                    // Contrôle la position de la caméra en fonction du scroll
+                    scrollPosition = scrollPercentage * 100; // Jauge de la position du scroll (0-100)
+
+                    // Déplacer la caméra pour révéler des sections
+                    const maxScroll = 100;  // Le point maximum où la caméra peut se déplacer
+                    const cameraZ = 5 - scrollPosition / 20;  // Déplacer la caméra sur l'axe Z (plus la caméra avance, plus elle est proche)
+                    camera.position.set(0, 1.5, cameraZ); // Mise à jour de la position de la caméra
+                    camera.lookAt(0, 1.5, 0); // Garder la caméra focalisée sur la scène
+
+                    // Animation de la scène
+                    renderer.render(scene, camera);
+
+                    // Si la caméra est dans la section des projets, afficher une pop-up
+                    if (scrollPosition > 50) { // Si on dépasse 50% du scroll, afficher la pop-up
+                        displayPopup();
+                    }
+                });
+
+                // Fonction pour afficher la pop-up des projets
+                function displayPopup() {
+                    const popup = document.getElementById('project-popup');
+                    if (popup) {
+                        popup.style.display = 'block';
+                    }
+                }
+
+                // Initialisation de l'animation
+                function animate() {
+                    requestAnimationFrame(animate);
+
+                    // Animation de la scène
+                    renderer.render(scene, camera);
+
+                }
+                animate();
+
+                // Gérer la mise à jour lors du redimensionnement de la fenêtre
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                // Fonction pour la transition Nuage
+                function startCloudTransition() {
+                    const siteVitrine = document.getElementById("site-vitrine");
+                    const espace3D = document.getElementById("espace-3d");
+                    const cloudEffect = document.getElementById("cloudEffect");
+
+                    if (!siteVitrine || !espace3D || !cloudEffect) {
+                        console.error("Un des éléments est introuvable !");
+                        return;
+                    }
+
+                    gsap.set(cloudEffect, { zIndex: 10 });
+                    cloudEffect.innerHTML = "";
+
+                    const numClouds = 10;
+                    let clouds = [];
+                    let completedClouds = 0;
+
+                    for (let i = 0; i < numClouds; i++) {
+                        let cloud = document.createElement("img");
+                        cloud.src = `cloud${(i % 3) + 1}.png`;
+                        cloud.classList.add("cloud");
+                        cloud.style.width = `${Math.random() * 1800 + 1800}px`;
+                        cloud.style.top = `${Math.random() * 110}vh`;
+                        cloud.style.left = `${Math.random() * 1.5}vw`;
+                        cloudEffect.appendChild(cloud);
+                        clouds.push(cloud);
+
+                        gsap.to(cloud, {
+                            opacity: 1,
+                            scale: 1.5,
+                            duration: 1.5,
+                            ease: "power2.inOut",
+                            onComplete: () => {
+                                completedClouds++;
+
+                                if (completedClouds === numClouds) {
+                                    console.log("Tous les nuages sont visibles, suppression de l'arrière-plan");
+                                    scene.background = null;
+                                    renderer.render(scene, camera);
+
+                                    gsap.to(siteVitrine, {
+                                        opacity: 0,
+                                        duration: 1,
+                                        onComplete: () => {
+                                            siteVitrine.style.display = "none";
+                                            espace3D.style.display = "block";
+
+                                            gsap.to(clouds, {
+                                                opacity: 0,
+                                                scale: 2,
+                                                x: () => (Math.random() - 0.5) * 2000,
+                                                y: () => (Math.random() - 0.5) * 1000,
+                                                duration: 2,
+                                                stagger: 0.2,
+                                                ease: "power2.inOut",
+                                                onComplete: () => {
+                                                    cloudEffect.innerHTML = "";
+                                                    gsap.set(cloudEffect, { zIndex: -1 });
+                                                    loadModel3D(); // Charger le modèle après la transition des nuages
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                }
+
+                // Ajouter l'événement pour démarrer la transition
+                document.getElementById("breakBtn").addEventListener("click", startCloudTransition);
+
+            </script>
+            
+            <style>
+                .toast {
+                    position: fixed;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(45, 44, 88, 0.95);
+                    color: white;
+                    padding: 1rem 2rem;
+                    border-radius: 8px;
+                    border: 2px solid #6e6ed7;
+                    font-family: 'Press Start 2P', cursive;
+                    font-size: 14px;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    z-index: 1000;
+                }
+                .toast.show {
+                    opacity: 1;
+                }
+            </style>
+            <title>DODE Lucas</title>
+        </head>
+        <body>
+            <div id="toast" class="toast"></div>
+            <div container0>
+                <!-- Site vitrine -->
+                <div id="site-vitrine">
+                    <!--Header avec les informations importantes-->
+                    <div class="header">
+                        <header>
+                            <span class="pseudoname">DODE Lucas</span>
+                        </header>
+                            <span class="inline-info">
+                            <ul>
+                                <li><a href="mailto:lucas.dode26@gmail.com">lucas.dode26@gmail.com</a></li>
+                                <li><a>07 83 98 57 85</a></li>
+                                <li><a href ="./coding_V2/CV.pdf">CV</a></li>
+                            </ul>
+                        </span>
+                    </div>
+
+                    <!-- Les tuiles -->
+                    <div class="menu-container">
+                        <a href="STAGE_CV.html" class="tile tile1">Stage<br>formations<br>& CV</a>
+                        <a href="./coding_V2/loadingcoding.html" class="tile tile2">Informatique</a>
+                        <a href="#" class="tile tile3 construction">Art<br>& Illustration</a>
+                        <a href="#" class="tile tile4 construction">Projet personnel</a>
+                    </div>
+
+                </div>
+
+                <!-- Effet de nuages (au-dessus du site vitrine mais invisible au début) -->
+                <div id="cloudEffect">
+                    <img src="cloud1.png" class="cloud" id="cloud1">
+                    <img src="cloud2.png" class="cloud" id="cloud2">
+                    <img src="cloud3.png" class="cloud" id="cloud3">
+                </div>
+                
+                <!-- Espace 3D -->
+            <div id="espace-3d" style="display: none;"></div>
+            <script>
+                function showToast(message, duration = 2000) {
+                    const toast = document.getElementById('toast');
+                    toast.textContent = message;
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, duration);
+                }
+
+                // Gestionnaire pour les sections en construction
+                document.addEventListener('DOMContentLoaded', () => {
+                    const constructionTiles = document.querySelectorAll('.tile.construction');
+                    constructionTiles.forEach(tile => {
+                        tile.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const isArt = tile.classList.contains('tile3');
+                            const message = isArt ? 
+                                '🚧 Section Art & Illustration en construction...' : 
+                                '🚧 Section Projets personnels en construction...';
+                            showToast(message);
+                        });
+                    });
+                });
+
+                /* Pour réactiver l'effet cloud plus tard :
+                function startCloudTransition() {
+                    const siteVitrine = document.getElementById("site-vitrine");
+                    const espace3D = document.getElementById("espace-3d");
+                    const cloudEffect = document.getElementById("cloudEffect");
+                    // ... le reste du code cloud ...
+                }
+                */
+            </script>
+        </div>
+    </body>
+</html>

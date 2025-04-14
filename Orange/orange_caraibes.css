@@ -1,0 +1,833 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/general-sans');
+
+html,body
+{
+    background-image: url(orange.jpg);
+    background-size: cover;
+    background-position: bottom;
+    margin: 0;    /* Enleve les marges */
+    padding: 0;   /* Enleve les espacements internes */
+    overflow: auto; /* Empêche le débordement de la page */
+}
+
+img.Logo 
+{
+    width: 65px;
+    height: 40px;
+    padding: 0 20px;
+}
+
+.header {
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* le padding du header */
+    background-color: rgb(0, 0, 0);
+    height: 53px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+  
+ /*Inline-info*/
+.inline-info 
+{
+    font-family: 'Public Pixel', sans-serif;
+    display: flex;
+    align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px; /* padding du header ( inline ) */
+    box-sizing: border-box;
+}
+            
+.inline-info ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+            
+.inline-info ul li {
+    display: inline-block;
+    margin-right: 20px; /* header margin droite */
+}
+
+.inline-info ul li:last-child {
+    margin-right: 0; /* Pour enlever la marge droite du dernier élément */
+}
+            
+.inline-info ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    padding: 5.75px;
+    background: 
+        linear-gradient(to right, rgb(170, 162, 11), rgb(210, 207, 28)),
+        linear-gradient(to right, rgb(227, 209, 10), rgb(249, 237, 1), rgb(255, 158, 2));
+    background-size: 100% 0.1em, 0 0.1em;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+            
+.inline-info ul li a:hover,
+.inline-info ul li a:focus {
+    background-size: 0 0.1em, 100% 0.1em;
+}
+
+.Tile2
+{
+    text-align: left;
+    margin: 2vh;
+    font-family: 'Public Pixel', 'sans-serif';
+    color: white;
+}
+            
+/*Bloc*/
+
+.text-page2
+{
+    overflow: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    pointer-events: none; /* Empêche le texte d'être cliqué */
+    color: #000000;   
+}
+            
+.container-page2
+{
+    opacity: 1;
+    align-items: center;
+    text-align: left;
+    overflow: auto;
+    width: auto; /* Largeur de la carte */
+    height: auto; /* Hauteur de la carte */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wrapperdoc
+{
+    background-color: rgb(255, 255, 255);
+    overflow: auto;
+    width: auto;
+}
+
+/*Les containers*/
+
+.container_1
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.container_2 p 
+{
+    display: block;
+    font-size: 1em;
+    text-align: inherit;
+}
+.container_2
+{
+    text-align: center;
+    line-height: 1.4;
+    padding: 2px;
+    background-color: #000000;
+    opacity: 0.9;
+    color :#fff;
+}
+
+/*Container 3*/
+
+.container_3
+{
+    padding: 35px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    width: 80%;
+    max-width: 750px;
+}
+
+.description_3 
+{
+    position: relative;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.726);
+    color: white;
+    font-size: 1rem;
+    border-radius: 0 0 10px 10px;
+}
+
+.image-box {
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+/*Container Réseaux*/
+
+.container_4
+{
+    background-color: #f37c0c;
+    opacity: 0.9;
+    color: #fff;
+    padding: 20px;
+}
+
+.container_4
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+/* Carouselle n°1 */
+
+.carouselle_1_container {
+    margin: 0 auto;
+    width: 60%;
+    max-width: 1000px;
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.carouselle_1 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    animation: scroll-carouselle_1 10s infinite linear; 
+    gap: 0;
+}
+
+.carouselle_1_item {
+    flex-shrink: 0;
+    width: 100%; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
+.carouselle_1_item img {
+    width: 100%;
+    height: auto;
+    margin: 0; 
+    object-fit: cover;
+}
+
+.text-slide {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.678);
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Animation pour le défilement */
+@keyframes scroll-carouselle_1 {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-100%); } /* Premier défilement */
+    50% { transform: translateX(-100%); } /*Pause*/
+    75% { transform: translateX(0); } /* Retourne à la première image */
+    100% { transform: translateX(0); } /*Pause*/
+}
+
+/* Réinitialiser le 1er carrousel */
+.carouselle_1 {
+    animation: scroll-carouselle_1 20s infinite;
+}
+
+img.Entreprise_img
+{
+    width: 100%;
+    height: 5;
+    display: inline-block;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
+/*Container 5*/
+
+.container_5
+{
+    text-align: left;
+    font-family: "Source Code Pro", monospace;
+    font-size: large;
+    padding: 20px;
+    color: #ddd;
+    background-color: #000000;
+    opacity: 0.9;
+}
+
+.container_5 ul li
+{
+    text-align: left;
+    align-items: center;
+    list-style-position: inside;
+}
+
+.container_5 h1
+{
+    text-align: left;
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.8em;
+}
+
+/*Mission 3 */
+.img_local_jaille
+{
+    max-width: 300px;
+    height: 300px;
+    padding-left: 20px;
+    float: left;
+}
+
+.text_img_local_jaille
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_local
+{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: left;
+}
+
+/* Mission 1*/
+.img_m1
+{
+    max-width: 500px;
+    height: 500px;
+    padding: 0 20px;
+    float: left;
+}
+
+.text_img_m1
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_local_0
+{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: left;
+}
+
+/* Mission 4*/
+.img_m4
+{
+    max-width: 600px;
+    height: 500px;
+    padding: 0 20px;
+    float: left;
+}
+
+.text_img_m4
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_local_1
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+/* Mission 4 img2*/
+
+.img_m4_2
+{
+    max-width: 650px;
+    height: 500px;
+    padding: 0 20px;
+    float: left;
+}
+
+.text_img_m4_2
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_local_2
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+/* Mission 5 img1*/
+
+.img_m5_0
+{
+    max-width: 300px;
+    height: 300px;
+    padding: 0 20px;
+    float: left;
+}
+
+.text_img_m5_0
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_m5_0
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+/* Mission 5 img2*/
+
+.img_m5_1
+{
+    max-width: 300px;
+    height: 200px;
+    padding: 0 20px;
+    float: right;
+}
+
+.text_img_m5_1
+{
+    font-size: 20px;
+    padding-right: 20px;
+    margin-top: 150px;
+    float: right;
+}
+
+.container_m5_1
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: right;
+}
+
+/* Mission 5 img3*/
+
+.img_m5_2
+{
+    max-width: 400px;
+    height: 450px;
+    padding: 0 20px;
+    float: left;
+}
+
+.text_img_m5_2
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_m5_2
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+
+/*Autres images */
+img
+{
+    max-width: 100%;
+    height: auto;
+}
+
+img.Entreprise_img_1
+{
+    max-width: 100%;
+    height: 600px;
+    padding: 0 40px;
+    margin: 0 auto;
+}
+
+/*Stage dévellopement*/
+
+/*Container 6*/
+.container_6
+{
+    padding: 20px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.container_6 p
+{
+    font-size: 1.2em;
+}
+
+/* Carouselle 2*/
+
+.carouselle_2_container {
+    margin: 0 auto;
+    width: 60%;
+    max-width: 1000px;
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.carouselle_2 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    animation: scroll-carouselle_2 20s infinite linear; 
+    gap: 0;
+}
+
+.carouselle_2_item {
+    flex-shrink: 0;
+    width: 100%; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
+.carouselle_2_item img {
+    max-width: 100%;
+    width: 100%;
+    height: 500px;
+    margin: 0; 
+    object-fit: cover;
+}
+
+.text-slide-2 {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.678);
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Animation pour le défilement */
+@keyframes scroll-carouselle_2 {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(-100%); } /* Premier défilement */
+    25% { transform: translateX(-100%); } /*Pause*/
+    35% { transform: translateX(-200%); } /*deuxième défilement*/
+    50% { transform: translateX(-200%); } /*Pause*/
+    60% { transform: translateX(-100%); } /*Pause*/
+    75% { transform: translateX(-100%); } /*Pause*/
+    85% { transform: translateX(0); } /* Retourne à la première image */
+    100% { transform: translateX(0); } /*Pause*/
+}
+
+/* Réinitialiser le 1er carrousel */
+.carouselle_2 {
+    animation: scroll-carouselle_2 20s infinite;
+}
+
+/*Container 7*/
+
+.container_7
+{
+    font-family: "Source Code Pro", monospace;
+    background-color:#f37c0c;
+    color: #fff;
+    padding: 20px;
+    font-size: large;
+    opacity: 0.9;
+
+}
+
+/* Mission 7 img1*/
+
+.img_m7_0
+{
+    max-width: 400px;
+    height: 500px;
+    padding: 0 20px;
+    float: left;
+}
+
+.text_img_m7_0
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_m7_0
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+/* Mission 7 img2*/
+
+.img_m7_1
+{
+    max-width: 500px;
+    height: 500px;
+    padding: 0 20px;
+    float: left;
+}
+
+.text_img_m7_1
+{
+    font-size: 20px;
+    padding-left: 20px;
+    float: left;
+}
+
+.container_m7_1
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+
+.container_7 h1
+{
+    text-align: left;
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.8em;
+}
+
+/*Container 8*/
+
+.container_8
+{
+    text-align: left;
+    font-family: "Source Code Pro", monospace;
+    font-size: large;
+    padding: 20px;
+    color: #ddd;
+    background-color: #000000;
+    opacity: 0.9; 
+}
+
+.container_8 h1
+{
+    text-align: left;
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.8em;
+}
+
+.container_8 ul li
+{
+    text-align: left;
+    align-items: center;
+    list-style-position: inside;
+}
+
+/* Mission 8 img1*/
+
+.img_m8_0
+{
+    max-width: 300px;
+    height: 250px;
+    padding-left: 100px;
+    padding-top: 20px;
+    float: left;
+}
+
+.text_img_m8_0
+{
+    font-size: 20px;
+    padding-left: 150px;
+    float: left;
+}
+
+.container_m8_0
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+/* Mission 8 img2*/
+
+.img_m8_1
+{
+    max-width: 300px;
+    height: 250px;
+    padding: 0 20px;
+    float: right;
+}
+
+.text_img_m8_1
+{
+    font-size: 20px;
+    padding-right: 300px;
+    padding-bottom: 125px;
+    float: right;
+}
+
+.container_m8_1
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: right;
+}
+
+/* Mission 8 img3*/
+
+.img_m8_2
+{
+    max-width: 300px;
+    height: 250px;
+    padding-left: 100px;
+    float: left;
+}
+
+.text_img_m8_2
+{
+    font-size: 20px;
+    padding-left: 200px;
+    padding-bottom: 100px;
+    float: left;
+}
+
+.container_m8_2
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+}
+
+/*Container 9*/
+
+.container_9
+{
+    background-color: #ddd;
+    opacity: 0.9;
+    text-align: left;
+    font-family: "Source Code Pro", monospace;
+    font-size: large;
+    padding: 40px;
+    color:#000000;
+    opacity: 0.9;
+}
+
+/* Carouselle n°3 */
+
+.carouselle_3_container {
+    margin: 0 auto;
+    width: 60%;
+    max-width: 2000px;
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.carouselle_3 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    animation: scroll-carouselle_3 20s infinite linear; 
+    gap: 0;
+}
+
+.carouselle_3_item {
+    flex-shrink: 0;
+    width: 100%; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
+.carouselle_3_item img {
+    max-width: 100%;
+    width: 100%;
+    height: 500px;
+    margin: 0; 
+    object-fit: cover;
+}
+
+.text-slide-3 {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.678);
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Animation pour le défilement */
+@keyframes scroll-carouselle_3 {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(-100%); } /* Premier défilement */
+    25% { transform: translateX(-100%); } /*Pause*/
+    35% { transform: translateX(-200%); } /*deuxième défilement*/
+    50% { transform: translateX(-200%); } /*Pause*/
+    60% { transform: translateX(-100%); } /*Pause*/
+    75% { transform: translateX(-100%); } /*Pause*/
+    85% { transform: translateX(0); } /* Retourne à la première image */
+    100% { transform: translateX(0); } /*Pause*/
+}
+
+/* Réinitialiser le 1er carrousel */
+.carouselle_3 {
+    animation: scroll-carouselle_3 20s infinite;
+}
