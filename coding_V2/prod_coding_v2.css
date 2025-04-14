@@ -178,7 +178,7 @@ hr
     align-items: center;
     justify-content: center;
     margin: 0;
-    width: 120px;
+    width: 150px;
 }
 
 .box:hover {
@@ -197,7 +197,7 @@ hr
 .box p {
     font-family: 'VT323', monospace;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 0;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
@@ -258,7 +258,7 @@ hr
 .content_veille p {
     font-family: 'VT323', monospace;
     color: #e0e0e0;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 1.6;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
     margin-bottom: 1.5rem;
@@ -328,6 +328,7 @@ hr
 .content_veille .card h2 {
     font-family: 'Press Start 2P', cursive;
     color: #fff;
+    line-height: 1.5;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 0 #2d2d5f;
@@ -337,7 +338,7 @@ hr
 .content_veille .card p {
     font-family: 'VT323', monospace;
     color: #e0e0e0;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 1.5;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
 }
