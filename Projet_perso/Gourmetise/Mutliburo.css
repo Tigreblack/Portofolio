@@ -190,14 +190,14 @@ html, body {
   box-sizing: border-box;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  background-image: url('image_7.JPG');
+  background-image: url('Image_7.JPG');
   animation: border-transform 6s linear infinite alternate forwards;
     -webkit-animation-play-state: paused;
     -moz-animation-play-state: paused;
     animation-play-state: paused;
 }
 .checkbox.scnd + label{
-  background-image: url('image_8.JPG');
+  background-image: url('Image_8.JPG');
 }
 .checkbox.thrd + label{
   background-image: url('Image_9.JPG');
