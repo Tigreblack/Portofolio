@@ -17,5 +17,5 @@ document.addEventListener('DOMContentLoaded', function (){
             width++;
             progressBar.style.width = width + '%';
         }
-    }, 55); // vitesse d'intervale à modifier in case
+    }, 30); // vitesse d'intervale à modifier in case
 });

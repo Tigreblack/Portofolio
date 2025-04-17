@@ -9,7 +9,7 @@
 }
 
 html, body {
-    background-image: url(boulangerie.jpg);
+    background-image: url('https://www.archireport.com/wp-content/uploads/2017/10/annie-spratt-294450.jpg');
     background-size: cover;
     background-position: bottom;
     margin: 0;
@@ -190,26 +190,17 @@ html, body {
   box-sizing: border-box;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  background-image: url('image_1.JPG');
+  background-image: url('image_7.JPG');
   animation: border-transform 6s linear infinite alternate forwards;
     -webkit-animation-play-state: paused;
     -moz-animation-play-state: paused;
     animation-play-state: paused;
 }
 .checkbox.scnd + label{
-  background-image: url('image_2.JPG');
+  background-image: url('image_8.JPG');
 }
 .checkbox.thrd + label{
-  background-image: url('Image_3.JPG');
-}
-.checkbox.foth + label{
-  background-image: url('Image_4.JPG');
-}
-.checkbox.fith + label{
-  background-image: url('Image_5.JPG');
-}
-.checkbox.sixth + label{
-  background-image: url('Image_6.JPG');
+  background-image: url('Image_9.JPG');
 }
 
 .checkbox:checked + label{
@@ -258,7 +249,7 @@ html, body {
   border: 5px solid #bdc3c7;
   background-size: cover;
   background-position: center;
-  background-image: url('image_1.JPG');
+  background-image: url('image_7.JPG');
   border-radius: 50%;
   box-sizing: border-box;
   font-family: 'Press Start 2P', cursive;
@@ -277,23 +268,13 @@ html, body {
 .section ul li span {
   mix-blend-mode: luminosity;
   padding: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .section ul li:nth-child(2) {
-  background-image: url('image_2.JPG');
+  background-image: url('image_8.JPG');
 }
 .section ul li:nth-child(3) {
-  background-image: url('Image_3.JPG');
-}
-.section ul li:nth-child(4) {
-  background-image: url('Image_4.JPG');
-}
-.section ul li:nth-child(5) {
-  background-image: url('Image_5.JPG');
-}
-
-.section ul li:nth-child(6) {
-  background-image: url('Image_6.JPG');
+  background-image: url('Image_9.JPG');
 }
 
 
@@ -317,19 +298,9 @@ html, body {
   pointer-events: auto;
   border-radius: 16px;
 }
-.checkbox.fith:checked ~  ul li:nth-child(5) {
-  opacity: 1;
-  pointer-events: auto;
-  border-radius: 16px;
-}
-
-.checkbox.sixth:checked ~  ul li:nth-child(6) {
-  opacity: 1;
-  pointer-events: auto;
-  border-radius: 16px;
-}
 
 /* Skills Section */
+
 .skills-container {
     display: flex;
     flex-wrap: wrap;
