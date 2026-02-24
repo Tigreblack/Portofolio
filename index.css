@@ -8,39 +8,67 @@
     box-sizing: border-box;
 }
 
-/* Laptop / desktop */
+/* Base mobile */
 
-@media screen and (min-width: 992px) {
-    .inline-info ul li a{
-        font-size: 15px;
+@media (max-width: 600px) {
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
+
+    .inline-info ul li a {
+        font-size: clamp(11px, 2.5vw, 14px);
+    }
+
     .pseudoname {
-        font-size: 15px;
+        font-size: clamp(11px, 2.5vw, 14px);
     }
+
     .tile {
-        font-size: 1.5em;
+        font-size: clamp(0.9rem, 3vw, 1.4rem);
     }
-    
+
+    .inline-info ul {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+}
+/* Tablette */
+
+@media (min-width: 768px) {
+
+    .tile {
+        font-size: clamp(1rem, 2vw, 1.6rem);
+    }
+
 }
 
-@media screen and (max-width: 992px) {
-    .inline-info ul li a{
-        font-size: 10px;
+/* PC Portable */
+
+@media (min-width: 1200px) {
+
+    .inline-info ul li a {
+        font-size: 15px;
     }
-    
+
     .pseudoname {
-        font-size: 10px;
+        font-size: 15px;
     }
-    .tile{
-        font-size: 0.9em;
+
+    .tile {
+        font-size: 1.6rem;
     }
+
 }
 
 /* End */
 
 html,body
 {
-    background-image: url(https://th.bing.com/th/id/R.85283ba3222d92108ec6f191b5c9010c?rik=s%2bL40WBs5miIXw&pid=ImgRaw&r=0);
+    background-image: url('https://th.bing.com/th/id/R.85283ba3222d92108ec6f191b5c9010c?rik=s%2bL40WBs5miIXw&pid=ImgRaw&r=0');
     background-size: contain;
     margin: 0;    /* Enlevez les marges */
     padding: 0;   /* Enlevez les espacements internes */
@@ -51,11 +79,11 @@ html,body
 {
     font-family: 'Public Pixel', sans-serif;
     display: flex;
-    align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
-    justify-content: flex-end; /* Ajustez selon vos besoins */
+    align-items: center;
+    justify-content: flex-end;
     flex-wrap: wrap;
     width: 100%;
-    padding: 20px; /* Ajustez selon vos besoins */
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -93,80 +121,99 @@ html,body
     background-size: 0 0.1em, 100% 0.1em;
 }
 
-.header
-{
-    opacity: 0.9;
+.header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    padding: 0 20px; /* Ajustez selon vos besoins */
-    background-color: rgba(106, 7, 193, 0.929);
-    height: auto;
+    padding: 15px 20px;
+    background-color: rgba(106, 7, 193, 0.93);
     width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    white-space: nowrap;
 }
 
 .pseudoname
 {
     text-align: left;
-    margin: 2vh;
     font-family: 'Public Pixel', 'sans-serif';
     color: white;
+    white-space: nowrap;
 }
 
 .menu-container {
-    display: flex;
+    display: grid;
     gap: 15px;
-    max-width: 100%; /* Assure que le conteneur ne dépasse pas la largeur de la page */
-    margin-top: 10px; /* Ajoute un espace entre le header et les tuiles */
-    margin-left: 5px;
-    margin-right: 5px;
+    height: 90vh;
+    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
 }
 
 .tile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 1 30%;
+    height: 100%;
+
     text-align: center;
-    flex: 0.5; /* Les tuiles prendront une part égale de l'espace disponible */
-    flex-basis: calc((100% / 3) - 1rem);; /* Ajustez la taille pour trois tuiles avec un écart de 20px */
-    height: 43vw; /* La hauteur est relative à la largeur de la fenêtre */
-    text-decoration: none; /* Supprime les barres sous les liens */
+    text-decoration: none;
+
     background-size: cover;
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*font-size: 1.5em;*/
-    font-family: 'Public Pixel','sans-serif';
-    color: white;
-    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+
+    font-family: 'Public Pixel', sans-serif;
+    color: #ffffff;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.05);
+
+    transition:
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.4s ease;
+
+    will-change: transform;
     cursor: pointer;
-    position: relative;
 }
 
 .tile1 {
     background-image: url('https://th.bing.com/th/id/R.15f3f8c5dacdd097a5d466715051eec1?rik=48qKHLTBuhfvrw&pid=ImgRaw&r=0');
-    opacity: 0.9;
 }
 
 .tile2 {
-    background-image: url('https://th.bing.com/th/id/R.d4c71ad9191f04af8b11487c9d62f966?rik=uR7becRhsooY1g&pid=ImgRaw&r=0');
-    opacity: 0.9;
+    background-image: url('keyboard.jpg');
 }
 
 .tile3 {
     background-image: url('https://images.hdqwalls.com/wallpapers/titanfall-2-2017-concept-art-wide.jpg');
     background-size: 450%;
-    opacity: 0.9;
 }
 
 .tile4 {
     background-image: url('https://wallpapercave.com/wp/wp6272599.jpg');
-    opacity: 0.9;
     border-width:  0px;
 }
 
+.tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.6)
+    );
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.tile:hover::before {
+    opacity: 0.7;
+}
 
 .tile::after {
     content: '';
@@ -183,10 +230,14 @@ html,body
     background: rgba(0, 0, 0, 0);
 }
 
+.tile > * {
+    position: relative;
+    z-index: 1;
+}
+
 .tile:hover {
-    transform: scale(1.05);
-    opacity: 1;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .menu-container:hover .tile:not(:hover) {
@@ -215,19 +266,3 @@ html,body
     display: none;
 }
 
-/* Conteneur des nuages */
-#cloudEffect {
-    position: absolute;
-    pointer-events: none;
-}
-
-/* Style des nuages */
-.cloud {
-    position: absolute;
-    width: 200px;
-    opacity: 0;
-}
-
-.cloud img {
-    display: none;
-}
