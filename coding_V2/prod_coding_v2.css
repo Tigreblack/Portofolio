@@ -28,151 +28,114 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-
-/* HEADER */
+/* Header */
 
 .pe_header_container_0 {
-    width: min(1400px, calc(100% - 50px));
-    margin: 25px auto;
-
-    display: flex;
-    justify-content: center;
-
-    background: #2D2C58;
-    border-radius: 35px;
-
+    width: min(1400px, calc(100% - 40px));
+    margin: 20px auto;
+    background: rgba(45, 44, 88, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
     box-shadow:
-        0px 10px 30px rgba(0,0,0,0.5),
-        inset 0 1px 1px rgba(255,255,255,0.05);
-
-    padding: 15px;
-
-    overflow: hidden;
+        0 10px 30px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    padding: 14px 20px;
 }
 
-/* ===============================
-INNER LAYOUT
-=============================== */
-
 .container_0 {
-
-    width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    gap: 20px;
-
-    min-width: 0; /* ⭐ FLEX MAGIC FIX */
+    padding: 5px;
+    min-width: 0;
 }
 
-/* ===============================
-PSEUDO NAME
-=============================== */
-
 .container_0 h1 {
-
     font-family: 'Public Pixel', sans-serif;
     color: white;
-
-    font-size: clamp(1rem, 2vw, 1.8rem);
-    max-width: 40%;
-
-    letter-spacing: 1px;
-
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
     white-space: nowrap;
-
     flex-shrink: 1;
     min-width: 0;
 }
 
-/* ===============================
-NAVIGATION
-=============================== */
 
 .container_0 nav {
-
-    background-color: #A4A3D9;
-
-    padding: 18px;
-    border-radius: 30px;
-    max-width: 60%;
-
-    display: flex;
-
     flex: 1;
-    justify-content: flex-end;
-
     min-width: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
-/* ===============================
-NAV UL
-=============================== */
-
 .container_0 nav ul {
-
     list-style: none;
-
     display: flex;
+    align-items: center;
+    gap: clamp(6px, 1.2vw, 18px);
+    margin: 0;
+    padding: 0;
+    min-width: 0;
 
     flex-wrap: nowrap;
 
-    justify-content: flex-end;
-    align-items: center;
+    /* on garde la barre scroll cachée */
+    overflow-x: auto;
+    scrollbar-width: none;
+}
 
-    gap: 20px;
 
-    padding: 0;
-    margin: 0;
-
-    min-width: 0;
+.container_0 nav ul::-webkit-scrollbar {
+    display: none;          /* Chrome */
 }
 
 /* ===============================
 NAV LINKS
 =============================== */
 
-.container_0 nav ul li a {
-
-    text-decoration: none;
-
-    font-family: 'Public Pixel', sans-serif;
-
-    color: white;
-
-    font-size: clamp(0.8rem, 1vw, 1rem);
-
-    padding: 6px 10px;
-    border-radius: 10px;
-
-    transition: 0.3s;
-    flex-shrink: 1;
-}
-
-.container_0 nav ul li a:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-/* ===============================
-ICONS
-=============================== */
-
-.container_0 nav ul li i {
-    margin-right: 8px;
+/* icônes restent avant les li sans casser le flex */
+.container_0 nav ul > i {
+    flex: 0 0 auto;
+    font-size: clamp(0.6rem, 1vw, 0.9rem);
     color: #3934d1;
 }
 
+
+.container_0 nav ul li a {
+    text-decoration: none;
+    font-family: 'Public Pixel', sans-serif;
+    color: white;
+    font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+    white-space: nowrap;
+    padding: 4px 6px;
+    flex-shrink: 1;
+    min-width: 0;
+    transition: 0.2s ease;
+}
+
+/* li shrink correctement */
+.container_0 nav ul li {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    min-width: 0;
+}
+
+
+.container_0 nav ul li a:hover {
+    opacity: 0.7;
+}
+
+
 /* ===============================
-RESPONSIVE MOBILE
+MOBILE
 =============================== */
 
 @media (max-width: 768px) {
 
     .container_0 {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        gap: 20px;
     }
 
     .container_0 nav {
@@ -181,9 +144,10 @@ RESPONSIVE MOBILE
     }
 
     .container_0 nav ul {
-        flex-wrap: wrap;
         justify-content: flex-start;
+        flex-wrap: nowrap;
     }
+
 }
 
 /* Bienvenue */
@@ -193,7 +157,7 @@ RESPONSIVE MOBILE
     padding: 10px;
     text-align: center;
     font-family: 'Public Pixel', sans-serif;
-    font-size: 3em;
+    font-size: clamp(2.5rem, 2vw, 3rem);
     color: white;
 }
 
@@ -202,7 +166,7 @@ RESPONSIVE MOBILE
     padding: 10px;
     text-align: center;
     font-family: 'Public Pixel', sans-serif;
-    font-size: 1em;
+    font-size: clamp(0.7rem, 2vw, 1rem);
     color: white;
 }
 
