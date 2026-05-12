@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="Mutliburo.css">
+        <link rel="stylesheet" href="../../header.css">
+        <script src="../../header.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <title>Multiburo</title>
 
@@ -23,15 +25,33 @@
     <body>
         <!--Header avec les informations importantes-->
         <div class="header">
-            <span class="Tile2">Multiburo</span>
-            <span class="inline-info">
-                <ul>
-                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
-                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
-                    <li><a href="../../coding_V2/CV.pdf">CV</a></li>
-                    <li><a href="../../Vienne_Select_screen/Vienne/BTSSIO.html">Retour BTS</a></li>
-                </ul>
-            </span>
+            <div class="header-top-bar" style="display:contents">
+                <header id="desktop-title"><span class="pseudoname">Multiburo</span></header>
+                <span class="inline-info" id="desktop-contacts">
+                    <ul>
+                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                        <li><a href="../../Vienne_Select_screen/Vienne/BTSSIO.html">Retour BTS</a></li>
+                    </ul>
+                </span>
+            </div>
+            <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
+                <span class="pseudoname">Multiburo</span>
+                <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
+                    CONTACT <span class="toggle-arrow">▼</span>
+                </button>
+            </div>
+            <div class="header-contacts-panel" id="contacts-panel">
+                <span class="inline-info">
+                    <ul>
+                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                        <li><a href="../../Vienne_Select_screen/Vienne/BTSSIO.html">Retour BTS</a></li>
+                    </ul>
+                </span>
+            </div>
         </div>
         
         <!-- Conteneur texte  -->

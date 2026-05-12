@@ -38,13 +38,20 @@
 
 /* End */
 
-html,body
-{
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     background-image: url(https://cdn-s-www.ledauphine.com/images/45576B00-161D-4EB3-B4CC-6DEF648E9E6F/NW_raw/le-festival-jazz-a-vienne-2021-ne-ressemblera-a-aucune-des-editions-precedentes-mais-tout-sera-fait-pour-que-le-public-profite-des-concerts-malgre-le-contexte-sanitaire-photo-archives-le-dl-mona-blanchet-1656350716.jpg);
-    background-size: contain;
-    margin: 0;    /* Enlevez les marges */
-    padding: 0;   /* Enlevez les espacements internes */
-    overflow: hidden; /* Empêche le débordement de la page */
+    background-size: cover;
+    background-position: center;
 }
 
 .inline-info
@@ -118,72 +125,160 @@ html,body
 }
 
 .menu-container {
-    display: flex;
-    gap: 15px;
-    overflow: hidden; /* Empêche le débordement du conteneur */
-    max-width: 100%; /* Assure que le conteneur ne dépasse pas la largeur de la page */
-    margin-top: 10px; /* Ajoute un espace entre le header et les tuiles */
-    margin-left: 5px;
-    margin-right: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+    padding: 12px;
+    overflow: hidden;
 }
 
+/* ── Tiles style index.html ── */
 .tile {
-    text-align: center;
-    flex: 0.5; /* Les tuiles prendront une part égale de l'espace disponible */
-    max-width: calc(33.33% - 11px); /* Ajustez la taille pour trois tuiles avec un écart de 20px */
-    height: 50vw; /* La hauteur est relative à la largeur de la fenêtre */
-    text-decoration: none; /* Supprime les barres sous les liens */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 20px;
+    height: 100%;
+    text-decoration: none;
     background-size: cover;
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*font-size: 1.5em;*/
-    font-family: 'Public Pixel','sans-serif';
-    color: white;
-    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+    font-family: 'Public Pixel', sans-serif;
+    color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid rgba(168,85,247,0.3);
+    box-shadow: 0 0 20px rgba(168,85,247,0.1), inset 0 0 30px rgba(0,0,0,0.3);
+    transition:
+        transform 0.4s cubic-bezier(0.4,0,0.2,1),
+        box-shadow 0.4s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.4s ease,
+        filter 0.4s ease;
+    will-change: transform;
     cursor: pointer;
-    position: relative;
 }
 
-.tile1 {
-    background-image: url('https://cdn-s-www.ledauphine.com/images/1A9B60BA-B85F-4AFC-8B6F-61BE5D43931D/NW_raw/le-lycee-ella-fitzgerald-a-saint-romain-en-gal-photo-le-dl-clement-grillet-1604341129.jpg');
-    opacity: 0.9;
+.tile1 { background-image: url('https://cdn-s-www.ledauphine.com/images/1A9B60BA-B85F-4AFC-8B6F-61BE5D43931D/NW_raw/le-lycee-ella-fitzgerald-a-saint-romain-en-gal-photo-le-dl-clement-grillet-1604341129.jpg'); }
+.tile2 { background-image: url('https://www.pilat-tourisme.fr/sites/pilat-tourisme/files/styles/ratio_16_9_xl/public/content/images/passerelle_viennec_cralvarez.jpg?itok=S0SK-nbQ'); }
+.tile3 { background-image: url('https://www.jazzavienne.com/sites/default/files/styles/cover_large_desktop/public/uploads/images/2023-02/%C2%A9Eliot%20Hubert%20%284%29.jpg?h=2992ba0a&itok=JGLJK8kA'); background-size: cover; background-position: top; }
+
+/* Dégradé bas */
+.tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(10,0,25,0.82) 100%);
+    transition: opacity 0.4s ease;
+    z-index: 0;
 }
 
-.tile2 {
-    background-image: url('https://www.pilat-tourisme.fr/sites/pilat-tourisme/files/styles/ratio_16_9_xl/public/content/images/passerelle_viennec_cralvarez.jpg?itok=S0SK-nbQ');
-    opacity: 0.9;
-}
-
-.tile3 {
-    background-image: url('https://www.jazzavienne.com/sites/default/files/styles/cover_large_desktop/public/uploads/images/2023-02/%C2%A9Eliot%20Hubert%20%284%29.jpg?h=2992ba0a&itok=JGLJK8kA');
-    background-size: 450%;
-    opacity: 0.9;
-}
-
-
+/* Overlay sombre repos */
 .tile::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    transition: background 0.3s;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.4s ease;
+    z-index: 0;
 }
 
-.tile:hover::after {
-    background: rgba(0, 0, 0, 0);
+.tile:hover::after { background: rgba(0,0,0,0); }
+.tile > * { position: relative; z-index: 2; }
+
+/* Numéro */
+.tile-num {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 10px;
+    color: rgba(168,85,247,0.85);
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0 #000;
+    z-index: 2;
+}
+
+/* Grille pixel déco */
+.tile-pixels {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(168,85,247,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168,85,247,0.06) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+.tile:hover .tile-pixels { opacity: 1; }
+
+/* Label */
+.tile-label {
+    font-family: 'Public Pixel', sans-serif;
+    font-size: clamp(0.75rem, 1.3vw, 1rem);
+    line-height: 1.7;
+    text-shadow: 2px 2px 0 #000, 0 0 12px rgba(168,85,247,0.4);
+    margin-bottom: 4px;
+    z-index: 2;
+}
+
+/* ENTRER au hover */
+.tile-enter {
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 9px;
+    color: rgba(255,255,255,0);
+    letter-spacing: 1px;
+    margin-top: 6px;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.tile:hover .tile-enter { color: rgba(255,255,255,0.75); }
+.tile:hover .tile-enter.blink { animation: blink 0.9s step-end infinite; }
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
 }
 
 .tile:hover {
-    transform: scale(1.03);
-    opacity: 1;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-8px) scale(1.02);
+    border-color: #a855f7;
+    box-shadow: 0 0 40px rgba(168,85,247,0.5), 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .menu-container:hover .tile:not(:hover) {
-    filter: brightness(0.5);
+    filter: brightness(0.45);
+    border-color: rgba(168,85,247,0.1);
 }
+
+/* ===== LOADING OVERLAY ===== */
+#loading-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background-color: rgba(5,0,20,0.97);
+    background-size: cover; background-position: center;
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    gap: clamp(16px,3vh,32px); padding: clamp(24px,5vw,80px);
+    font-family: 'Public Pixel', sans-serif;
+}
+.lo-header { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.lo-dots { width: 15px; height: 15px; border-radius: 50%; animation: lo-dots 1s infinite linear alternate; }
+@keyframes lo-dots {
+    0%   { box-shadow: 20px 0 #fff, -20px 0 #ffffff20; background: #fff; }
+    33%  { box-shadow: 20px 0 #fff, -20px 0 #ffffff20; background: #ffffff20; }
+    66%  { box-shadow: 20px 0 #ffffff20, -20px 0 #fff; background: #ffffff20; }
+    100% { box-shadow: 20px 0 #ffffff20, -20px 0 #fff; background: #fff; }
+}
+.lo-title { color: #fff; font-family: 'Public Pixel', sans-serif; font-size: clamp(22px,4vw,35px); text-align: center; text-shadow: 2px 2px 0 #000; margin: 0; }
+.lo-title--small { font-size: clamp(13px,2vw,16px); }
+.lo-vehicle { width: 100px; height: 100px; object-fit: contain; animation: lo-float 1s infinite linear alternate; }
+@keyframes lo-float { 0% { transform: translateY(0); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
+.lo-bar-area { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; }
+.lo-bar-track { width: min(600px,88vw); background: #2d0c28; border-radius: 6px; overflow: hidden; height: clamp(18px,2.5vh,26px); }
+.lo-bar-fill { height: 100%; width: 0; background: #d51cbf; border-radius: 6px; }
+.lo-pins { display: flex; justify-content: space-between; width: min(600px,88vw); }
+.lo-pin-txt { color: #fff; font-family: 'Public Pixel', sans-serif; font-size: clamp(8px,1.2vw,11px); text-shadow: 1px 1px 0 #000; margin: 0; }
+.lo-loading-txt { color: rgba(255,255,255,0.65); font-family: 'Public Pixel', sans-serif; font-size: clamp(8px,1.5vw,12px); letter-spacing: 2px; margin: 0; }

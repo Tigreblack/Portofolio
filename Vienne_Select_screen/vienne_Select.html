@@ -1,32 +1,150 @@
 <!DOCTYPE html>   
 <html>
-    <htlml lang ="fr">
+    <html lang ="fr">
         <head>
             <meta charset ="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="vienne_select.css">
-            <script src=""></script>
+            <link rel="stylesheet" href="../header.css">
+            <script src="../header.js"></script>
             <title>Vienne_Select_Screen</title>
         </head>
         <body>
             <!--Header avec les informations importantes-->
             <div class="header">
-                <header>
+                <div class="header-top-bar" style="display:contents">
+                    <header id="desktop-title"><span class="pseudoname">DODE Lucas</span></header>
+                    <span class="inline-info" id="desktop-contacts">
+                        <ul>
+                            <li><a href="mailto:lucas.dode26@gmail.com">lucas.dode26@gmail.com</a></li>
+                            <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        </ul>
+                    </span>
+                </div>
+                <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
                     <span class="pseudoname">DODE Lucas</span>
-                </header>
+                    <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
+                        CONTACT <span class="toggle-arrow">▼</span>
+                    </button>
+                </div>
+                <div class="header-contacts-panel" id="contacts-panel">
                     <span class="inline-info">
-                    <ul>
-                        <li><a href="mailto:lucas.dode26@gmail.com">lucas.dode26@gmail.com</a></li>
-                        <li><a>07 83 98 57 85</a></li>
-                    </ul>
-                </span>
+                        <ul>
+                            <li><a href="mailto:lucas.dode26@gmail.com">lucas.dode26@gmail.com</a></li>
+                            <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        </ul>
+                    </span>
+                </div>
             </div>
             <!-- Les tuiles -->
             <div class="menu-container">
-                <!--A compléter-->
-                <a href="./Vienne/loading/STMG/loading_stmg.html" class="tile tile1">STMG</a>
-                <a href="./Vienne/loading/BTS SIO/loading_bts.html" class="tile tile2">BTS SIO</a>
-                <a href="./Vienne/loading/ELIXIR/loading_elixir.html" class="tile tile3">Elixir Creation</a>
+                <a href="./Vienne/STMG.html" class="tile tile1"
+                   data-loading-bg="https://cdn-s-www.ledauphine.com/images/6645F9FB-D337-4CDF-8A7A-388E7EC8ED3C/NW_raw/la-situation-actuelle-est-inadmissible-et-dangereuse-sur-la-ligne-lyon-valence-selon-l-association-des-usagers-des-ter-de-la-vallee-du-rhone-photo-le-dl-jean-baptiste-bornier-1709663646.jpg"
+                   data-loading-title="Landing on STMG.html"
+                   data-loading-vehicle="./Vienne/loading/STMG/train.png"
+                   data-loading-from="Vienne" data-loading-to="Lycée E.Fitzgerald"
+                   data-loading-bar="#00fdd7" data-loading-bar-bg="#0c292d"
+                   data-loading-speed="30">
+                    <div class="tile-pixels"></div>
+                    <div class="tile-num">01 / 03</div>
+                    <div class="tile-label">STMG<br><span style="font-size:0.7em;opacity:0.8">Bac Techno</span></div>
+                    <div class="tile-enter blink">▶ ENTRER</div>
+                </a>
+
+                <a href="./Vienne/BTSSIO.html" class="tile tile2"
+                   data-loading-bg="./Vienne/loading/BTS SIO/sainte-colombe.jpeg"
+                   data-loading-title="Landing on BTS_SIO.html"
+                   data-loading-vehicle="./Vienne/loading/BTS SIO/train.png"
+                   data-loading-from="Vienne" data-loading-to="Sainte-Colombe"
+                   data-loading-bar="#00fdd7" data-loading-bar-bg="#0c292d"
+                   data-loading-speed="30">
+                    <div class="tile-pixels"></div>
+                    <div class="tile-num">02 / 03</div>
+                    <div class="tile-label">BTS SIO<br><span style="font-size:0.7em;opacity:0.8">Option SLAM</span></div>
+                    <div class="tile-enter blink">▶ ENTRER</div>
+                </a>
+
+                <a href="./Vienne/Elixir.html" class="tile tile3"
+                   data-loading-bg="https://www.jazzavienne.com/sites/default/files/styles/cover_large_desktop/public/uploads/images/2023-02/%C2%A9Eliot%20Hubert%20%284%29.jpg?h=2992ba0a&itok=JGLJK8kA"
+                   data-loading-title="Landing on Elixir.html"
+                   data-loading-vehicle="./Vienne/loading/ELIXIR/train.png"
+                   data-loading-from="Vienne" data-loading-to="Elixir"
+                   data-loading-bar="#00fdd7" data-loading-bar-bg="#0c292d"
+                   data-loading-speed="30">
+                    <div class="tile-pixels"></div>
+                    <div class="tile-num">03 / 03</div>
+                    <div class="tile-label">Elixir<br>Creation<br><span style="font-size:0.7em;opacity:0.8">Stage Web</span></div>
+                    <div class="tile-enter blink">▶ ENTRER</div>
+                </a>
             </div>
+
+            <!-- Loading overlay -->
+            <div id="loading-overlay">
+                <div class="lo-header" id="lo-header"><div class="lo-dots"></div></div>
+                <img class="lo-vehicle" id="lo-vehicle" src="" alt="">
+                <h1 class="lo-title" id="lo-title">DODE.html</h1>
+                <div class="lo-bar-area">
+                    <div class="lo-bar-track" id="lo-bar-track"><div class="lo-bar-fill" id="lo-bar-fill"></div></div>
+                    <div class="lo-pins" id="lo-pins">
+                        <p class="lo-pin-txt" id="lo-pin-from"></p>
+                        <p class="lo-pin-txt" id="lo-pin-to"></p>
+                    </div>
+                    <p class="lo-loading-txt" id="lo-loading-txt">Loading...</p>
+                </div>
+            </div>
+
+            <script>
+                function triggerLoading(destination, el) {
+                    var d = (el && el.dataset) ? el.dataset : (el || {});
+                    var overlay    = document.getElementById('loading-overlay');
+                    var fill       = document.getElementById('lo-bar-fill');
+                    var barTrack   = document.getElementById('lo-bar-track');
+                    var titleEl    = document.getElementById('lo-title');
+                    var vehicle    = document.getElementById('lo-vehicle');
+                    var header     = document.getElementById('lo-header');
+                    var pins       = document.getElementById('lo-pins');
+                    var pinFrom    = document.getElementById('lo-pin-from');
+                    var pinTo      = document.getElementById('lo-pin-to');
+                    var loadingTxt = document.getElementById('lo-loading-txt');
+                    if (d.loadingBg) {
+                        overlay.style.backgroundImage    = "url('" + d.loadingBg + "')";
+                        overlay.style.backgroundSize     = 'cover';
+                        overlay.style.backgroundPosition = 'center';
+                    } else { overlay.style.backgroundImage = ''; }
+                    titleEl.textContent = d.loadingTitle || 'DODE.html';
+                    var hasVehicle = !!d.loadingVehicle;
+                    header.style.display  = hasVehicle ? 'flex' : 'none';
+                    vehicle.style.display = hasVehicle ? 'block' : 'none';
+                    if (hasVehicle) { vehicle.src = d.loadingVehicle; titleEl.classList.add('lo-title--small'); }
+                    else { titleEl.classList.remove('lo-title--small'); }
+                    var hasPins = !!(d.loadingFrom && d.loadingTo);
+                    pins.style.display       = hasPins ? 'flex' : 'none';
+                    loadingTxt.style.display = hasPins ? 'none' : 'block';
+                    if (hasPins) { pinFrom.textContent = d.loadingFrom; pinTo.textContent = d.loadingTo; }
+                    barTrack.style.backgroundColor = d.loadingBarBg || '#2d0c28';
+                    fill.style.backgroundColor     = d.loadingBar   || '#d51cbf';
+                    fill.style.width = '0%';
+                    overlay.style.display = 'flex';
+                    var width = 0;
+                    var speed = parseInt(d.loadingSpeed || '30');
+                    var interval = setInterval(function() {
+                        width++;
+                        fill.style.width = width + '%';
+                        if (width >= 100) { clearInterval(interval); window.location.href = destination; }
+                    }, speed);
+                }
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.querySelectorAll('.tile').forEach(function(tile) {
+                        tile.addEventListener('click', function(e) {
+                            var dest = tile.getAttribute('href');
+                            if (!dest || dest === '#') return;
+                            e.preventDefault();
+                            triggerLoading(dest, tile);
+                        });
+                    });
+                });
+            </script>
         </body>
+    </html>
 </html>

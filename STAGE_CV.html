@@ -5,125 +5,148 @@
     <meta charset="utf-8" />
     <title>Carte Interactive des Stages</title>
 
+    <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.js"></script>
+    <script src="header.js"></script>
     <link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet" />
     <script src="https://cdn.maptiler.com/leaflet-maptilersdk/v2.0.0/leaflet-maptilersdk.js"></script>
     
     <!-- CSS intégré -->
-
     <style>
-
     @import url('https://fonts.cdnfonts.com/css/public-pixel');
-    
-    *
-    {
-        box-sizing: border-box; /* responsive page w3c*/
-    }
 
-    body 
-    {
-        background-color: rgb(82, 73, 92);
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    a {
-        text-decoration: none; /* Supprime le soulignement */
-        color: black; /* Utilise la couleur par défaut du texte */
-        padding: 0; /* Supprime le padding autour du lien */
-        margin: 0; /* Supprime les marges autour du lien */
-    }
-
-    .header
-    {
-        opacity: 0.9;
+    html, body {
+        height: 100%;
+        overflow: hidden;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        background-color: rgb(82, 73, 92);
-
-        width: 100%;
-        margin: 0;
-        padding: 10px 20px;
-
-        box-sizing: border-box;
-        flex-wrap: wrap;
-    }
-
-    .inline-info
-    {
+        flex-direction: column;
+        background: #0a0014;
         font-family: 'Public Pixel', sans-serif;
-        display: flex;
-        align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
-        justify-content: flex-end;
+    }
 
-        padding: 10px 0; /* padding du header ( inline ) */
-    }
-    
-    .inline-info ul 
-    {
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    a { text-decoration: none; color: inherit; }
 
-        display: flex;
-        flex-wrap: wrap; /* mobile */
-        gap: 15px;
-    }
-    
-    .inline-info ul li 
-    {
-        display: inline-block;
-        margin-right: 20px; /* header margin droite */
-    }
-    
-    .inline-info ul li:last-child {
-        margin-right: 0; /* Pour enlever la marge droite du dernier élément */
-    }
-    
-    .inline-info ul li a {
-        text-decoration: none;
-        font-size: clamp(0.7rem, 2vw, 1rem);
-        color: #fff;
+    /* Map prend tout l'espace restant sous le header */
+    #map-wrapper {
+        flex: 1;
         position: relative;
-        padding: 5.75px;
-        background: 
-        linear-gradient(to right, rgb(7, 190, 105), rgb(15, 105, 116)),
-        linear-gradient(to right, rgb(3, 124, 172), rgb(6, 206, 123), rgb(17, 109, 3));
-        background-size: 100% 0.1em, 0 0.1em;
-        background-position: 100% 100%, 0 100%;
-        background-repeat: no-repeat;
-        transition: background-size 400ms;
-    }
-    
-    .inline-info ul li a:hover,
-    .inline-info ul li a:focus {
-        background-size: 0 0.1em, 100% 0.1em;
-    }
-    
-    .Title1
-    {
-        text-align: left;
-        font-size: clamp(0.8rem, 2vw, 1rem);
-        margin: 2vh;
-        font-family: 'Public Pixel', 'sans-serif';
-        color: white;
-    }
-    
-    #map {
-        background-color: rgb(63, 49, 78);
-        position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-        margin-top: 70px;
-        height: auto;
-        width: 100%;
-        margin-bottom: 25px;
-    }
-    
-    .leaflet-popup-content {
-        text-align: left;
+        min-height: 0;
     }
 
+    #map {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: #0a0014;
+    }
+
+    /* ── Popups Leaflet thème violet ── */
+    .leaflet-popup-content-wrapper {
+        background: rgba(15, 0, 40, 0.97);
+        border: 2px solid #a855f7;
+        border-radius: 10px;
+        box-shadow: 0 0 24px rgba(168,85,247,0.45);
+        padding: 0;
+    }
+    .leaflet-popup-content {
+        margin: 10px 14px 12px;
+        color: #e2d9f3;
+        font-family: 'Public Pixel', sans-serif;
+        font-size: 10px;
+        line-height: 1.9;
+    }
+    .leaflet-popup-content a {
+        color: #c084fc;
+        display: block;
+        padding: 4px 0 2px;
+        letter-spacing: 0.5px;
+        transition: color 0.2s;
+    }
+    .leaflet-popup-content a:hover { color: #f0abfc; }
+    .leaflet-popup-tip { background: #a855f7; }
+    .leaflet-popup-close-button { color: #a855f7 !important; font-size: 18px !important; top: 4px !important; right: 6px !important; }
+
+    /* ── Légende ── */
+    #map-legend {
+        position: absolute;
+        bottom: 36px;
+        left: 16px;
+        z-index: 1000;
+        background: rgba(10, 0, 30, 0.93);
+        border: 2px solid #a855f7;
+        border-radius: 10px;
+        padding: 12px 16px 14px;
+        font-family: 'Public Pixel', sans-serif;
+        font-size: 9px;
+        color: #e2d9f3;
+        line-height: 2;
+        box-shadow: 0 0 20px rgba(168,85,247,0.3);
+        pointer-events: none;
+        backdrop-filter: blur(4px);
+    }
+    #map-legend h4 {
+        font-size: 8px;
+        color: #c084fc;
+        letter-spacing: 2px;
+        text-shadow: 0 0 8px rgba(168,85,247,0.7);
+        margin-bottom: 8px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .legend-dot {
+        width: 10px; height: 10px;
+        border-radius: 3px;
+        flex-shrink: 0;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* ── Attribution Leaflet ── */
+    .leaflet-control-attribution {
+        background: rgba(10, 0, 30, 0.8) !important;
+        color: rgba(255,255,255,0.4) !important;
+        font-size: 9px !important;
+        border-top: 1px solid rgba(168,85,247,0.2) !important;
+    }
+    .leaflet-control-attribution a { color: #a855f7 !important; }
+
+    .leaflet-control-zoom a {
+        background: rgba(15, 0, 40, 0.9) !important;
+        border: 1px solid #a855f7 !important;
+        color: #c084fc !important;
+    }
+    .leaflet-control-zoom a:hover { background: rgba(168,85,247,0.3) !important; }
+
+    /* ── Loading overlay ── */
+    #loading-overlay {
+        position: fixed; inset: 0; z-index: 9999;
+        background-color: rgba(5,0,20,0.97);
+        background-size: cover; background-position: center;
+        display: none; flex-direction: column; align-items: center; justify-content: center;
+        gap: clamp(16px,3vh,32px); padding: clamp(24px,5vw,80px);
+        font-family: 'Public Pixel', sans-serif;
+    }
+    .lo-header { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .lo-dots { width: 15px; height: 15px; border-radius: 50%; animation: lo-dots 1s infinite linear alternate; }
+    @keyframes lo-dots {
+        0%   { box-shadow: 20px 0 #fff, -20px 0 #ffffff20; background: #fff; }
+        33%  { box-shadow: 20px 0 #fff, -20px 0 #ffffff20; background: #ffffff20; }
+        66%  { box-shadow: 20px 0 #ffffff20, -20px 0 #fff; background: #ffffff20; }
+        100% { box-shadow: 20px 0 #ffffff20, -20px 0 #fff; background: #fff; }
+    }
+    .lo-title { color: #fff; font-family: 'Public Pixel', sans-serif; font-size: clamp(22px,4vw,35px); text-align: center; text-shadow: 2px 2px 0 #000; margin: 0; }
+    .lo-title--small { font-size: clamp(13px,2vw,16px); }
+    .lo-vehicle { width: 100px; height: 100px; object-fit: contain; animation: lo-float 1s infinite linear alternate; }
+    @keyframes lo-float { 0% { transform: translateY(0); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
+    .lo-bar-area { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; }
+    .lo-bar-track { width: min(600px,88vw); background: #2d0c28; border-radius: 6px; overflow: hidden; height: clamp(18px,2.5vh,26px); }
+    .lo-bar-fill { height: 100%; width: 0; background: #d51cbf; border-radius: 6px; }
+    .lo-pins { display: flex; justify-content: space-between; width: min(600px,88vw); }
+    .lo-pin-txt { color: #fff; font-family: 'Public Pixel', sans-serif; font-size: clamp(8px,1.2vw,11px); text-shadow: 1px 1px 0 #000; margin: 0; }
+    .lo-loading-txt { color: rgba(255,255,255,0.65); font-family: 'Public Pixel', sans-serif; font-size: clamp(8px,1.5vw,12px); letter-spacing: 2px; margin: 0; }
     </style>
 
 </head>
@@ -132,23 +155,69 @@
     <!--Header avec les informations importantes-->
 
     <div class="header">
-        <span class="Title1">Stages & formations</span>
-        <span class="inline-info">
-            <ul>
-                <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
-                <li><a href="tel:0783985785">07 83 98 57 85</a></li>
-                <li><a href="index.html">Menu principal</a></li>
-                <li><a href="./coding_V2/CV.pdf">CV</a></li>
-            </ul>
-        </span>
+        <div class="header-top-bar" style="display:contents">
+            <header id="desktop-title"><span class="pseudoname">Stages &amp; formations</span></header>
+            <span class="inline-info" id="desktop-contacts">
+                <ul>
+                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                    <li><a href="index.html">Menu principal</a></li>
+                    <li><a href="./coding_V2/CV.pdf">CV</a></li>
+                </ul>
+            </span>
+        </div>
+        <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
+            <span class="pseudoname">Stages &amp; formations</span>
+            <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
+                CONTACT <span class="toggle-arrow">▼</span>
+            </button>
+        </div>
+        <div class="header-contacts-panel" id="contacts-panel">
+            <span class="inline-info">
+                <ul>
+                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                    <li><a href="index.html">Menu principal</a></li>
+                    <li><a href="./coding_V2/CV.pdf">CV</a></li>
+                </ul>
+            </span>
+        </div>
     </div>
 
-    <!-- La carte -->
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+        <div class="lo-header" id="lo-header"><div class="lo-dots"></div></div>
+        <img class="lo-vehicle" id="lo-vehicle" src="" alt="">
+        <h1 class="lo-title" id="lo-title">DODE.html</h1>
+        <div class="lo-bar-area">
+            <div class="lo-bar-track" id="lo-bar-track"><div class="lo-bar-fill" id="lo-bar-fill"></div></div>
+            <div class="lo-pins" id="lo-pins">
+                <p class="lo-pin-txt" id="lo-pin-from"></p>
+                <p class="lo-pin-txt" id="lo-pin-to"></p>
+            </div>
+            <p class="lo-loading-txt" id="lo-loading-txt">Loading...</p>
+        </div>
+    </div>
 
-    <div id="map"></div>
+    <!-- Carte + légende -->
+    <div id="map-wrapper">
+        <div id="map"></div>
+        <div id="map-legend">
+            <h4>LÉGENDE</h4>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#22c55e"></div>
+                <span>Stage</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#3b82f6"></div>
+                <span>Formation</span>
+            </div>
+        </div>
+    </div>
     
     <script>
-        var map = L.map('map').setView([45.53, 4.8622], 3); // Coordonnées et zoom initial
+        var map = L.map('map').setView([45.53, 4.8622], 3);
+        setTimeout(function() { map.invalidateSize(); }, 100);
 
         // Ajouter une couche de tuiles en utilisant MapTiler
         const key = '6ktSajW43RB74dCdPDnr'; // Clé API MAPTILER de la carte
@@ -178,69 +247,120 @@
 
         // Ajouter des points avec descriptions
 
-        function createMarker(coords, href, text) {
+        function triggerLoading(destination, el) {
+            var d = (el && el.dataset) ? el.dataset : (el || {});
+            var overlay    = document.getElementById('loading-overlay');
+            var fill       = document.getElementById('lo-bar-fill');
+            var barTrack   = document.getElementById('lo-bar-track');
+            var titleEl    = document.getElementById('lo-title');
+            var vehicle    = document.getElementById('lo-vehicle');
+            var header     = document.getElementById('lo-header');
+            var pins       = document.getElementById('lo-pins');
+            var pinFrom    = document.getElementById('lo-pin-from');
+            var pinTo      = document.getElementById('lo-pin-to');
+            var loadingTxt = document.getElementById('lo-loading-txt');
+            if (d.loadingBg) {
+                overlay.style.backgroundImage    = "url('" + d.loadingBg + "')";
+                overlay.style.backgroundSize     = 'cover';
+                overlay.style.backgroundPosition = 'center';
+            } else { overlay.style.backgroundImage = ''; }
+            titleEl.textContent = d.loadingTitle || 'DODE.html';
+            var hasVehicle = !!d.loadingVehicle;
+            header.style.display  = hasVehicle ? 'flex' : 'none';
+            vehicle.style.display = hasVehicle ? 'block' : 'none';
+            if (hasVehicle) { vehicle.src = d.loadingVehicle; titleEl.classList.add('lo-title--small'); }
+            else { titleEl.classList.remove('lo-title--small'); }
+            var hasPins = !!(d.loadingFrom && d.loadingTo);
+            pins.style.display       = hasPins ? 'flex' : 'none';
+            loadingTxt.style.display = hasPins ? 'none' : 'block';
+            if (hasPins) { pinFrom.textContent = d.loadingFrom; pinTo.textContent = d.loadingTo; }
+            barTrack.style.backgroundColor = d.loadingBarBg || '#2d0c28';
+            fill.style.backgroundColor     = d.loadingBar   || '#d51cbf';
+            fill.style.width = '0%';
+            overlay.style.display = 'flex';
+            var width = 0;
+            var speed = parseInt(d.loadingSpeed || '30');
+            var interval = setInterval(function() {
+                width++;
+                fill.style.width = width + '%';
+                if (width >= 100) { clearInterval(interval); window.location.href = destination; }
+            }, speed);
+        }
+
+        function createMarker(coords, href, text, loading) {
             var marker = L.marker(coords,{icon:greenIcon}).addTo(map);
-            marker.bindPopup('<a href="' + href + '">' + text + '</a>');
-
-
-            marker.on('click', function() {
-                map.setView(coords,10,{animate:true,duration: 2.5});
-            });
-
-            // Pour que la pop up s'ouvre automatiquement
-            // marker.on('mouseover', function(ev) {
-            //   marker.openPopup();
-            // });
-
+            var dataStr = '';
+            if (loading) {
+                if (loading.loadingBg)      dataStr += ' data-loading-bg="'      + loading.loadingBg      + '"';
+                if (loading.loadingTitle)   dataStr += ' data-loading-title="'   + loading.loadingTitle   + '"';
+                if (loading.loadingVehicle) dataStr += ' data-loading-vehicle="' + loading.loadingVehicle + '"';
+                if (loading.loadingFrom)    dataStr += ' data-loading-from="'    + loading.loadingFrom    + '"';
+                if (loading.loadingTo)      dataStr += ' data-loading-to="'      + loading.loadingTo      + '"';
+                if (loading.loadingBar)     dataStr += ' data-loading-bar="'     + loading.loadingBar     + '"';
+                if (loading.loadingBarBg)   dataStr += ' data-loading-bar-bg="'  + loading.loadingBarBg   + '"';
+                if (loading.loadingSpeed)   dataStr += ' data-loading-speed="'   + loading.loadingSpeed   + '"';
+            }
+            marker.bindPopup('<a href="' + href + '"' + dataStr + '>' + text + '</a>');
+            marker.on('click', function() { map.setView(coords,10,{animate:true,duration:2.5}); });
             return marker;
         }
 
-        function createMarker1(coords,href,text){
+        function createMarker1(coords, href, text) {
             var marker = L.marker(coords,{icon:blueIcon}).addTo(map);
             marker.bindPopup('<a href="' + href + '">' + text + '</a>');
-
-
-            marker.on('click', function() {
-                map.setView(coords,10,{animate:true,duration: 2.5});
-            });
-
+            marker.on('click', function() { map.setView(coords,10,{animate:true,duration:2.5}); });
             return marker;
         }
-        // Ajout de plusieurs marqueurs avec des liens
 
-
-        var stages = 
-        [
-        {
-            coords: [45.29123068007458, 4.8147437606055465],
-            href: "#",
-            text: "1 Expérience (Page en construction)"
-        },
-
-        {
-            coords: [16.239299230304255, -61.583926443686096],
-            href: "./Orange/loading/loading_orange.html",
-            text: "Stage chez Orange Caraibes"
-        }
-
-            // Ajoutez d'autres stages ici
+        var stages = [
+            {
+                coords: [45.29123068007458, 4.8147437606055465],
+                href: "#",
+                text: "1 Expérience (Page en construction)"
+            },
+            {
+                coords: [16.239299230304255, -61.583926443686096],
+                href: "./Orange/orange_caraibes.html",
+                text: "Stage chez Orange Caraibes",
+                loading: {
+                    loadingBg:      'https://images.unsplash.com/photo-1531850039645-b21522964b91?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGxhbmUlMjBzdW5zZXR8ZW58MHx8MHx8fDA%3D',
+                    loadingTitle:   'Landing on Orange.Caraibes.html',
+                    loadingVehicle: './Orange/loading/plane.png',
+                    loadingFrom:    'France',
+                    loadingTo:      'Guadeloupe',
+                    loadingBar:     '#00fdd7',
+                    loadingBarBg:   '#0c292d',
+                    loadingSpeed:   '45'
+                }
+            }
         ];
 
-        var formations = 
-        [
+        var formations = [
             {
                 coords: [45.531324961315335, 4.86582756584379],
                 href: "Vienne_Select_screen/vienne_Select.html",
                 text: "3 Expériences"
-            },
-        ]
+            }
+        ];
 
         stages.forEach(function(stage) {
-            createMarker(stage.coords, stage.href, stage.text);
+            createMarker(stage.coords, stage.href, stage.text, stage.loading);
         });
 
         formations.forEach(function(form) {
             createMarker1(form.coords, form.href, form.text);
+        });
+
+        // Intercepte les clics sur les liens dans les popups Leaflet
+        document.getElementById('map').addEventListener('click', function(e) {
+            var link = e.target.closest ? e.target.closest('a') : null;
+            if (!link) return;
+            var href = link.getAttribute('href');
+            if (!href || href === '#') return;
+            if (link.closest('.leaflet-popup-content')) {
+                e.preventDefault();
+                triggerLoading(href, link);
+            }
         });
 
     </script>

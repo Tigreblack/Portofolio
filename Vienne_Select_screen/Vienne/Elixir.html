@@ -1,146 +1,296 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset ="utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="Elixir.css">
-        <title>Elixir Création</title>
+        <link rel="stylesheet" href="../../header.css">
+        <script src="../../header.js"></script>
+        <title>Elixir Création — DODE Lucas</title>
     </head>
     <body>
-        
-        <!--Header avec les informations importantes-->
+
+        <!-- Header -->
         <div class="header">
-            <span class="Tile2">Elixir Creation</span>
-            <span class="inline-info">
-                <ul>
-                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
-                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
-                    <li><a href="../../coding_V2/CV.pdf">CV</a></li>
-                    <li><a href="../../STAGE_CV.html">Menu principal</a></li>
-                </ul>
-            </span>
+            <div class="header-top-bar" style="display:contents">
+                <header id="desktop-title"><span class="pseudoname">DODE Lucas</span></header>
+                <span class="inline-info" id="desktop-contacts">
+                    <ul>
+                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                        <li><a href="../../STAGE_CV.html">Menu principal</a></li>
+                    </ul>
+                </span>
+            </div>
+            <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
+                <span class="pseudoname">DODE Lucas</span>
+                <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
+                    CONTACT <span class="toggle-arrow">▼</span>
+                </button>
+            </div>
+            <div class="header-contacts-panel" id="contacts-panel">
+                <span class="inline-info">
+                    <ul>
+                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                        <li><a href="../../STAGE_CV.html">Menu principal</a></li>
+                    </ul>
+                </span>
+            </div>
         </div>
-        
-        <!-- Conteneur texte  -->
-        <div class="container-page2">
-            <div class="wrapperdoc">
-                <div class="text-page2">
-                    <img src="https://www.elixir-creation.fr/wp-content/uploads/2021/03/logo-elixir-creation.png" alt="Elixir" class="elixir_creation">
-                    <h1>Elixir Creation</h1>
-                    <h3>Agence Web – Vienne (38200)</h3>
-                    <p><strong>Effectif :</strong> 4 personnes dont 3 stagiaires</p>
 
-                    <br>
-                    <h2>Présentation</h2>
-                    <p>Elixir Création est une agence web spécialisée dans la création et refonte de sites internet (vitrine, e-commerce, institutionnel), avec une forte expertise sur WordPress et Divi.</p>
-                    <p>L’entreprise propose des solutions digitales sur-mesure, avec un réel souci de performance et d’optimisation SEO.</p>
+        <main class="page-content">
 
-                    <br>
-                    <h3>Organisation</h3>
-                    <ul>
-                        <li><strong>Statut :</strong> Entreprise individuelle dirigée par Emmanuel Fauveau</li>
-                        <li><strong>Mode de travail :</strong> Hybride (télétravail + déplacements clients)</li>
-                        <li><strong>Clients :</strong> TPE, artisans, associations, indépendants</li>
-                    </ul>
-        
-                    <h3>Workflow agile</h3>
-                    <ul>
-                        <li>Analyse des besoins</li>
-                        <li>Conception de maquette et stratégie digitale</li>
-                        <li>Développement et intégration</li>
-                        <li>Optimisation SEO & mise en ligne</li>
-                        <li>Suivi et maintenance</li>
-                    </ul>
-        
-                    <h3>Objectifs</h3>
-                    <ul>
-                        <li>Créer des sites performants et personnalisés</li>
-                        <li>Améliorer la visibilité en ligne via le SEO</li>
-                        <li>Accompagner la transition numérique des clients</li>
-                    </ul>
+            <!-- ── HERO ── -->
+            <section class="hero">
+                <span class="hero-tag">▸ STAGE · 2ème ANNÉE BTS SIO</span>
+                <h1 class="hero-title">Elixir </span>Creation</h1>
+                <p class="hero-sub">Agence web · Vienne, Rhone-Alpes · 2025</p>
+                <div class="hero-badges">
+                    <span class="badge">6 semaines</span>
+                    <span class="badge">Avril → Mai 2025</span>
+                    <span class="badge badge--role">⚙ Développeur Front-End</span>
+                </div>
+            </section>
 
-                    <br>
-                    <h2>Outils collaboratifs</h2>
-                    <br>
-                    <div class="tools">
-                        <div class="box_2">
-                            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/1818px-Discord_Logo_sans_texte.svg.png" alt="Discord">
-                            <p>Discord</p>
+            <!-- ── ENTREPRISE ── -->
+            <section class="section-block">
+                <h2 class="section-title">L'entreprise</h2>
+                <div class="company-card">
+                    <div class="company-grid">
+                        <div class="company-item">
+                            <span class="company-label">Activité</span>
+                            <span class="company-value">Création &amp; refonte de sites web (vitrine, e-commerce, institutionnel)</span>
                         </div>
-                        <div class="box_2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
-                            <p>Figma</p>
+                        <div class="company-item">
+                            <span class="company-label">Localisation</span>
+                            <span class="company-value">Vienne, Rhône-Alpes (38200)</span>
                         </div>
-                        <div class="box_2">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCbY1-Um96CJj5CiENgILgx12Sc6ZV-NPLdw&s" alt="Trello">
-                            <p>Trello</p>
+                        <div class="company-item">
+                            <span class="company-label">Statut</span>
+                            <span class="company-value">Entreprise individuelle — dirigée par Emmanuel Fauveau</span>
+                        </div>
+                        <div class="company-item">
+                            <span class="company-label">Clients</span>
+                            <span class="company-value">TPE, artisans, associations, indépendants</span>
+                        </div>
+                        <div class="company-item">
+                            <span class="company-label">Expertise</span>
+                            <span class="company-value">WordPress · Divi · SEO · Solutions digitales sur-mesure</span>
+                        </div>
+                        <div class="company-item">
+                            <span class="company-label">Mode de travail</span>
+                            <span class="company-value">Hybride — télétravail &amp; déplacements clients</span>
                         </div>
                     </div>
-                    <p>Utilisation de <strong>Discord</strong> pour la communication, <strong>Figma</strong> pour la création graphique, et <strong>Trello</strong> pour le suivi agile des tâches (Scrum).</p>
+                </div>
+            </section>
 
-                    <br>
-                    <h2>Mon rôle :</h2>
-                    <p>Durant mon stage de 6 semaines, j’ai intégré l’équipe en tant que <strong>développeur front-end</strong>. J’ai contribué à la réalisation de plusieurs sites WordPress, travaillé sur l’intégration avec Divi, l’optimisation du rendu, et la création de contenus visuels (montage vidéo inclus).</p>
-       
-                    <!--Recap compétences-->
+            <!-- ── WORKFLOW ── -->
+            <section class="section-block">
+                <h2 class="section-title">Workflow agence</h2>
+                <div class="workflow">
+                    <div class="wf-step">
+                        <div class="wf-num">01</div>
+                        <div class="wf-text">
+                            <strong>Analyse des besoins</strong>
+                            <span>Échange client, recueil du cahier des charges, définition des objectifs</span>
+                        </div>
+                    </div>
+                    <div class="wf-arrow">▶</div>
+                    <div class="wf-step">
+                        <div class="wf-num">02</div>
+                        <div class="wf-text">
+                            <strong>Maquette &amp; stratégie</strong>
+                            <span>Conception sur Figma, validation du design avec le client</span>
+                        </div>
+                    </div>
+                    <div class="wf-arrow">▶</div>
+                    <div class="wf-step">
+                        <div class="wf-num">03</div>
+                        <div class="wf-text">
+                            <strong>Développement</strong>
+                            <span>Intégration WordPress/Divi, développement des fonctionnalités</span>
+                        </div>
+                    </div>
+                    <div class="wf-arrow">▶</div>
+                    <div class="wf-step">
+                        <div class="wf-num">04</div>
+                        <div class="wf-text">
+                            <strong>SEO &amp; mise en ligne</strong>
+                            <span>Optimisation, tests, déploiement et validation finale</span>
+                        </div>
+                    </div>
+                    <div class="wf-arrow">▶</div>
+                    <div class="wf-step">
+                        <div class="wf-num">05</div>
+                        <div class="wf-text">
+                            <strong>Suivi client</strong>
+                            <span>Formation, tutoriels vidéo, accompagnement à l'autonomie</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                    <br>
-                    <h2>Mission 1 : Développement et intégration web</h2>
-                    <p>J'ai pu réaliser un total de 6 site dont 2 en individuelle :</p>
-                    <br>
-                    <h3>Site individuelle :</h3>
-                    <div style="cursor: pointer;" onclick="window.location='https://antiquaire-lepuyenvelay.fr/'" class="box">
-                        <img src="https://static.vecteezy.com/system/resources/previews/004/909/681/non_2x/logo-gentleman-hat-free-vector.jpg" alt="Puyenvelay">
-                        <p>Antiquaire le puy en velay</p>
-                    </div>
-                    <div style="cursor: pointer;" onclick="window.location='https://lpg-toiture.fr/'" class="box">
-                        <img src="https://lpg-toiture.fr/wp-content/uploads/2025/01/LPG-icone.png" alt="LPG">
-                        <p>LPG toiture</p>
-                    </div>
-                    <br>
-                    <h3>Site en équipe :</h3>
-                    <div style="cursor: pointer;" onclick="window.location='https://compagnielabagarre.fr/'" class="box">
-                        <img src="https://compagnielabagarre.fr/wp-content/uploads/2025/01/Elements-site-15-1.png" alt="labagarre">
-                        <p>Compagnie la bagarre</p>
-                    </div>
-                    <div style="cursor: pointer;" onclick="window.location='https://www.horizons-group-productioncom.lcqy0739.odns.fr/'" class="box">
-                        <img src="https://www.horizons-group.com/images/logo_blanc.png" alt="horizon">
-                        <p>Horizon Group</p>
-                    </div>
-                    <div style="cursor: pointer;" onclick="window.location='https://www.neom.eu/'" class="box">
-                        <img src="https://www.neom.eu/wp-content/uploads/2025/01/asset-0.png" alt="neom">
-                        <p>Neom</p>
-                    </div>
-                    <div style="cursor: pointer;" onclick="window.location='https://www.mjc-fsm.com/'" class="box">
-                        <img src="https://www.mjc-fsm.com/wp-content/uploads/2024/11/logo-mjc-fsm-papote.png" alt="mjcsaint">
-                        <p>MJC-Fontaine-Saint-Martin</p>
-                    </div>
+            <!-- ── MISSION 1 ── -->
+            <section class="section-block">
+                <h2 class="section-title">Mission 1 — Développement web</h2>
+                <p class="mission-intro">6 sites réalisés au total durant le stage — 2 en autonomie complète, 4 en équipe.</p>
 
-                    <br>
-                    <br>
-                    <h2>Mission 2 : Assitance accompagnées du client</h2>
+                <p class="mission-sub-label">Solo — Autonomie complète</p>
+                <div class="sites-grid">
+                    <a href="https://antiquaire-lepuyenvelay.fr/" target="_blank" rel="noopener" class="site-card">
+                        <div class="site-img-wrap">
+                            <img src="https://static.vecteezy.com/system/resources/previews/004/909/681/non_2x/logo-gentleman-hat-free-vector.jpg" alt="Antiquaire Le Puy en Velay">
+                        </div>
+                        <div class="site-info">
+                            <span class="site-name">Antiquaire — Le Puy-en-Velay</span>
+                            <span class="site-url">antiquaire-lepuyenvelay.fr ↗</span>
+                            <div class="site-tags">
+                                <span class="site-tag">WordPress</span>
+                                <span class="site-tag">Divi</span>
+                                <span class="site-tag">SEO</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://lpg-toiture.fr/" target="_blank" rel="noopener" class="site-card">
+                        <div class="site-img-wrap">
+                            <img src="https://lpg-toiture.fr/wp-content/uploads/2025/01/LPG-icone.png" alt="LPG Toiture">
+                        </div>
+                        <div class="site-info">
+                            <span class="site-name">LPG Toiture</span>
+                            <span class="site-url">lpg-toiture.fr ↗</span>
+                            <div class="site-tags">
+                                <span class="site-tag">WordPress</span>
+                                <span class="site-tag">Divi</span>
+                                <span class="site-tag">Vitrine</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                    <p>Après la création et la mise en ligne du site, j’ai réalisé des vidéos explicatives avec montage afin de guider le client dans l’utilisation des différents outils intégrés à son site. Ces vidéos détaillent, étape par étape, comment gérer le contenu, modifier certaines sections et utiliser les fonctionnalités essentielles. En complément, j’ai également assisté le client en lui fournissant un accompagnement 
-                    personnalisé pour l’aider à prendre en main son site, répondre à ses questions et lui permettre d’effectuer des modifications en toute autonomie. Cette phase de formation a permis d’assurer une transition fluide et une meilleure autonomie du client dans la gestion de son site we</p>
+                <p class="mission-sub-label" style="margin-top: 28px;">Équipe — Collaboration</p>
+                <div class="sites-grid sites-grid--4">
+                    <a href="https://compagnielabagarre.fr/" target="_blank" rel="noopener" class="site-card">
+                        <div class="site-img-wrap">
+                            <img src="https://compagnielabagarre.fr/wp-content/uploads/2025/01/Elements-site-15-1.png" alt="Compagnie La Bagarre">
+                        </div>
+                        <div class="site-info">
+                            <span class="site-name">Compagnie La Bagarre</span>
+                            <span class="site-url">compagnielabagarre.fr ↗</span>
+                            <div class="site-tags">
+                                <span class="site-tag">WordPress</span>
+                                <span class="site-tag">Culture</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.horizons-group.com/" target="_blank" rel="noopener" class="site-card">
+                        <div class="site-img-wrap">
+                            <img src="https://www.horizons-group.com/images/logo_blanc.png" alt="Horizons Group">
+                        </div>
+                        <div class="site-info">
+                            <span class="site-name">Horizons Group</span>
+                            <span class="site-url">horizons-group.com ↗</span>
+                            <div class="site-tags">
+                                <span class="site-tag">WordPress</span>
+                                <span class="site-tag">Corporate</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.neom.eu/" target="_blank" rel="noopener" class="site-card">
+                        <div class="site-img-wrap">
+                            <img src="https://www.neom.eu/wp-content/uploads/2025/01/asset-0.png" alt="Neom">
+                        </div>
+                        <div class="site-info">
+                            <span class="site-name">Neom</span>
+                            <span class="site-url">neom.eu ↗</span>
+                            <div class="site-tags">
+                                <span class="site-tag">WordPress</span>
+                                <span class="site-tag">Divi</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.mjc-fsm.com/" target="_blank" rel="noopener" class="site-card">
+                        <div class="site-img-wrap">
+                            <img src="https://www.mjc-fsm.com/wp-content/uploads/2024/11/logo-mjc-fsm-papote.png" alt="MJC FSM">
+                        </div>
+                        <div class="site-info">
+                            <span class="site-name">MJC Fontaine-Saint-Martin</span>
+                            <span class="site-url">mjc-fsm.com ↗</span>
+                            <div class="site-tags">
+                                <span class="site-tag">WordPress</span>
+                                <span class="site-tag">Association</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
 
-                    <div class="box_2">
-                        <img src="https://static.wikia.nocookie.net/logo_editing/images/c/c6/Powerdirector.png/revision/latest?cb=20241028132721" alt="pdirector">
+            <!-- ── MISSION 2 ── -->
+            <section class="section-block">
+                <h2 class="section-title">Mission 2 — Accompagnement client</h2>
+                <div class="mission2-card">
+                    <p>Après la mise en ligne de chaque site, j'ai produit des <strong>tutoriels vidéo</strong> guidant le client pas à pas dans la gestion de son contenu (modification de sections, gestion des médias, fonctionnalités clés). En parallèle, j'ai assuré un <strong>suivi personnalisé</strong> pour répondre aux questions et garantir l'autonomie complète du client dans la durée.</p>
+                </div>
+                <p class="sub-title">Outils utilisés</p>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <img src="https://static.wikia.nocookie.net/logo_editing/images/c/c6/Powerdirector.png/revision/latest?cb=20241028132721" alt="Power Director">
                         <p>Power Director</p>
                     </div>
-                    <div class="box_2">
-                        <img src="https://freelogopng.com/images/all_img/1656733637logo-canva-png.png" alt="canva">
+                    <div class="skill-box">
+                        <img src="https://freelogopng.com/images/all_img/1656733637logo-canva-png.png" alt="Canva">
                         <p>Canva</p>
                     </div>
-                    <div class="box_2">
-                        <img src="https://vignette.wikia.nocookie.net/youtubepedia/images/c/c0/YouTube.png/revision/latest?cb=20170913140216&path-prefix=es" alt="youtube">
-                        <p>Youtube</p>
+                    <div class="skill-box">
+                        <img src="https://vignette.wikia.nocookie.net/youtubepedia/images/c/c0/YouTube.png/revision/latest?cb=20170913140216&path-prefix=es" alt="YouTube">
+                        <p>YouTube</p>
                     </div>
-                    <div class="box_2">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/800px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png" alt="teams">
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/800px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png" alt="Teams">
                         <p>Teams</p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <h1 class="info">Valence 26 : Marché de Noel</h1>
+            </section>
+
+            <!-- ── STACK COMPLÈTE ── -->
+            <section class="section-block">
+                <h2 class="section-title">Stack technique du stage</h2>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <img src="https://s.w.org/style/images/about/WordPress-logotype-simplified.png" alt="WordPress">
+                        <p>WordPress</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://schoolswp.com/wp-content/uploads/2020/11/logo_divi.png" alt="Divi">
+                        <p>Divi</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                        <p>Figma</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/1818px-Discord_Logo_sans_texte.svg.png" alt="Discord">
+                        <p>Discord</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCbY1-Um96CJj5CiENgILgx12Sc6ZV-NPLdw&s" alt="Trello">
+                        <p>Trello</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5">
+                        <p>HTML5</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3">
+                        <p>CSS3</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
     </body>
 </html>

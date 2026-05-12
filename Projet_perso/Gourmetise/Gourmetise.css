@@ -6,6 +6,10 @@
     --accent-color: #6e6ed7;
     --text-color: #fff;
     --border-color: #6e6ed7;
+    --hdr-bg:       rgba(55, 10, 8, 0.93);
+    --hdr-accent:   #e05c2a;
+    --hdr-glow:     rgba(224, 92, 42, 0.25);
+    --hdr-panel-bg: rgba(35, 5, 3, 0.97);
 }
 
 html, body {

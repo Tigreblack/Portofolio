@@ -1,302 +1,393 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset ="utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="BTSSIO.css">
-        <title>BTSSIO</title>
+        <link rel="stylesheet" href="../../header.css">
+        <script src="../../header.js"></script>
+        <title>BTS SIO — DODE Lucas</title>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Sélectionner le bouton par son ID
-                const ElixirButton = document.getElementById("Elixir");
+            function triggerLoading(destination, d) {
+                var overlay    = document.getElementById('loading-overlay');
+                var fill       = document.getElementById('lo-bar-fill');
+                var barTrack   = document.getElementById('lo-bar-track');
+                var titleEl    = document.getElementById('lo-title');
+                var vehicle    = document.getElementById('lo-vehicle');
+                var header     = document.getElementById('lo-header');
+                var pins       = document.getElementById('lo-pins');
+                var pinFrom    = document.getElementById('lo-pin-from');
+                var pinTo      = document.getElementById('lo-pin-to');
+                var loadingTxt = document.getElementById('lo-loading-txt');
+                if (d.loadingBg) {
+                    overlay.style.backgroundImage    = "url('" + d.loadingBg + "')";
+                    overlay.style.backgroundSize     = 'cover';
+                    overlay.style.backgroundPosition = 'center';
+                } else { overlay.style.backgroundImage = ''; }
+                titleEl.textContent = d.loadingTitle || 'DODE.html';
+                var hasVehicle = !!d.loadingVehicle;
+                header.style.display  = hasVehicle ? 'flex' : 'none';
+                vehicle.style.display = hasVehicle ? 'block' : 'none';
+                if (hasVehicle) { vehicle.src = d.loadingVehicle; titleEl.classList.add('lo-title--small'); }
+                else { titleEl.classList.remove('lo-title--small'); }
+                var hasPins = !!(d.loadingFrom && d.loadingTo);
+                pins.style.display       = hasPins ? 'flex' : 'none';
+                loadingTxt.style.display = hasPins ? 'none' : 'block';
+                if (hasPins) { pinFrom.textContent = d.loadingFrom; pinTo.textContent = d.loadingTo; }
+                barTrack.style.backgroundColor = d.loadingBarBg || '#2d0c28';
+                fill.style.backgroundColor     = d.loadingBar   || '#d51cbf';
+                fill.style.width = '0%';
+                overlay.style.display = 'flex';
+                var width = 0;
+                var speed = parseInt(d.loadingSpeed || '30');
+                var interval = setInterval(function() {
+                    width++;
+                    fill.style.width = width + '%';
+                    if (width >= 100) { clearInterval(interval); window.location.href = destination; }
+                }, speed);
+            }
 
-                // Ajouter un événement de clic sur le bouton
-                ElixirButton.addEventListener("click", function() {
-                    // Redirection vers une autre page
-                    window.location.href = "../../Vienne_Select_screen/Vienne/loading/ELIXIR/loading_elixir.html"; // Remplace "STMG.html" par ton propre fichier
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("btn-elixir").addEventListener("click", function() {
+                    triggerLoading("./Elixir.html", {
+                        loadingBg:      'https://www.jazzavienne.com/sites/default/files/styles/cover_large_desktop/public/uploads/images/2023-02/%C2%A9Eliot%20Hubert%20%284%29.jpg?h=2992ba0a&itok=JGLJK8kA',
+                        loadingTitle:   'Landing on Elixir.html',
+                        loadingVehicle: './loading/ELIXIR/train.png',
+                        loadingFrom:    'Vienne',
+                        loadingTo:      'Elixir Création',
+                        loadingBar:     '#00fdd7',
+                        loadingBarBg:   '#0c292d'
+                    });
                 });
-            });
 
-            document.addEventListener("DOMContentLoaded", function() {
-                // Sélectionner le bouton par son ID
-                const pButton = document.getElementById("Projets");
-
-                // Ajouter un événement de clic sur le bouton
-                pButton.addEventListener("click", function() {
-                    // Redirection vers une autre page
-                    window.location.href = "../../Projet_perso/Gourmetise/Gourmetise.html"; // Remplace "STMG.html" par ton propre fichier
-                });
-            });
-
-            document.addEventListener("DOMContentLoaded", function() {
-                // Sélectionner le bouton par son ID
-                const orangeButton = document.getElementById("Orange");
-
-                // Ajouter un événement de clic sur le bouton
-                orangeButton.addEventListener("click", function() {
-                    // Redirection vers une autre page
-                    window.location.href = "../../Orange/loading/loading_orange.html"; // Remplace "STMG.html" par ton propre fichier
+                document.getElementById("btn-orange").addEventListener("click", function() {
+                    triggerLoading("../../Orange/orange_caraibes.html", {
+                        loadingBg:      'https://images.unsplash.com/photo-1531850039645-b21522964b91?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3',
+                        loadingTitle:   'Landing on Orange.Caraibes.html',
+                        loadingVehicle: '../../Orange/loading/plane.png',
+                        loadingFrom:    'France',
+                        loadingTo:      'Guadeloupe',
+                        loadingBar:     '#ff7900',
+                        loadingBarBg:   '#1a0800',
+                        loadingSpeed:   '45'
+                    });
                 });
             });
         </script>
     </head>
     <body>
-        
-        <!--Header avec les informations importantes-->
+
+        <!-- Header -->
         <div class="header">
-            <span class="Tile2">BTS SIO</span>
-            <span class="inline-info">
-                <ul>
-                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
-                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
-                    <li><a href="../../coding_V2/CV.pdf">CV</a></li>
-                    <li><a href="../../STAGE_CV.html">Menu principal</a></li>
-                </ul>
-            </span>
+            <div class="header-top-bar" style="display:contents">
+                <header id="desktop-title"><span class="pseudoname">DODE Lucas</span></header>
+                <span class="inline-info" id="desktop-contacts">
+                    <ul>
+                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                        <li><a href="../../STAGE_CV.html">Menu principal</a></li>
+                    </ul>
+                </span>
+            </div>
+            <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
+                <span class="pseudoname">DODE Lucas</span>
+                <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
+                    CONTACT <span class="toggle-arrow">▼</span>
+                </button>
+            </div>
+            <div class="header-contacts-panel" id="contacts-panel">
+                <span class="inline-info">
+                    <ul>
+                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                        <li><a href="../../STAGE_CV.html">Menu principal</a></li>
+                    </ul>
+                </span>
+            </div>
         </div>
-        
-        <!-- Conteneur texte  -->
 
-        <div class="container-page2">
-            <div class ="wrapperdoc">
-                <div class="text-page2">
-                    <h1>Formation : BTS SIO<hr>Option SLAM</h1><br>
-                    <h3>Établissement : Lycée Ella Fitzgerald, Saint-Romain-en-Gal</h3>
-                    <h1>Mention : En cours d'obtention</h1>
-                    <br>
-                    <h2>1ère année de BTS SIO</h2>
-                    <div class="container">
-                    <div class="card">
-                        <h3>Dév. & Prog. (BLOC 2 SLAM)</h3>
-                        <p>Langages : C#, HTML, CSS, JS, SQL, PHP</p>
-                    </div>
-                    <div class="card">
-                        <h3>Support IT & Services</h3>
-                        <p>Infrastructures IT, déploiement d'applications</p>
-                    </div>
-                    <div class="card">
-                        <h3>Atelier Pro</h3>
-                        <p>Projets réels, développement collaboratif</p>
-                    </div>
-                    <div class="card">
-                        <h3>Cybersécurité</h3>
-                        <p>Protocoles, protection des données</p>
-                    </div>
-                    <div class="card">
-                        <h3>Mathématiques pour l'info</h3>
-                        <p>Algorithmique, logique, modélisation</p>
-                    </div>
-                    <div class="card">
-                        <h3>Culture Éco-Jur</h3>
-                        <p>Enjeux économiques, juridiques</p>
-                    </div>
-                    <div class="card">
-                        <h3>Anglais</h3>
-                        <p>Vocabulaire technique, communication</p>
-                    </div>
-                    <div class="card">
-                        <h3>Culture Générale</h3>
-                        <p>Compétences en communication</p>
-                    </div>
-                    </div>
+        <main class="page-content">
 
-                    <br>
-                    <h2>Compétences Développées</h2>
-                    <div class="container">
-                    <div class="card">
-                        <h3>Programmation</h3>
-                        <p>C#, HTML, JS, SQL, PHP</p>
-                    </div>
-                    <div class="card">
-                        <h3>Outils</h3>
-                        <p>VS Code, GitHub, Thonny</p>
-                    </div>
-                    <div class="card">
-                        <h3>BDD</h3>
-                        <p>MySQL, UML, Git</p>
-                    </div>
-                    <div class="card">
-                        <h3>Sites Web</h3>
-                        <p>WordPress, Figma</p>
-                    </div>
-                    <div class="card">
-                        <h3>Bureautique</h3>
-                        <p>Excel, Adobe</p>
-                    </div>
-                    </div>
+            <!-- ── HERO ── -->
+            <section class="hero">
+                <span class="hero-tag">▸ FORMATION</span>
+                <h1 class="hero-title">BTS SIO<span class="hero-slash">/</span>SLAM</h1>
+                <p class="hero-sub">Lycée Ella Fitzgerald · Saint-Romain-en-Gal · Rhône-Alpes</p>
+                <div class="hero-badges">
+                    <span class="badge">2023 → 2025</span>
+                    <span class="badge badge--done">● Obtenu en 2025</span>
+                    <span class="badge">Option SLAM</span>
+                </div>
+            </section>
 
-                    <br><br><br>
-                    <hr>
-                    <h2>Stage 1ère année</h2>
-                    <p>Orange Caraïbes (2 mois, 2024) – Infrastructures réseau, développement applicatif</p>
-                    <div class="button-container">
-                    <button id="Orange">Voir le stage</button>
-                    </div>
-                    <br>
-                    <hr>
+            <!-- ── TIMELINE ── -->
+            <div class="timeline">
 
-                    <h2>2ème année de BTS SIO</h2>
-                    <div class="container">
-                    <div class="card">
-                        <h3>Dév., Prog., Cybersécurité</h3>
-                        <p>Web/mobile : Kotlin, Java, Vue.js, SQLLite</p>
+                <!-- 1ère Année -->
+                <div class="tl-block">
+                    <div class="tl-marker">
+                        <div class="tl-marker-dot">1A</div>
                     </div>
-                    <div class="card">
-                        <h3>Atelier Pro</h3>
-                        <p>Projets, GitHub, méthodes agiles</p>
+                    <div class="tl-content">
+                        <h2 class="section-title">1ère Année</h2>
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3>Dév. &amp; Prog. — BLOC 2 SLAM</h3>
+                                <p>C#, HTML, CSS, JavaScript, SQL, PHP</p>
+                            </div>
+                            <div class="card">
+                                <h3>Support IT &amp; Services</h3>
+                                <p>Infrastructures IT, déploiement d'applications</p>
+                            </div>
+                            <div class="card">
+                                <h3>Atelier Professionnel</h3>
+                                <p>Projets réels, développement collaboratif</p>
+                            </div>
+                            <div class="card">
+                                <h3>Cybersécurité</h3>
+                                <p>Protocoles réseau, protection des données</p>
+                            </div>
+                            <div class="card">
+                                <h3>Mathématiques</h3>
+                                <p>Algorithmique, logique, modélisation</p>
+                            </div>
+                            <div class="card">
+                                <h3>Culture Éco-Juridique</h3>
+                                <p>Enjeux économiques et juridiques du numérique</p>
+                            </div>
+                        </div>
+                        <p class="sub-title">Stack acquise</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">WordPress</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Mathématiques</h3>
-                        <p>Logique, structures de données</p>
-                    </div>
-                    <div class="card">
-                        <h3>Culture Éco-Jur</h3>
-                        <p>Enjeux IT en entreprise</p>
-                    </div>
-                    <div class="card">
-                        <h3>Anglais</h3>
-                        <p>Documentation, simulations</p>
-                    </div>
-                    <div class="card">
-                        <h3>Culture Générale</h3>
-                        <p>Compétences en communication</p>
-                    </div>
-                    </div>
+                </div>
 
-                    <br>
-                    <h2>Compétences Développées</h2>
-                    <div class="container">
-                    <div class="card">
-                        <h3>Programmation</h3>
-                        <p>Kotlin, Java, Vue.js, SQLite</p>
+                <!-- Stage 1 -->
+                <div class="tl-block">
+                    <div class="tl-marker">
+                        <div class="tl-marker-dot tl-marker-dot--stage">✈</div>
                     </div>
-                    <div class="card">
-                        <h3>Outils</h3>
-                        <p>VS Code, Android Studio, Trello, Git</p>
+                    <div class="tl-content">
+                        <div class="stage-card">
+                            <div class="stage-info">
+                                <span class="stage-label">Stage · 2 mois · 2024</span>
+                                <h2>Orange Caraïbes</h2>
+                                <p>Infrastructures réseau · Développement applicatif · Guadeloupe</p>
+                            </div>
+                            <button class="stage-btn" id="btn-orange">Voir le stage ▸</button>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>DB</h3>
-                        <p>MySQL, UML, Git</p>
-                    </div>
-                    <div class="card">
-                        <h3>Sites Web</h3>
-                        <p>HTML5, three.js, Figma, Canva</p>
-                    </div>
-                    </div>
-                    <!---->
-                    <br><br>
-                    <hr>
-                    <br>
-                    <h2>Stage 2ème année</h2>
-                    
-                    <p>Elixir Création (6 semaines, 2025) - Création de sites web et relations clients.</p>
-                    <button id="Elixir">Voir le stage</button>
-                    <br><br><br>
-                    <hr>
+                </div>
 
-                    <br><br>
-                    <h1>Mes projets</h1>
-                    <br>
-                    <div class="menu-container">
-                        <!--A compléter-->
-                        <a href="../../Projet_perso/Gourmetise/Scrable.html" class="tile tile1">WinScrabble</a>
-                        <a href="../../Projet_perso/Gourmetise/Multiburo.html" class="tile tile2">Multiburo</a>
-                        <a href="../../Projet_perso/Gourmetise/Gourmetise.html" class="tile tile3">Gourmetise</a>
+                <!-- 2ème Année -->
+                <div class="tl-block">
+                    <div class="tl-marker">
+                        <div class="tl-marker-dot">2A</div>
                     </div>
-                    <br><br><br>
-                    <hr>
-                    <!--<button id="Projets">Voir le projet</button>-->
+                    <div class="tl-content">
+                        <h2 class="section-title">2ème Année</h2>
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3>Dév., Prog. &amp; Cybersécurité</h3>
+                                <p>Kotlin, Java, Vue.js, SQLite — Web &amp; Mobile</p>
+                            </div>
+                            <div class="card">
+                                <h3>Atelier Professionnel</h3>
+                                <p>GitHub, méthodes agiles, projets en équipe</p>
+                            </div>
+                            <div class="card">
+                                <h3>Mathématiques</h3>
+                                <p>Logique, structures de données avancées</p>
+                            </div>
+                            <div class="card">
+                                <h3>Culture Éco-Juridique</h3>
+                                <p>Enjeux IT en entreprise, RGPD</p>
+                            </div>
+                            <div class="card">
+                                <h3>Anglais Technique</h3>
+                                <p>Documentation, simulations pro, présentations</p>
+                            </div>
+                            <div class="card">
+                                <h3>Culture Générale</h3>
+                                <p>Communication, expression écrite et orale</p>
+                            </div>
+                        </div>
+                        <p class="sub-title">Stack acquise</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Kotlin</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Vuetify</span>
+                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Android Studio</span>
+                            <span class="skill-tag">Jetpack Compose</span>
+                            <span class="skill-tag">Three.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Trello</span>
+                        </div>
+                    </div>
+                </div>
 
-                    <!--Recap compétences-->
+                <!-- Stage 2 -->
+                <div class="tl-block">
+                    <div class="tl-marker">
+                        <div class="tl-marker-dot tl-marker-dot--stage">▶</div>
+                    </div>
+                    <div class="tl-content">
+                        <div class="stage-card stage-card--elixir">
+                            <div class="stage-info">
+                                <span class="stage-label stage-label--elixir">Stage · 6 semaines · 2025</span>
+                                <h2>Elixir Création</h2>
+                                <p>Création de sites web · Relation client · Vienne</p>
+                            </div>
+                            <button class="stage-btn stage-btn--elixir" id="btn-elixir">Voir le stage ▸</button>
+                        </div>
+                    </div>
+                </div>
 
-                    <br>
-                    <h1>Competences apprisses durant la formation</h1><br>
-                    <div class="box">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
-                        <p>MySQL</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://static.vecteezy.com/system/resources/thumbnails/036/044/336/small_2x/sql-database-icon-logo-design-ui-or-ux-app-png.png" alt="SQL">
-                        <p>SQL</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
-                        <p>Python</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png" alt="vuejs">
-                        <p>vue.js</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://brandlogos.net/wp-content/uploads/2022/10/vuetify-logo_brandlogos.net_ex1tf.png" alt="vuetify">
-                        <p>vuetify</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/2560px-PHP-logo.svg.png" alt="php">
-                        <p>php</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://schoolswp.com/wp-content/uploads/2020/11/logo_divi.png" alt="divi">
-                        <p>Divi</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://s.w.org/style/images/about/WordPress-logotype-simplified.png" alt="wordpress">
-                        <p>Wordpress</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kotlin_Icon.svg/1200px-Kotlin_Icon.svg.png" alt="Kotlin">
-                        <p>Kotlin</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/fr/2/2e/Java_Logo.svg" alt="Java">
-                        <p>Java</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js">
-                        <p>Vue.js</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-                        <p>GitHub</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
-                        <p>Figma</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Three.js_Icon.svg/768px-Three.js_Icon.svg.png" alt="threejs">
-                        <p>Threejs</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite">
-                        <p>SQLite</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
-                        <p>JS</p>
-                    </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML">
+            </div><!-- /timeline -->
+
+            <!-- ── PROJETS ── -->
+            <section class="projects-section">
+                <h2 class="section-title">Projets réalisés</h2>
+                <div class="projects-grid">
+                    <a href="../../Projet_perso/Gourmetise/Scrable.html" class="proj-tile"
+                       style="background-image: url('https://i.notretemps.com/2000x1125/smart/2023/10/20/scrabble.jpeg')">
+                        <span class="proj-num">01 / 03</span>
+                        <div class="proj-label">WinScrabble<span>C# · Windows Forms</span></div>
+                        <div class="proj-enter">▶ ENTRER</div>
+                    </a>
+                    <a href="../../Projet_perso/Gourmetise/Multiburo.html" class="proj-tile"
+                       style="background-image: url('https://static.g7d.io/images/900x0/centers/Lyon_MercureLyonCentreLumiere-OuvertureProchaine_3131314.jpg')">
+                        <span class="proj-num">02 / 03</span>
+                        <div class="proj-label">Multiburo<span>Web · PHP · MySQL</span></div>
+                        <div class="proj-enter">▶ ENTRER</div>
+                    </a>
+                    <a href="../../Projet_perso/Gourmetise/Gourmetise.html" class="proj-tile"
+                       style="background-image: url('https://images.radio-canada.ca/v1/ici-premiere/16x9/pain-farine-entier-grains-integral-eclr.jpg'); background-size: 200%; background-position: center;">
+                        <span class="proj-num">03 / 03</span>
+                        <div class="proj-label">Gourmetise<span>Vue.js · Vuetify</span></div>
+                        <div class="proj-enter">▶ ENTRER</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ── STACK TECHNIQUE ── -->
+            <section class="skills-section">
+                <h2 class="section-title">Stack technique complète</h2>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5">
                         <p>HTML5</p>
                     </div>
-                    <div class="box">
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3">
+                        <p>CSS3</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="skill-box">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
                         <p>C#</p>
                     </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS">
-                        <p>CSS3</p>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/2560px-PHP-logo.svg.png" alt="PHP">
+                        <p>PHP</p>
                     </div>
-                    <div class="box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" alt="postgre">
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
+                        <p>Python</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kotlin_Icon.svg/1200px-Kotlin_Icon.svg.png" alt="Kotlin">
+                        <p>Kotlin</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/fr/2/2e/Java_Logo.svg" alt="Java">
+                        <p>Java</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png" alt="Vue.js">
+                        <p>Vue.js</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://brandlogos.net/wp-content/uploads/2022/10/vuetify-logo_brandlogos.net_ex1tf.png" alt="Vuetify">
+                        <p>Vuetify</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                        <p>MySQL</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite">
+                        <p>SQLite</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" alt="PostgreSQL">
                         <p>PostgreSQL</p>
                     </div>
-                    <div class="box">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC97Z8BResg5dlPqczsRCFhP6zewWX0X0e7fVPG-G7PuUZwwZVsi9OPoqJYkgqT2h0FI95SsmWzVEgpt8b8HAqFiIxZ98TFtY4lE0b8UrtVJ2HrJebRwl6C9DslsQDl9KnBIrdHS6LtkY/s1600/jetpack+compose+icon_RGB.png" alt="jetpack">
+                    <div class="skill-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Three.js_Icon.svg/768px-Three.js_Icon.svg.png" alt="Three.js">
+                        <p>Three.js</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                        <p>GitHub</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                        <p>Figma</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://s.w.org/style/images/about/WordPress-logotype-simplified.png" alt="WordPress">
+                        <p>WordPress</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC97Z8BResg5dlPqczsRCFhP6zewWX0X0e7fVPG-G7PuUZwwZVsi9OPoqJYkgqT2h0FI95SsmWzVEgpt8b8HAqFiIxZ98TFtY4lE0b8UrtVJ2HrJebRwl6C9DslsQDl9KnBIrdHS6LtkY/s1600/jetpack+compose+icon_RGB.png" alt="Jetpack Compose">
                         <p>Jetpack</p>
                     </div>
+                    <div class="skill-box">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCbY1-Um96CJj5CiENgILgx12Sc6ZV-NPLdw&s" alt="Trello">
+                        <p>Trello</p>
+                    </div>
+                    <div class="skill-box">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/036/044/336/small_2x/sql-database-icon-logo-design-ui-or-ux-app-png.png" alt="SQL">
+                        <p>SQL</p>
+                    </div>
                 </div>
+            </section>
+
+        </main>
+
+        <!-- Loading overlay -->
+        <div id="loading-overlay">
+            <div class="lo-header" id="lo-header"><div class="lo-dots"></div></div>
+            <img class="lo-vehicle" id="lo-vehicle" src="" alt="">
+            <h1 class="lo-title" id="lo-title">DODE.html</h1>
+            <div class="lo-bar-area">
+                <div class="lo-bar-track" id="lo-bar-track"><div class="lo-bar-fill" id="lo-bar-fill"></div></div>
+                <div class="lo-pins" id="lo-pins">
+                    <p class="lo-pin-txt" id="lo-pin-from"></p>
+                    <p class="lo-pin-txt" id="lo-pin-to"></p>
+                </div>
+                <p class="lo-loading-txt" id="lo-loading-txt">Loading...</p>
             </div>
         </div>
-        <h1 class="info">Japon : Tokyo, arrondissement Shibuya</h1>
+
     </body>
 </html>
