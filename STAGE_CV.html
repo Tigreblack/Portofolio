@@ -40,31 +40,36 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 20px; /* le padding du header */
+
         background-color: rgb(82, 73, 92);
-        height: auto;
+
         width: 100%;
         margin: 0;
-        padding: 0;
+        padding: 10px 20px;
+
         box-sizing: border-box;
-        white-space: nowrap;
+        flex-wrap: wrap;
     }
-    
+
     .inline-info
     {
         font-family: 'Public Pixel', sans-serif;
         display: flex;
         align-items: center; /* Laissez align-items à center pour aligner les éléments verticalement */
         justify-content: flex-end;
-        flex-wrap: wrap;
-        width: 100%;
-        padding: 20px; /* padding du header ( inline ) */
+
+        padding: 10px 0; /* padding du header ( inline ) */
     }
     
-    .inline-info ul {
+    .inline-info ul 
+    {
         margin: 0;
         padding: 0;
         list-style: none;
+
+        display: flex;
+        flex-wrap: wrap; /* mobile */
+        gap: 15px;
     }
     
     .inline-info ul li 
@@ -79,7 +84,7 @@
     
     .inline-info ul li a {
         text-decoration: none;
-        font-size: 15px;
+        font-size: clamp(0.7rem, 2vw, 1rem);
         color: #fff;
         position: relative;
         padding: 5.75px;
@@ -100,6 +105,7 @@
     .Title1
     {
         text-align: left;
+        font-size: clamp(0.8rem, 2vw, 1rem);
         margin: 2vh;
         font-family: 'Public Pixel', 'sans-serif';
         color: white;
@@ -124,7 +130,7 @@
 <body>
 
     <!--Header avec les informations importantes-->
-         
+
     <div class="header">
         <span class="Title1">Stages & formations</span>
         <span class="inline-info">
