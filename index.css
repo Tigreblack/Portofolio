@@ -67,6 +67,7 @@ canvas {
 
 /* Masquer le <header> desktop sur tablette/mobile */
 #desktop-title { display: block; }
+#contacts-panel { display: none; }
 
 .pseudoname {
     font-family: 'Public Pixel', sans-serif;
@@ -264,6 +265,7 @@ canvas {
         align-items: stretch;
         border-bottom: none;
         box-shadow: none;
+        overflow: visible;
     }
     .header::after { display: none; }
 
@@ -312,14 +314,17 @@ canvas {
     .toggle-arrow { display: inline-block; transition: transform 0.3s ease; }
     .header-contacts-toggle.open .toggle-arrow { transform: rotate(180deg); }
 
-    .header-contacts-panel {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s ease;
+    #contacts-panel {
+        position: fixed !important;
+        top: 47px;
+        left: 0; right: 0;
+        z-index: 9999;
+        display: none;
         background: rgba(60,5,110,0.97);
         border-bottom: 2px solid #a855f7;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-    .header-contacts-panel.open { max-height: 140px; }
+    #contacts-panel.open { display: block !important; }
 
     .inline-info { padding: 12px 20px; justify-content: flex-start; width: 100%; }
     .inline-info ul { flex-direction: row; gap: 24px; align-items: center; }
@@ -506,7 +511,6 @@ canvas {
     #desktop-title { display: none; }
     #desktop-contacts  { display: none !important; }
     #mobile-header-bar { display: flex !important; width: 100%; }
-    #contacts-panel    { display: block !important; }
 
     .header {
         padding: 0;
@@ -515,6 +519,7 @@ canvas {
         align-items: stretch;
         border-bottom: none;
         box-shadow: none;
+        overflow: visible;
     }
     .header::after { display: none; }
 
@@ -562,14 +567,17 @@ canvas {
     .toggle-arrow { display: inline-block; transition: transform 0.3s ease; }
     .header-contacts-toggle.open .toggle-arrow { transform: rotate(180deg); }
 
-    .header-contacts-panel {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s ease;
+    #contacts-panel {
+        position: fixed !important;
+        top: 43px;
+        left: 0; right: 0;
+        z-index: 9999;
+        display: none;
         background: rgba(60,5,110,0.97);
         border-bottom: 2px solid #a855f7;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-    .header-contacts-panel.open { max-height: 120px; }
+    #contacts-panel.open { display: block !important; }
 
     .inline-info { padding: 10px 14px; justify-content: flex-start; width: 100%; }
     .inline-info ul { flex-direction: column; gap: 8px; align-items: flex-start; }

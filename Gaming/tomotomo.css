@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
+
+/* ── VARIABLES ── */
+:root {
+    --tt-pink:        #ff2d78;
+    --tt-cyan:        #00f5ff;
+    --tt-purple:      #a855f7;
+    --tt-yellow:      #f5c400;
+    --tt-bg:          #04040f;
+    --tt-bg2:         #07071a;
+    --tt-card:        rgba(255,255,255,0.03);
+    --tt-border:      rgba(0,245,255,0.12);
+    --tt-pink-glow:   rgba(255,45,120,0.45);
+    --tt-cyan-glow:   rgba(0,245,255,0.35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--tt-bg);
+    color: #e2e8f0;
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+}
+
+/* ════════════════════════════════════
+   HERO
+   ════════════════════════════════════ */
+.tt-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        /* lueur centrale chaude sous le logo */
+        radial-gradient(ellipse at 50%  42%, rgba(245,196,0,0.18)  0%, transparent 48%),
+        /* halo cyan gauche */
+        radial-gradient(ellipse at 12%  55%, rgba(0,245,255,0.20)  0%, transparent 50%),
+        /* halo rose droite */
+        radial-gradient(ellipse at 88%  38%, rgba(255,45,120,0.18) 0%, transparent 48%),
+        /* halo violet bas */
+        radial-gradient(ellipse at 50% 110%, rgba(168,85,247,0.22) 0%, transparent 58%),
+        /* fond de base */
+        var(--tt-bg);
+}
+
+/* Grille perspective sol — effet ville vue de face */
+.tt-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,245,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,0.07) 1px, transparent 1px);
+    background-size: 52px 52px;
+    transform: perspective(550px) rotateX(42deg) scaleY(2.2);
+    transform-origin: center 85%;
+    animation: grid-drift 6s linear infinite;
+    opacity: 0.75;
+    pointer-events: none;
+}
+@keyframes grid-drift {
+    from { background-position: 0 0; }
+    to   { background-position: 0 52px; }
+}
+
+/* Pluie fine */
+.tt-rain {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        173deg,
+        transparent 0px,  transparent 5px,
+        rgba(0,245,255,0.035) 5px, rgba(0,245,255,0.035) 6px
+    );
+    animation: rain-fall 0.55s linear infinite;
+    pointer-events: none;
+}
+@keyframes rain-fall {
+    from { background-position: 0 0; }
+    to   { background-position: -16px 80px; }
+}
+
+/* Scanlines */
+.tt-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent, transparent 3px,
+        rgba(0,0,0,0.14) 3px, rgba(0,0,0,0.14) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Contenu hero */
+.tt-hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: clamp(32px, 6vh, 80px) clamp(16px, 5vw, 60px);
+    max-width: 960px;
+}
+
+.tt-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(9px, 1.3vw, 12px);
+    color: rgba(0,245,255,0.55);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+/* Image titre — remplace le h1 texte */
+.tt-title-img {
+    max-width: clamp(280px, 72vw, 720px);
+    width: 100%;
+    height: auto;
+    margin-bottom: 22px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    filter:
+        drop-shadow(0 0 18px rgba(0,245,255,0.55))
+        drop-shadow(0 0 40px rgba(255,45,120,0.35))
+        drop-shadow(0 0 70px rgba(245,196,0,0.20));
+    animation: logo-pulse 4s ease-in-out infinite;
+}
+@keyframes logo-pulse {
+    0%,100% { filter:
+        drop-shadow(0 0 18px rgba(0,245,255,0.55))
+        drop-shadow(0 0 40px rgba(255,45,120,0.35))
+        drop-shadow(0 0 70px rgba(245,196,0,0.20)); }
+    50%      { filter:
+        drop-shadow(0 0 28px rgba(0,245,255,0.80))
+        drop-shadow(0 0 55px rgba(255,45,120,0.55))
+        drop-shadow(0 0 90px rgba(245,196,0,0.30)); }
+}
+
+.tt-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(12px, 2vw, 18px);
+    color: rgba(226,232,240,0.6);
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.tt-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.tt-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(9px, 1.1vw, 11px);
+    color: var(--tt-cyan);
+    border: 1px solid rgba(0,245,255,0.28);
+    background: rgba(0,245,255,0.04);
+    padding: 5px 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* CTA */
+.tt-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.tt-badge-soon {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(9px, 1.5vw, 13px);
+    color: var(--tt-pink);
+    border: 2px solid var(--tt-pink);
+    padding: 12px 24px;
+    letter-spacing: 3px;
+    box-shadow: 0 0 18px var(--tt-pink-glow), inset 0 0 10px rgba(255,45,120,0.08);
+    animation: badge-blink 2s step-end infinite;
+}
+@keyframes badge-blink {
+    0%,75%,100% { opacity: 1; }
+    85%          { opacity: 0.25; }
+}
+
+.tt-btn-itch {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(11px, 1.4vw, 14px);
+    color: rgba(226,232,240,0.28);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 10px 26px;
+    letter-spacing: 2px;
+    cursor: not-allowed;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.tt-btn-itch--live {
+    color: var(--tt-yellow);
+    border-color: rgba(245,196,0,0.4);
+    background: rgba(245,196,0,0.05);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.tt-btn-itch--live:hover {
+    box-shadow: 0 0 22px rgba(245,196,0,0.22);
+    border-color: rgba(245,196,0,0.75);
+    color: #fff;
+}
+
+/* Robot flottant */
+.tt-robot {
+    position: absolute;
+    bottom: clamp(24px, 5vh, 60px);
+    right: clamp(20px, 6vw, 80px);
+    z-index: 5;
+    text-align: center;
+    animation: robot-float 3.2s ease-in-out infinite;
+}
+@keyframes robot-float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+.tt-robot-face {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(10px, 2vw, 16px);
+    color: var(--tt-cyan);
+    background: rgba(0,245,255,0.06);
+    border: 2px solid rgba(0,245,255,0.35);
+    padding: 10px 14px;
+    text-shadow: 0 0 10px rgba(0,245,255,0.9), 0 0 28px rgba(0,245,255,0.4);
+    animation: screen-flicker 4s step-end infinite;
+}
+@keyframes screen-flicker {
+    0%,95%,100% { opacity: 1; }
+    96%          { opacity: 0.55; }
+    97%          { opacity: 1; }
+    98%          { opacity: 0.4; }
+    99%          { opacity: 1; }
+}
+.tt-robot-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(7px, 1vw, 10px);
+    color: rgba(0,245,255,0.35);
+    letter-spacing: 3px;
+    margin-top: 6px;
+}
+
+/* ════════════════════════════════════
+   MAIN
+   ════════════════════════════════════ */
+.tt-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(48px, 8vh, 100px) clamp(16px, 5vw, 40px) 60px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(60px, 10vh, 100px);
+}
+
+/* Titre de section */
+.tt-section-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(13px, 2vw, 20px);
+    color: var(--tt-cyan);
+    text-shadow: 0 0 14px var(--tt-cyan-glow);
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+.tt-section-title::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 56px;
+    background: linear-gradient(90deg, var(--tt-cyan), transparent);
+    margin-top: 12px;
+    margin-bottom: 32px;
+}
+
+.tt-section-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(10px, 1.3vw, 12px);
+    color: rgba(226,232,240,0.32);
+    letter-spacing: 2px;
+    margin-top: -24px;
+    margin-bottom: 32px;
+}
+
+/* ── À PROPOS ── */
+.tt-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 5vw, 56px);
+    align-items: start;
+}
+.tt-about-text p {
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: rgba(226,232,240,0.72);
+    line-height: 1.95;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+}
+
+.tt-specs {
+    background: var(--tt-card);
+    border: 1px solid var(--tt-border);
+    border-left: 3px solid var(--tt-cyan);
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.tt-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: clamp(10px, 1.2vw, 12px);
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding-bottom: 12px;
+}
+.tt-spec:last-child { border-bottom: none; padding-bottom: 0; }
+.tt-spec-key {
+    color: rgba(0,245,255,0.55);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+.tt-spec-val {
+    color: rgba(226,232,240,0.75);
+    text-align: right;
+}
+.tt-status {
+    color: var(--tt-pink) !important;
+    font-size: clamp(9px, 1vw, 11px);
+    letter-spacing: 2px;
+    animation: badge-blink 2.2s step-end infinite;
+}
+.tt-status--out {
+    color: var(--tt-cyan) !important;
+    animation: none;
+    text-shadow: 0 0 10px rgba(0,245,255,0.6);
+}
+
+/* ── APERÇU SCREENS ── */
+.tt-screens {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+.tt-screen {
+    aspect-ratio: 16 / 9;
+    background: var(--tt-bg2);
+    border: 1px solid var(--tt-border);
+    position: relative;
+    overflow: hidden;
+    display: block;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.tt-screen:hover {
+    border-color: rgba(0,245,255,0.38);
+    box-shadow: 0 0 22px rgba(0,245,255,0.08);
+}
+/* Scanlines sur l'image */
+.tt-screen::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent, transparent 3px,
+        rgba(0,0,0,0.10) 3px, rgba(0,0,0,0.10) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+/* Image in-game */
+.tt-screen img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.tt-screen:hover img {
+    transform: scale(1.04);
+}
+/* Overlay gradient + label */
+.tt-screen-inner {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 3;
+    background: linear-gradient(transparent, rgba(4,4,15,0.88));
+    padding: 18px 14px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 8px;
+}
+.tt-screen-label {
+    font-size: clamp(8px, 1vw, 10px);
+    color: rgba(226,232,240,0.75);
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+.tt-screen-tag {
+    font-size: 8px;
+    color: var(--tt-cyan);
+    border: 1px solid rgba(0,245,255,0.35);
+    padding: 2px 8px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.tt-screen-tag--red {
+    color: var(--tt-pink);
+    border-color: rgba(255,45,120,0.35);
+}
+
+/* ── DEVLOG ── */
+.tt-devlog {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+.tt-devcard {
+    background: var(--tt-card);
+    border: 1px solid var(--tt-border);
+    border-left: 3px solid var(--tt-cyan);
+    padding: 22px 20px;
+    display: flex;
+    gap: 18px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.tt-devcard:hover {
+    border-color: rgba(0,245,255,0.45);
+    box-shadow: 0 0 24px rgba(0,245,255,0.07);
+}
+.tt-devcard--locked {
+    border-left-color: var(--tt-pink);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.tt-devcard--locked:hover { box-shadow: none; border-color: rgba(255,45,120,0.18); }
+
+.tt-devcard-num {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(10px, 1.4vw, 13px);
+    color: rgba(0,245,255,0.3);
+    flex-shrink: 0;
+    padding-top: 3px;
+}
+.tt-devcard--locked .tt-devcard-num { color: rgba(255,45,120,0.3); }
+
+.tt-devcard-body { display: flex; flex-direction: column; gap: 10px; }
+
+.tt-devcard-title {
+    font-size: clamp(12px, 1.5vw, 15px);
+    color: rgba(226,232,240,0.9);
+    letter-spacing: 1px;
+}
+.tt-devcard-text {
+    font-size: clamp(10px, 1.2vw, 12px);
+    color: rgba(226,232,240,0.48);
+    line-height: 1.75;
+    letter-spacing: 0.5px;
+}
+.tt-devcard-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+}
+.tt-devcard-tags span {
+    font-size: 9px;
+    color: var(--tt-cyan);
+    border: 1px solid rgba(0,245,255,0.2);
+    padding: 2px 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.tt-devcard--locked .tt-devcard-tags span {
+    color: var(--tt-pink);
+    border-color: rgba(255,45,120,0.2);
+}
+
+/* ── HISTOIRE / STORY ── */
+.tt-story {
+    background: var(--tt-card);
+    border: 1px solid rgba(255,45,120,0.14);
+    border-left: 3px solid var(--tt-pink);
+    padding: clamp(24px, 4vw, 44px);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+.tt-story-eyebrow {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(9px, 1.4vw, 13px);
+    color: var(--tt-pink);
+    letter-spacing: 3px;
+    text-shadow: 0 0 14px var(--tt-pink-glow);
+}
+.tt-story p {
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: rgba(226,232,240,0.70);
+    line-height: 2.05;
+    letter-spacing: 0.5px;
+}
+.tt-story strong {
+    color: rgba(226,232,240,0.96);
+}
+.tt-story .tt-astrocos {
+    color: var(--tt-pink);
+    font-weight: normal;
+}
+.tt-story .tt-city {
+    color: var(--tt-cyan);
+}
+.tt-story .tt-alert {
+    color: var(--tt-yellow);
+    display: block;
+    margin-top: 4px;
+}
+
+/* ── BANNIÈRE EN CONSTRUCTION ── */
+.tt-wip-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    background: rgba(245,196,0,0.07);
+    border: 1px solid rgba(245,196,0,0.35);
+    border-left: 4px solid var(--tt-yellow);
+    padding: 18px 22px;
+    margin-bottom: 32px;
+}
+.tt-wip-icon {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--tt-yellow);
+    flex-shrink: 0;
+    line-height: 1;
+    padding-top: 2px;
+}
+.tt-wip-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.tt-wip-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(8px, 1.2vw, 11px);
+    color: var(--tt-yellow);
+    letter-spacing: 2px;
+}
+.tt-wip-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(10px, 1.3vw, 12px);
+    color: rgba(226,232,240,0.55);
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+}
+
+/* ── SOCIAL LINKS ── */
+.tt-socials {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+.tt-social-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(10px, 1.3vw, 13px);
+    color: var(--tt-cyan);
+    text-decoration: none;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(0,245,255,0.22);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+}
+.tt-social-link:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.45);
+    text-shadow: 0 0 12px rgba(0,245,255,0.55);
+}
+
+/* ════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════ */
+.tt-footer {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    padding: 28px clamp(16px, 5vw, 40px) 0;
+    border-top: 1px solid rgba(0,245,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.tt-back {
+    font-size: clamp(10px, 1.3vw, 13px);
+    color: var(--tt-cyan);
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+.tt-back:hover {
+    color: #fff;
+    text-shadow: 0 0 14px rgba(0,245,255,0.7);
+}
+.tt-footer-copy {
+    font-size: 10px;
+    color: rgba(226,232,240,0.18);
+    letter-spacing: 2px;
+}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════ */
+@media (max-width: 768px) {
+    .tt-about      { grid-template-columns: 1fr; }
+    .tt-screens    { grid-template-columns: 1fr; }
+    .tt-devlog     { grid-template-columns: 1fr; }
+    .tt-robot      { display: none; }
+    .tt-title-img  { max-width: 90vw; }
+}
+@media (max-width: 480px) {
+    .tt-title-img  { max-width: 95vw; }
+    .tt-badge-soon { font-size: 8px; padding: 10px 16px; }
+}

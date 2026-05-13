@@ -80,8 +80,8 @@
 
             <!-- Loading overlay -->
             <div id="loading-overlay">
-                <div class="lo-header" id="lo-header"><div class="lo-dots"></div></div>
                 <img class="lo-vehicle" id="lo-vehicle" src="" alt="">
+                <div class="lo-header" id="lo-header"><div class="lo-dots"></div></div>
                 <h1 class="lo-title" id="lo-title">DODE.html</h1>
                 <div class="lo-bar-area">
                     <div class="lo-bar-track" id="lo-bar-track"><div class="lo-bar-fill" id="lo-bar-fill"></div></div>
@@ -130,7 +130,7 @@
                     var interval = setInterval(function() {
                         width++;
                         fill.style.width = width + '%';
-                        if (width >= 100) { clearInterval(interval); window.location.href = destination; }
+                        if (width >= 100) { clearInterval(interval); window.location.replace(destination); }
                     }, speed);
                 }
 

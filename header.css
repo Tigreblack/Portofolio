@@ -303,6 +303,7 @@
 .lo-vehicle {
     width: 100px; height: 100px;
     object-fit: contain;
+    order: -1;
     animation: lo-float 1s infinite linear alternate;
     filter: drop-shadow(0 0 12px rgba(168,85,247,0.6));
 }

@@ -185,7 +185,7 @@
                         <!-- Barre mobile uniquement (cachée sur desktop via JS) -->
                         <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
                             <span class="pseudoname">DODE Lucas</span>
-                            <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
+                            <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts" onclick="contactsToggle()">
                                 CONTACT <span class="toggle-arrow">▼</span>
                             </button>
                         </div>
@@ -210,7 +210,7 @@
                            data-loading-speed="30">
                             <div class="tile-pixels"></div>
                             <div class="tile-num">01 / 04</div>
-                            <div class="tile-label">Stage<br>formations<br>& CV</div>
+                            <div class="tile-label">Roadmap</div>
                             <div class="tile-enter blink">▶ ENTRER</div>
                         </a>
                         <a href="./coding_V2/index.html" class="tile tile2" data-bg="0x1e1b4b" data-star="0xa78bfa"
@@ -220,14 +220,14 @@
                            data-loading-speed="30">
                             <div class="tile-pixels"></div>
                             <div class="tile-num">02 / 04</div>
-                            <div class="tile-label">Informatique</div>
+                            <div class="tile-label">Tech Hub</div>
                             <div class="tile-enter blink">▶ ENTRER</div>
                         </a>
-                        <a href="#" class="tile tile3 construction" data-bg="0x111827" data-star="0xf59e0b">
+                        <a href="./Gaming/intro.html" class="tile tile3" data-bg="0x040904" data-star="0xc8a020" data-direct="true">
                             <div class="tile-pixels"></div>
                             <div class="tile-num">03 / 04</div>
-                            <div class="tile-label">Art<br>& Illustration</div>
-                            <div class="tile-badge">EN CONSTRUCTION</div>
+                            <div class="tile-label">Gameverse</div>
+                            <div class="tile-enter blink">▶ ENTRER</div>
                         </a>
                         <a href="#" class="tile tile4 construction" data-bg="0x000000" data-star="0xffffff">
                             <div class="tile-pixels"></div>
@@ -253,7 +253,7 @@
                                     <div class="slide-pixels"></div>
                                     <div class="slide-content">
                                         <div class="slide-num">01 / 04</div>
-                                        <div class="slide-title">Stage<br>formations<br>& CV</div>
+                                        <div class="slide-title">Roadmap</div>
                                         <div class="slide-enter">▶ ENTRER</div>
                                     </div>
                                 </a>
@@ -268,19 +268,19 @@
                                     <div class="slide-pixels"></div>
                                     <div class="slide-content">
                                         <div class="slide-num">02 / 04</div>
-                                        <div class="slide-title">Informatique</div>
+                                        <div class="slide-title">Tech Hub</div>
                                         <div class="slide-enter">▶ ENTRER</div>
                                     </div>
                                 </a>
 
-                                <a href="#" class="carousel-slide construction" data-bg="0x111827" data-star="0xf59e0b">
+                                <a href="./Gaming/intro.html" class="carousel-slide" data-bg="0x040904" data-star="0xc8a020" data-direct="true">
                                     <div class="slide-bg" style="background-image:url('https://images.hdqwalls.com/wallpapers/titanfall-2-2017-concept-art-wide.jpg'); background-size:450%;"></div>
                                     <div class="slide-overlay"></div>
                                     <div class="slide-pixels"></div>
                                     <div class="slide-content">
                                         <div class="slide-num">03 / 04</div>
-                                        <div class="slide-title">Art<br>& Illustration</div>
-                                        <div class="slide-badge">EN CONSTRUCTION</div>
+                                        <div class="slide-title">Gameverse</div>
+                                        <div class="slide-enter">▶ ENTRER</div>
                                     </div>
                                 </a>
 
@@ -319,6 +319,18 @@
                 <!-- Espace 3D -->
             <div id="espace-3d" style="display: none;"></div>
             <script>
+                var _ctLock = 0;
+                function contactsToggle() {
+                    var now = Date.now();
+                    if (now - _ctLock < 400) return;
+                    _ctLock = now;
+                    var panel  = document.getElementById('contacts-panel');
+                    var toggle = document.getElementById('contacts-toggle');
+                    var open   = panel.classList.contains('open');
+                    panel.classList.toggle('open', !open);
+                    toggle.classList.toggle('open', !open);
+                }
+
                 function showToast(message, duration = 2000) {
                     const toast = document.getElementById('toast');
                     toast.textContent = message;
@@ -396,37 +408,36 @@
 
                 document.addEventListener('DOMContentLoaded', () => {
 
-                    const isMobile  = () => window.innerWidth <= 600;
-                    const isTablet  = () => window.innerWidth > 600 && window.innerWidth <= 1024;
+                    const isTablet   = () => window.innerWidth > 600 && window.innerWidth <= 1024;
                     const isCarousel = () => window.innerWidth <= 1024;
+
+                    /* ---- Références panel (déclarées avant applyLayout) ---- */
+                    const toggle = document.getElementById('contacts-toggle');
+                    const panel  = document.getElementById('contacts-panel');
 
                     /* ---- Switcher layout ---- */
                     function applyLayout() {
                         const carousel = isCarousel();
 
-                        // Header desktop <header> : visible seulement sur PC
                         const desktopHeader = document.getElementById('desktop-title');
                         if (desktopHeader) desktopHeader.style.display = carousel ? 'none' : '';
 
                         document.getElementById('desktop-contacts').style.display  = carousel ? 'none' : '';
                         document.getElementById('mobile-header-bar').style.display = carousel ? 'flex' : 'none';
-                        document.getElementById('contacts-panel').style.display    = carousel ? ''     : 'none';
 
-                        // Contenu
-                        document.querySelector('.menu-container').style.display       = carousel ? 'none' : '';
-                        document.getElementById('carousel-wrapper').style.display     = carousel ? 'flex' : 'none';
+                        if (!carousel) {
+                            panel.classList.remove('open');
+                            toggle.classList.remove('open');
+                        }
+
+                        document.querySelector('.menu-container').style.display   = carousel ? 'none' : '';
+                        document.getElementById('carousel-wrapper').style.display = carousel ? 'flex' : 'none';
                     }
 
                     applyLayout();
                     window.addEventListener('resize', applyLayout);
 
-                    /* ---- Toggle contacts mobile/tablette ---- */
-                    const toggle = document.getElementById('contacts-toggle');
-                    const panel  = document.getElementById('contacts-panel');
-                    toggle.addEventListener('click', () => {
-                        toggle.classList.toggle('open');
-                        panel.classList.toggle('open');
-                    });
+                    /* ---- Toggle contacts : géré par onclick sur le bouton (contactsToggle) ---- */
 
                     /* ---- Toast construction ---- */
                     const constructionTiles = document.querySelectorAll('.tile.construction, .carousel-slide.construction');
@@ -446,7 +457,11 @@
                             const dest = link.getAttribute('href');
                             if (!dest || dest === '#') return;
                             e.preventDefault();
-                            triggerLoading(dest, link);
+                            if (link.dataset.direct) {
+                                window.location.href = dest;
+                            } else {
+                                triggerLoading(dest, link);
+                            }
                         });
                     });
 
