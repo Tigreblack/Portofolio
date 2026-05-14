@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="gaming.css">
     <link rel="stylesheet" href="../header.css">
     <script src="../header.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../coding_V2/favicon.svg">
     <title>Gaming — DODE Lucas</title>
 </head>
 <body>
@@ -49,7 +50,19 @@
              HERO — BRIEFING OPERATIONNEL
              ════════════════════════════════════ -->
         <section class="hero">
-            <div class="hero-stamp">WORLD<br>WARRIOR</div>
+            <!-- Post-it codes secrets -->
+            <div class="hero-postit" aria-label="Easter egg codes">
+                <div class="postit-tape"></div>
+                <div class="postit-title">// CODES //</div>
+                <ul class="postit-codes">
+                    <li><span class="postit-code">unleashed</span><span class="postit-hint">↗ cinematic</span></li>
+                    <li><span class="postit-code">jade</span><span class="postit-hint">↗ bge</span></li>
+                    <li><span class="postit-code">snapcube</span><span class="postit-hint">↗ eggmanland</span></li>
+                    <li><span class="postit-code">slapnut</span><span class="postit-hint">↗ gulag</span></li>
+                    <li><span class="postit-code">tk</span><span class="postit-hint">↗ driver pl</span></li>
+                    <li><span class="postit-code">sonic</span><span class="postit-hint">↗ speed !</span></li>
+                </ul>
+            </div>
 
             <div class="hero-classification">GAMING_DIV // WORLD WARRIOR TOURNAMENT</div>
 
@@ -261,23 +274,531 @@
 
 
     <!-- ════════════════════════════════════
+         EASTER EGG — TERMINAL CACHÉ
+         ════════════════════════════════════ -->
+
+    <!-- Mini terminal (coin bas-gauche) -->
+    <div id="egg-terminal">
+        <div class="egg-term-label">// CONSOLE</div>
+        <div class="egg-term-line">&gt; <span id="egg-input"></span><span class="egg-cursor">█</span></div>
+    </div>
+
+    <!-- Overlay cinématique -->
+    <div id="egg-cinematic">
+
+        <!-- Phase 1 : acceptation du code -->
+        <div class="egg-accept" id="egg-accept">
+            <div class="egg-accept-header">▸ TIGREBLACK_DIV // AUTHENTIFICATION</div>
+            <div class="egg-accept-lines">
+                <div class="egg-al egg-al--1">&gt; CODE DÉTECTÉ : <span id="egg-code-name"></span></div>
+                <div class="egg-al egg-al--2">&gt; VÉRIFICATION ................ <span class="egg-ok">[OK]</span></div>
+                <div class="egg-al egg-al--3">&gt; SÉQUENCE AUTORISÉE .......... <span class="egg-ok">[OK]</span></div>
+                <div class="egg-al egg-al--4">&gt; CHARGEMENT EN COURS...</div>
+            </div>
+            <div class="egg-accept-bar-track">
+                <div class="egg-accept-bar-fill" id="egg-accept-bar"></div>
+            </div>
+        </div>
+
+        <!-- Phase 2 : mini écran cinéma -->
+        <div class="egg-screen-wrap" id="egg-screen">
+            <div class="egg-screen-label">// TIGREBLACK_DIV // SÉQUENCE CLASSIFIÉE //</div>
+            <div class="egg-screen-box">
+                <video id="egg-vid" src="" playsinline></video>
+                <div class="egg-scanlines"></div>
+            </div>
+            <div class="egg-cin-hint">[ CLIQUER POUR PASSER ]</div>
+        </div>
+
+    </div>
+
+    <style>
+        /* ── Post-it codes secrets ── */
+        .hero-postit {
+            position: absolute;
+            top: 22px;
+            right: 28px;
+            background: #fef08a;
+            color: #1a1a1a;
+            padding: 16px 18px 14px;
+            transform: rotate(2.8deg);
+            box-shadow:
+                3px 5px 18px rgba(0,0,0,0.5),
+                1px 1px 0 rgba(0,0,0,0.08);
+            font-family: 'Courier New', monospace;
+            z-index: 10;
+            min-width: 148px;
+        }
+        .postit-tape {
+            position: absolute;
+            top: -11px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 48px;
+            height: 22px;
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(0,0,0,0.09);
+            border-radius: 1px;
+        }
+        .postit-title {
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: rgba(0,0,0,0.38);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .postit-codes {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .postit-codes li {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .postit-code {
+            font-size: 11.5px;
+            font-weight: bold;
+            color: #111;
+            letter-spacing: 0.5px;
+        }
+        .postit-hint {
+            font-size: 9.5px;
+            color: rgba(0,0,0,0.38);
+            white-space: nowrap;
+        }
+        @media (max-width: 600px) {
+            .hero-postit {
+                top: 14px;
+                right: 14px;
+                padding: 12px 13px 10px;
+                min-width: 120px;
+                transform: rotate(2.2deg);
+            }
+            .postit-code { font-size: 10px; }
+            .postit-hint { font-size: 8.5px; }
+        }
+
+        /* ── Mini terminal ── */
+        #egg-terminal {
+            position: fixed;
+            bottom: 72px; /* au-dessus du music player */
+            left: 20px;
+            z-index: 8000;
+            background: rgba(0,0,0,0.92);
+            border: 1px solid rgba(0,255,65,0.35);
+            border-left: 3px solid #00ff41;
+            padding: 10px 16px 10px 12px;
+            font-family: 'Courier New', monospace;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            min-width: 220px;
+        }
+        #egg-terminal.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .egg-term-label {
+            font-size: 9px;
+            color: rgba(0,255,65,0.4);
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        .egg-term-line {
+            font-size: clamp(11px, 1.5vw, 13px);
+            color: #00ff41;
+            text-shadow: 0 0 8px rgba(0,255,65,0.6);
+            letter-spacing: 1px;
+        }
+        .egg-cursor {
+            animation: egg-blink 0.6s step-end infinite;
+            color: #00ff41;
+        }
+        @keyframes egg-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        /* ── Overlay cinématique ── */
+        #egg-cinematic {
+            position: fixed; inset: 0;
+            z-index: 9500;
+            background: rgba(0,0,0,0.92);
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            box-sizing: border-box;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        #egg-cinematic.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* même cellule grid */
+        .egg-accept,
+        .egg-screen-wrap {
+            grid-area: 1 / 1;
+        }
+
+        /* ── Phase 1 : acceptation ── */
+        .egg-accept {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+            max-width: min(480px, 90vw);
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+        }
+        .egg-accept.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .egg-accept-header {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: rgba(0,255,65,0.45);
+            margin-bottom: 4px;
+        }
+        .egg-accept-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .egg-al {
+            font-size: clamp(11px, 3vw, 14px);
+            color: #00ff41;
+            text-shadow: 0 0 10px rgba(0,255,65,0.5);
+            letter-spacing: 1px;
+            opacity: 0;
+            white-space: nowrap;
+            animation: egg-line-in 0.2s ease forwards;
+        }
+        @media (max-width: 480px) {
+            .egg-al { white-space: normal; font-size: 11px; }
+        }
+        .egg-al--1 { animation-delay: 0.1s; }
+        .egg-al--2 { animation-delay: 0.5s; }
+        .egg-al--3 { animation-delay: 0.9s; }
+        .egg-al--4 { animation-delay: 1.2s; }
+        @keyframes egg-line-in {
+            from { opacity: 0; transform: translateX(-6px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        .egg-ok {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+        }
+        #egg-code-name {
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        /* Barre de progression acceptation */
+        .egg-accept-bar-track {
+            width: min(280px, 85vw);
+            height: 2px;
+            background: rgba(0,255,65,0.15);
+            margin-top: 6px;
+            overflow: hidden;
+        }
+        .egg-accept-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #00ff41;
+            box-shadow: 0 0 8px rgba(0,255,65,0.7);
+            animation: egg-bar-fill 1.3s ease 1.3s forwards;
+        }
+        @keyframes egg-bar-fill {
+            from { width: 0%; }
+            to   { width: 100%; }
+        }
+
+        /* ── Phase 2 : mini écran cinéma ── */
+        .egg-screen-wrap {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .egg-screen-wrap.visible {
+            opacity: 1;
+        }
+        .egg-screen-label {
+            font-size: 9px;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.2);
+            text-align: center;
+        }
+        .egg-screen-box {
+            position: relative;
+            width: min(78vw, 860px, calc(70vh * 16 / 9));
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.04),
+                0 0 40px rgba(0,0,0,0.9),
+                0 24px 60px rgba(0,0,0,0.7);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        #egg-vid {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: contain;
+            background: #000;
+            pointer-events: none;
+        }
+        /* Scanlines légères sur la vidéo */
+        .egg-scanlines {
+            position: absolute; inset: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 3px,
+                rgba(0,0,0,0.08) 3px,
+                rgba(0,0,0,0.08) 4px
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+        .egg-cin-hint {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #00ff41;
+            text-shadow: 0 0 8px rgba(0,255,65,0.6);
+            pointer-events: none;
+            text-align: center;
+            animation: egg-hint-blink 1s step-end infinite;
+        }
+        @keyframes egg-hint-blink {
+            0%, 100% { opacity: 1; }
+            50%      { opacity: 0; }
+        }
+        @media (max-width: 480px) {
+            #egg-cinematic { padding: 16px; }
+            .egg-screen-label { display: none; }
+            .egg-cin-hint { font-size: 9px; letter-spacing: 2px; }
+            .egg-accept-header { font-size: 8px; letter-spacing: 2px; }
+        }
+
+        /* Animations easter eggs */
+        @keyframes egg-shake {
+            0%,100% { transform: translate(0,0); }
+            15%      { transform: translate(-6px, 3px); }
+            30%      { transform: translate(6px,-3px); }
+            45%      { transform: translate(-4px, 2px); }
+            60%      { transform: translate(4px,-2px); }
+            75%      { transform: translate(-2px, 1px); }
+        }
+        @keyframes egg-speedline {
+            from { transform: translateX(-120%) skewX(-8deg); opacity: 1; }
+            to   { transform: translateX(140%) skewX(-8deg); opacity: 0; }
+        }
+        @keyframes egg-fadein {
+            from { opacity: 0; transform: scale(1.04); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .egg-speed-layer {
+            position: fixed; inset: 0; z-index: 9000;
+            pointer-events: none; overflow: hidden;
+        }
+        .egg-speed-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f5ff, #fff);
+            animation: egg-speedline 0.45s ease-out forwards;
+        }
+    </style>
+
+    <script>
+    (function () {
+        'use strict';
+
+        /* ── CODES & ACTIONS ── */
+        const CODES = {
+            'unleashed':       triggerMarza,
+            'jade':        triggerJade,
+            'snapcube':  triggerEggmanland,
+            'slapnut':     triggerSlapnut,
+            'tk':          triggerTK,
+            'sonic':    triggerHedgehog,
+        };
+
+        let buffer      = '';
+        let bufferTimer = null;
+        let eggActive   = false;
+
+        const terminal  = document.getElementById('egg-terminal');
+        const inputEl   = document.getElementById('egg-input');
+        const cinematic = document.getElementById('egg-cinematic');
+        const vidEl     = document.getElementById('egg-vid');
+        const acceptEl  = document.getElementById('egg-accept');
+        const screenEl  = document.getElementById('egg-screen');
+        const codeNameEl = document.getElementById('egg-code-name');
+        const acceptBar = document.getElementById('egg-accept-bar');
+        const hintEl    = cinematic.querySelector('.egg-cin-hint');
+        let   lastCode  = '';
+
+        /* ── CAPTURE CLAVIER ── */
+        document.addEventListener('keydown', (e) => {
+            if (['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+
+            if (e.key === 'Escape') { closeAll(); return; }
+
+            if (eggActive) return;
+
+            if (e.key === 'Backspace') {
+                buffer = buffer.slice(0, -1);
+                update();
+                return;
+            }
+            if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                buffer += e.key.toLowerCase();
+                update();
+                checkCodes();
+                clearTimeout(bufferTimer);
+                bufferTimer = setTimeout(() => { buffer = ''; update(); }, 2800);
+            }
+        });
+
+        function update() {
+            if (buffer.length > 0) {
+                inputEl.textContent = buffer;
+                terminal.classList.add('visible');
+            } else {
+                terminal.classList.remove('visible');
+                inputEl.textContent = '';
+            }
+        }
+
+        function checkCodes() {
+            for (const code in CODES) {
+                if (buffer.endsWith(code)) {
+                    lastCode = code;
+                    buffer = '';
+                    clearTimeout(bufferTimer);
+                    terminal.classList.remove('visible');
+                    inputEl.textContent = '';
+                    CODES[code]();
+                    return;
+                }
+            }
+        }
+
+        /* ── Ouvrir une vidéo locale ── */
+        function openVideo(src) {
+            eggActive = true;
+
+            // Reset phases
+            acceptEl.classList.remove('visible');
+            screenEl.style.display = 'none';
+            screenEl.classList.remove('visible');
+            vidEl.src = '';
+
+            // Reset animations lignes + barre
+            acceptEl.querySelectorAll('.egg-al').forEach(el => {
+                el.style.animation = 'none'; el.offsetHeight; el.style.animation = '';
+            });
+            acceptBar.style.animation = 'none'; acceptBar.offsetHeight; acceptBar.style.animation = '';
+
+            // Afficher le code tapé
+            codeNameEl.textContent = lastCode;
+
+            // Phase 1 — acceptation
+            cinematic.classList.add('visible');
+            requestAnimationFrame(() => acceptEl.classList.add('visible'));
+
+            // Phase 2 — vidéo après 2.7s
+            setTimeout(() => {
+                acceptEl.classList.remove('visible');
+                setTimeout(() => {
+                    screenEl.style.display = 'flex';
+                    requestAnimationFrame(() => screenEl.classList.add('visible'));
+                    vidEl.src = src;
+                    vidEl.play();
+                }, 300);
+            }, 2700);
+        }
+
+        /* ── Fermeture auto à la fin ── */
+        vidEl.addEventListener('ended', closeAll);
+
+        function closeAll() {
+            eggActive = false;
+            cinematic.classList.remove('visible');
+            acceptEl.classList.remove('visible');
+            screenEl.classList.remove('visible');
+            setTimeout(() => {
+                vidEl.pause();
+                vidEl.src = '';
+                screenEl.style.display = 'none';
+            }, 380);
+            document.querySelectorAll('.egg-speed-layer').forEach(el => el.remove());
+            document.body.style.animation = '';
+        }
+
+        cinematic.addEventListener('click', closeAll);
+
+        /* ── TRIGGERS ── */
+
+        function triggerMarza()      { openVideo('videos/unleashed.mp4'); }  // unleashed
+        function triggerJade()       { openVideo('videos/jade.mp4'); }        // bge
+        function triggerEggmanland() { openVideo('videos/snapcube.mp4'); }    // eggmanland
+        function triggerSlapnut()    { openVideo('videos/slapnut.mp4'); }     // gulag
+        function triggerTK()         { openVideo('videos/tk.mp4'); }          // driver pl
+
+        // sonic — lignes de vitesse
+        function triggerHedgehog() {
+            eggActive = true;
+            const layer = document.createElement('div');
+            layer.className = 'egg-speed-layer';
+            for (let i = 0; i < 22; i++) {
+                const line  = document.createElement('div');
+                line.className = 'egg-speed-line';
+                const top   = Math.random() * 100;
+                const w     = 30 + Math.random() * 55;
+                const delay = Math.random() * 0.35;
+                line.style.cssText = `top:${top}%;width:${w}%;left:0;animation-delay:${delay}s;opacity:0.85;`;
+                layer.appendChild(line);
+            }
+            document.body.appendChild(layer);
+            setTimeout(() => { layer.remove(); eggActive = false; }, 900);
+        }
+
+    })();
+    </script>
+
+    <!-- ════════════════════════════════════
          MUSIC PLAYER — barre fixe bas de page
          ════════════════════════════════════ -->
     <div id="music-player">
 
-        <!-- Panneau playlist (masqué par défaut) -->
+        <!-- playlist -->
         <div class="mp-panel" id="mp-panel">
             <div class="mp-panel-inner">
-                <!-- Lecteur YouTube intégré -->
                 <div class="mp-video-wrap">
                     <div id="yt-player"></div>
                 </div>
-                <!-- Liste des pistes -->
                 <div class="mp-track-list" id="mp-track-list"></div>
             </div>
         </div>
 
-        <!-- Barre de contrôle -->
+        <!-- controls -->
         <div class="mp-bar">
             <div class="mp-info">
                 <span class="mp-icon" id="mp-icon">♫</span>
@@ -306,10 +827,7 @@
     <script>
     (function () {
 
-        /* ══ PLAYLIST ══════════════════════════════════════════════════
-           Remplacez les IDs YouTube par les vidéos.
-           Pour trouver un ID : dans l'URL youtube.com/watch?v=XXXXXXXX
-           ══════════════════════════════════════════════════════════════ */
+        /* ── PLAYLIST ── */
         const PLAYLIST = [
             { id: '8bg-nvvI9D0', title: "Chun-Li's Theme",           sub: '♦ Street Fighter 6 OST' },
             { id: 'f1WJLUXoGew', title: 'Empire City (Night)',        sub: '♦ Sonic Unleashed OST'  },

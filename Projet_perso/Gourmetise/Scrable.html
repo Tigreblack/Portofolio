@@ -1,148 +1,214 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Scrable.css">
-        <link rel="stylesheet" href="../../header.css">
-        <script src="../../header.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-        <title>WinScrabble</title>
-    </head>
-    <body>
-        <!--Header avec les informations importantes-->
-        <div class="header">
-            <div class="header-top-bar" style="display:contents">
-                <header id="desktop-title"><span class="pseudoname">WinScrabble</span></header>
-                <span class="inline-info" id="desktop-contacts">
-                    <ul>
-                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
-                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
-                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
-                        <li><a href="../../Vienne_Select_screen/Vienne/BTSSIO.html">Retour BTS</a></li>
-                    </ul>
-                </span>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../header.css">
+    <script src="../../header.js"></script>
+    <link rel="stylesheet" href="Scrable.css">
+    <link rel="icon" type="image/svg+xml" href="../../coding_V2/favicon.svg">
+    <title>WinScrabble — DODE Lucas</title>
+</head>
+<body>
+
+    <!-- ── HEADER ── -->
+    <div class="header">
+        <div class="header-top-bar" style="display:contents">
+            <header id="desktop-title"><span class="pseudoname">DODE Lucas</span></header>
+            <span class="inline-info" id="desktop-contacts">
+                <ul>
+                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                    <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                    <li><a href="../../Gaming/gaming.html">Gaming Hub</a></li>
+                </ul>
+            </span>
+        </div>
+        <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
+            <span class="pseudoname">DODE Lucas</span>
+            <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
+                CONTACT <span class="toggle-arrow">▼</span>
+            </button>
+        </div>
+        <div class="header-contacts-panel" id="contacts-panel">
+            <span class="inline-info">
+                <ul>
+                    <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
+                    <li><a href="tel:0783985785">07 83 98 57 85</a></li>
+                    <li><a href="../../coding_V2/CV.pdf">CV</a></li>
+                    <li><a href="../../Gaming/gaming.html">Gaming Hub</a></li>
+                </ul>
+            </span>
+        </div>
+    </div>
+
+    <!-- ── HERO ── -->
+    <section class="ws-hero">
+        <div class="ws-grid"></div>
+        <div class="ws-scanlines"></div>
+
+        <div class="ws-hero-content">
+            <div class="ws-eyebrow">▸ PROJET BTS SIO &nbsp;·&nbsp; C# &nbsp;·&nbsp; FÉVRIER 2024</div>
+            <h1 class="ws-title">WIN<span class="ws-title-b">SCRABBLE</span></h1>
+            <p class="ws-sub">Reproduction du Scrabble en application Windows Forms</p>
+            <div class="ws-tags">
+                <span class="ws-tag">C# · .NET</span>
+                <span class="ws-tag">Windows Forms</span>
+                <span class="ws-tag">2 Joueurs Local</span>
+                <span class="ws-tag">Dictionnaire intégré</span>
             </div>
-            <div class="header-top-bar" id="mobile-header-bar" style="display:none; width:100%;">
-                <span class="pseudoname">WinScrabble</span>
-                <button class="header-contacts-toggle" id="contacts-toggle" aria-label="Contacts">
-                    CONTACT <span class="toggle-arrow">▼</span>
-                </button>
-            </div>
-            <div class="header-contacts-panel" id="contacts-panel">
-                <span class="inline-info">
-                    <ul>
-                        <li><a href="mailto:lucas.dode26@gmail.com">Mail</a></li>
-                        <li><a href="tel:0783985785">07 83 98 57 85</a></li>
-                        <li><a href="../../coding_V2/CV.pdf">CV</a></li>
-                        <li><a href="../../Vienne_Select_screen/Vienne/BTSSIO.html">Retour BTS</a></li>
-                    </ul>
-                </span>
+            <div class="ws-cta">
+                <a href="https://github.com/Tigreblack/03_WinsScrabble/releases/tag/V1" target="_blank" class="ws-btn-github">⟶ &nbsp;Voir sur GitHub — Release V1</a>
             </div>
         </div>
-        
-        <!-- Conteneur texte  -->
-        <div class="container-page2">
-            <div class="wrapperdoc">
-                <div class="text-page2">
-                    <!-- SECTION 1 : Introduction -->
-                    <section>
-                        <h1>Projet : WinScrabble</h1>
-                        <hr>
-                        <h2>Reproduction du jeu de Scrabble en application Windows</h2>
-                        <h3>Développé en C# sous Visual Studio <br><br> Finalisé en février 2024</h3>
-                        <p>
-                            WinScrabble est une application qui reproduit le célèbre jeu de Scrabble.
-                            Ce projet a été développé en C# avec Windows Forms sur Visual Studio.
-                            Le jeu propose une interface, une gestion complète des lettres, des scores, et un mode multijoueur local à 2 joueurs.
-                        </p>
-                    </section>
 
-                    <!-- SECTION 2 : Fonctionnalités -->
-                    <section>
-                        <h2>Fonctionnalités du Jeu</h2>
-                        <ul>
-                            <li><strong>Interface :</strong> Interface 2 joueurs avec les scores affichées la lettre à rentrée et les tours</li>
-                            <li><strong>Gestion des lettres :</strong> Pioche aléatoire, lettres limitées, remplacement</li>
-                            <li><strong>Multijoueur :</strong> Mode à 2 joueurs en local avec alternance de tours</li>
-                            <li><strong>Scores :</strong> Calcul automatique des points</li>
-                            <li><strong>Validation :</strong> Vérification des mots via dictionnaire intégré</li>
-                        </ul>
+        <!-- Tuile Scrabble flottante -->
+        <div class="ws-tile" aria-hidden="true">
+            <div class="ws-tile-face">
+                W
+                <span class="ws-tile-score">4</span>
+            </div>
+            <div class="ws-tile-label">TIGREBLACK</div>
+        </div>
+    </section>
 
-                        <br>
-                        <h3>Stack Technique</h3>
-                        <br>
-                        <ul>
-                            <li>Langage : C# (.NET Framework)</li>
-                            <li>IDE : Visual Studio</li>
-                            <li>GUI : Windows Forms</li>
-                            <li>Versioning : GitHub avec release disponible</li>
-                        </ul>
-                    </section>
+    <!-- ── MAIN ── -->
+    <main class="ws-main">
 
-                    <hr>
-                    <p>Voici les ressources du projet :</p>
-
-                    <div class="button-container">
-                        <button onclick="window.open('https://github.com/Tigreblack/03_WinsScrabble/releases/tag/V1', '_blank')">Voir sur GitHub</button>
+        <!-- LE PROJET -->
+        <section class="ws-section">
+            <h2 class="ws-section-title">Le projet</h2>
+            <div class="ws-about">
+                <div class="ws-about-text">
+                    <p>WinScrabble est une application Windows qui reproduit fidèlement le célèbre jeu de Scrabble. Développée en C# avec Windows Forms sous Visual Studio, elle propose une expérience complète à 2 joueurs en local.</p>
+                    <p>Le projet intègre une pioche aléatoire, un système de gestion des lettres, le calcul automatique des scores, ainsi qu'un dictionnaire intégré pour la validation des mots posés.</p>
+                </div>
+                <div class="ws-specs">
+                    <div class="ws-spec">
+                        <span class="ws-spec-key">Langage</span>
+                        <span class="ws-spec-val">C# · .NET Framework</span>
                     </div>
-                    <br>
-                    <br>
-                    <h3>Image du projet WinScrabble</h3>
-                    <div class="section full-height over-hide px-4 px-sm-0">
-                        <div class="container">
-                            <div class="row full-height justify-content-center">
-                                <div class="col-lg-10 col-xl-8 align-self-center padding-tb">
-                                    <div class="section mx-auto text-center slider-height-padding">
-                                        <input class="checkbox frst" type="radio" id="slide-1" name="slider" checked/>
-                                        <label for="slide-1"></label>
-                                        <input class="checkbox scnd" type="radio" name="slider" id="slider-2"/>
-                                        <label for="slider-2"></label>
-                                        <input class="checkbox thrd" type="radio" name="slider" id="slider-3"/>
-                                        <label for="slider-3"></label>
-                                        <ul>
-                                            <li>
-                                                <span>github</span>
-                                            </li>
-                                            <li>
-                                                <span>interface</span>
-                                            </li>
-                                            <li>
-                                                <span>interface 2</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="ws-spec">
+                        <span class="ws-spec-key">GUI</span>
+                        <span class="ws-spec-val">Windows Forms</span>
                     </div>
-
-                    <!--Recap compétences-->
-                    <section>
-                        <h2>Compétences mobilisées</h2>
-                        <br>
-                        <div class="skills-container">
-                            <div class="box">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
-                                <p>C#</p>
-                            </div>
-                            <div class="box">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-                                <p>GitHub</p>
-                            </div>
-                            <div class="box">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
-                                <p>Figma</p>
-                            </div>
-                            <div class="box">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCbY1-Um96CJj5CiENgILgx12Sc6ZV-NPLdw&s" alt="trello">
-                                <p>Trello</p>
-                            </div>
-                        </div>
-                    </section>
+                    <div class="ws-spec">
+                        <span class="ws-spec-key">IDE</span>
+                        <span class="ws-spec-val">Visual Studio</span>
+                    </div>
+                    <div class="ws-spec">
+                        <span class="ws-spec-key">Versioning</span>
+                        <span class="ws-spec-val">GitHub · Release V1</span>
+                    </div>
+                    <div class="ws-spec">
+                        <span class="ws-spec-key">Finalisé</span>
+                        <span class="ws-spec-val">Mars 2024</span>
+                    </div>
+                    <div class="ws-spec">
+                        <span class="ws-spec-key">Contexte</span>
+                        <span class="ws-spec-val ws-status">BTS SIO · 1ÈRE ANNÉE</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <h1 class="info"></h1>
-    </body>
+        </section>
+
+        <!-- APERÇU -->
+        <section class="ws-section">
+            <h2 class="ws-section-title">Aperçu</h2>
+            <div class="ws-screens">
+                <div class="ws-screen">
+                    <img src="Image_11.JPG" alt="Interface de jeu WinScrabble — 2 joueurs">
+                    <div class="ws-screen-inner">
+                        <span class="ws-screen-label">Interface de jeu — 2 joueurs</span>
+                        <span class="ws-screen-tag">IN-APP</span>
+                    </div>
+                </div>
+                <div class="ws-screen">
+                    <img src="Image_12.JPG" alt="Écran gagnant WinScrabble">
+                    <div class="ws-screen-inner">
+                        <span class="ws-screen-label">Écran du gagnant</span>
+                        <span class="ws-screen-tag">IN-APP</span>
+                    </div>
+                </div>
+                <div class="ws-screen">
+                    <img src="Image_10.JPG" alt="Release GitHub V1">
+                    <div class="ws-screen-inner">
+                        <span class="ws-screen-label">Release GitHub — V1</span>
+                        <span class="ws-screen-tag ws-screen-tag--purple">GITHUB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FONCTIONNALITÉS -->
+        <section class="ws-section">
+            <h2 class="ws-section-title">Fonctionnalités</h2>
+            <div class="ws-features">
+                <div class="ws-feat">
+                    <div class="ws-feat-num">#01</div>
+                    <div class="ws-feat-body">
+                        <div class="ws-feat-title">Interface 2 joueurs</div>
+                        <div class="ws-feat-text">Scores en temps réel, alternance de tours, lettres choisies et rounds comptabilisés pour chaque joueur.</div>
+                    </div>
+                </div>
+                <div class="ws-feat">
+                    <div class="ws-feat-num">#02</div>
+                    <div class="ws-feat-body">
+                        <div class="ws-feat-title">Gestion des lettres</div>
+                        <div class="ws-feat-text">Pioche aléatoire, lettres limitées selon les règles officielles du Scrabble, possibilité de remplacement.</div>
+                    </div>
+                </div>
+                <div class="ws-feat">
+                    <div class="ws-feat-num">#03</div>
+                    <div class="ws-feat-body">
+                        <div class="ws-feat-title">Calcul automatique des scores</div>
+                        <div class="ws-feat-text">Attribution des points selon la valeur de chaque lettre et les cases spéciales du plateau de jeu.</div>
+                    </div>
+                </div>
+                <div class="ws-feat">
+                    <div class="ws-feat-num">#04</div>
+                    <div class="ws-feat-body">
+                        <div class="ws-feat-title">Validation par dictionnaire</div>
+                        <div class="ws-feat-text">Vérification des mots soumis via un dictionnaire intégré — les mots invalides sont automatiquement rejetés.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK TECHNIQUE -->
+        <section class="ws-section">
+            <h2 class="ws-section-title">Stack technique</h2>
+            <div class="ws-stack">
+                <div class="ws-tech">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+                    <span>C#</span>
+                </div>
+                <div class="ws-tech">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio">
+                    <span>Visual Studio</span>
+                </div>
+                <div class="ws-tech">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                    <span>GitHub</span>
+                </div>
+                <div class="ws-tech">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                    <span>Figma</span>
+                </div>
+                <div class="ws-tech">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" alt="Trello">
+                    <span>Trello</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="ws-footer">
+        <a href="../../Gaming/gaming.html" class="ws-back">← Retour Gaming Hub</a>
+        <span class="ws-footer-copy">WinScrabble · DODE Lucas · 2024</span>
+    </footer>
+
+</body>
 </html>

@@ -623,14 +623,90 @@ body {
 /* ════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════ */
+/* ── Tablette large : screens en 2 col ── */
+@media (max-width: 900px) {
+    .tt-screens { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Tablette ── */
 @media (max-width: 768px) {
     .tt-about      { grid-template-columns: 1fr; }
     .tt-screens    { grid-template-columns: 1fr; }
     .tt-devlog     { grid-template-columns: 1fr; }
     .tt-robot      { display: none; }
     .tt-title-img  { max-width: 90vw; }
+
+    /* Eyebrow long — casser le texte proprement */
+    .tt-story-eyebrow {
+        font-size: 8px;
+        letter-spacing: 1px;
+        line-height: 1.7;
+        word-break: break-word;
+    }
+
+    /* Bannière WIP : empiler icône + texte */
+    .tt-wip-banner { flex-direction: column; gap: 10px; padding: 16px 18px; }
+
+    /* Specs : valeur sous la clé sur petits écrans */
+    .tt-spec     { flex-wrap: wrap; gap: 3px; }
+    .tt-spec-val { text-align: left; }
+
+    /* Cards devlog : padding réduit */
+    .tt-devcard { padding: 16px 14px; gap: 12px; }
+
+    /* Liens sociaux */
+    .tt-socials { gap: 14px; }
+
+    /* Espacement sections */
+    .tt-main { gap: clamp(40px, 7vh, 72px); }
 }
+
+/* ── Mobile ── */
 @media (max-width: 480px) {
-    .tt-title-img  { max-width: 95vw; }
-    .tt-badge-soon { font-size: 8px; padding: 10px 16px; }
+    .tt-title-img  { max-width: 96vw; }
+
+    .tt-hero-content { padding: 24px 14px; }
+
+    /* Eyebrow story encore plus petit */
+    .tt-story-eyebrow { font-size: 7px; letter-spacing: 0.5px; }
+
+    /* Story */
+    .tt-story { padding: 16px 14px; gap: 14px; }
+    .tt-story p { font-size: 11px; }
+
+    /* WIP */
+    .tt-wip-icon  { font-size: 14px; }
+    .tt-wip-title { font-size: 8px; }
+    .tt-wip-text  { font-size: 10px; }
+
+    /* Specs panel */
+    .tt-specs { padding: 14px 12px; }
+
+    /* Titres section */
+    .tt-section-title { font-size: 11px; }
+    .tt-section-sub   { font-size: 9px; }
+
+    /* Devcard numéro */
+    .tt-devcard-num  { font-size: 10px; }
+    .tt-devcard-text { font-size: 10px; }
+
+    /* Bouton itch */
+    .tt-btn-itch--live { font-size: 10px; padding: 9px 14px; letter-spacing: 1px; }
+
+    /* Eyebrow hero */
+    .tt-eyebrow { letter-spacing: 2px; }
+
+    /* Main padding latéral */
+    .tt-main { padding-left: 14px; padding-right: 14px; }
+
+    /* Socials */
+    .tt-social-link { font-size: 11px; letter-spacing: 1px; }
+}
+
+/* ── Très petit écran (≤360px) ── */
+@media (max-width: 360px) {
+    .tt-story-eyebrow { font-size: 6px; }
+    .tt-section-title { font-size: 10px; letter-spacing: 1px; }
+    /* Devcard : numéro au-dessus du contenu */
+    .tt-devcard { flex-direction: column; gap: 6px; }
 }

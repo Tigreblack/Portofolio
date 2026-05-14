@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- fond noir -->
+  <rect width="32" height="32" fill="#000"/>
+
+  <defs>
+    <filter id="neon" x="-80%" y="-80%" width="260%" height="260%">
+      <!-- halo large -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur_wide"/>
+      <!-- halo serré -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1"   result="blur_tight"/>
+      <feMerge>
+        <feMergeNode in="blur_wide"/>
+        <feMergeNode in="blur_tight"/>
+        <!-- pixels d'origine au-dessus -->
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!--
+    Grille pixel = 2×2 SVG units par pixel
+    D  : offset x=6,  y=9  — 4 cols × 7 rows
+    L  : offset x=18, y=9  — 4 cols × 7 rows
+    Gap entre D et L : 2px
+  -->
+  <g filter="url(#neon)" fill="#fff">
+
+    <!-- ═══ D ═══ -->
+    <!-- colonne gauche (toute la hauteur) -->
+    <rect x="6"  y="9"  width="2" height="14"/>
+    <!-- ligne du haut (cols 0-2) -->
+    <rect x="6"  y="9"  width="6" height="2"/>
+    <!-- côté droit intérieur (rows 1-5) -->
+    <rect x="14" y="11" width="2" height="10"/>
+    <!-- ligne du bas (cols 0-2) -->
+    <rect x="6"  y="21" width="6" height="2"/>
+
+    <!-- ═══ L ═══ -->
+    <!-- colonne gauche (toute la hauteur) -->
+    <rect x="18" y="9"  width="2" height="14"/>
+    <!-- ligne du bas (cols 0-3) -->
+    <rect x="18" y="21" width="8" height="2"/>
+
+  </g>
+</svg>
